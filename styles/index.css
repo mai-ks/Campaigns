@@ -1,0 +1,361 @@
+:root {
+    --orange: #ff7f11;
+    --blue: #005f99;
+    --text-light: #ffffff;
+    --radius: 14px;
+    --transition: .35s cubic-bezier(.4,.2,.2,1);
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  
+  /* בסיס */
+  body {
+    margin: 0;
+    background: #f5f5f7;
+    direction: rtl;
+    color: #111;
+  }
+  
+  /* גריד של ההירו + קו עליון: שומר 3 ס"מ רווח מכל צד */
+  .hero {
+    background: #fff; /* רקע לבן מתחת לתמונה */
+    padding: 2rem 0 4rem;
+  }
+  
+  .hero-grid {
+    max-width: 100%;
+    padding: 0 1cm; /* 3 ס״מ מכל צד */
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+    align-items: start;
+  }
+  
+  /* קו עליון */
+  .top-bar {
+    background: #f0f0f3;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .top-bar-text {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #333;
+  }
+  
+  /* כרטיס ההירו */
+  .image-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+    min-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 20px 60px -10px rgba(0,0,0,0.15);
+  }
+  
+  /* התמונה */
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(1);
+  }
+  
+  /* טקסט על גבי התמונה */
+  .text-group {
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.35);
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    margin: 1rem;
+    max-width: 500px;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+  }
+  
+  .subtitle {
+    margin: 0;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: .9;
+  }
+  
+  .btn-primary {
+    display: inline-block;
+    padding: 0.55rem 1.2rem;
+    border: 2px solid var(--text-light);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-light);
+    font-weight: 600;
+    text-decoration: none;
+    width: fit-content;
+    transition: background var(--transition), color var(--transition), transform .2s;
+  }
+  
+  .btn-primary:hover {
+    background: var(--text-light);
+    color: #222;
+    transform: translateY(-2px);
+  }
+  
+  /* רספונסיבי */
+  @media (max-width: 900px) {
+    .hero-grid {
+      padding: 0 1rem;
+    }
+    .text-group {
+      margin: .75rem;
+    }
+  }
+
+
+  /* ניווט בתוך ההירו, על התמונה עצמה */
+.nav-on-hero {
+    position: absolute;
+    inset: 0; /* ממקם למעלה בתוך image-card */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3cm 0 1rem; /* שמאל 1rem במקום 3cm */
+    gap: 1rem;
+    z-index: 3; /* מעל התמונה, מתחת לטקסט אם צריך */
+    pointer-events: auto;
+    height: 60px;
+    justify-content: space-between; /* לוגו משמאל, פריטים מימין */
+    direction: ltr; /* מוודא שה־flex לא הופך בגלל RTL */
+
+
+  }
+
+  /* לוגו */
+.nav-on-hero .logo {
+    font-weight: 900;
+    font-size: 50px;
+    color: #fff;
+    letter-spacing: .5px;
+    text-align: left;
+    direction: ltr; /* מוודא ש־flex מפרש שמאל/ימין כצפוי */
+
+  }
+
+  .logo {
+    margin-right: auto; /* דוחף את שאר התפריטים ימינה */
+  }
+
+
+  /* תפריט אופקי על התמונה */
+.nav-on-hero .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+    transition: transform .25s ease;
+    margin-right: auto; 
+  }
+  .logo img:hover {
+    transform: scale(1.08);
+  }
+
+  
+  .nav-on-hero .main-nav a:hover::after,
+  .nav-on-hero .main-nav a.active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-on-hero .main-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    position: relative;
+    padding: 0.35rem 0.75rem;
+    font-size: 20px;
+    display: inline-block;
+    transition: color .2s;
+
+  }
+
+
+  /* מעבר חלק */
+.nav-on-hero {
+    transition: all .3s ease;
+  }
+  
+  /* כשהניווט הופך לסטיקי אחרי גלילה */
+  .nav-on-hero.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    color: #111;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border-radius: 0;
+    padding: 0 3cm;
+    z-index: 50;
+  }
+  
+  /* מותאם לקישורים כשהוא סטיקי */
+  .nav-on-hero.scrolled .main-nav a {
+    color: #222;
+  }
+  
+  /* אם הלוגו צריך להיראות שונה בסטייט הזה (לדוגמה לשבור את הלבן) */
+  .nav-on-hero.scrolled .logo img {
+    filter: none;
+  }
+  
+
+
+    /* about section*/
+    .about {
+        
+        padding: 1rem 0;
+      }
+      
+      .about-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1cm; /* שומר על גריד של 3 ס״מ מכל צד */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 1rem;
+        grid-template-areas:
+          "text ."
+          ". image";
+        position: relative;
+        min-height: 70px;
+      }
+      
+     /* טקסט למעלה שמאל */
+.text-block {
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-align: left;
+    align-self: start; /* עליון */
+  }
+      .text-block h2 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ff7f11; /* כתום קצת רך */
+        line-height: 1.1;
+      }
+
+      
+      .text-block .lead {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #444;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      
+      .text-block .tagline {
+        margin: 0;
+        font-style: italic;
+        font-size: 0.9rem;
+        color: #666;
+      }
+      
+      /* תמונה למטה ימין */
+.image-block {
+    grid-area: image;
+    justify-self: end; /* ימינה */
+    align-self: end;   /* למטה */
+    position: relative;
+  }
+      
+  .image-block img {
+    display: block;
+    width: 340px;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 25px 80px -10px rgba(0,0,0,0.15);
+    transition: transform .3s ease;
+  }
+      .image-block img:hover {
+        transform: scale(1.02);
+      }
+      
+      /* רספונסיביות */
+      @media (max-width: 1000px) {
+        .about-content {
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "text"
+            "image";
+          padding: 0 1rem;
+        }
+        .image-block {
+          justify-self: center;
+          margin-top: 1.5rem;
+        }
+        .image-block img {
+          width: 100%;
+          max-width: 500px;
+        }
+      }
+      
+
+      .summary {
+        position: relative;         bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 600px;
+        background: #ffffff;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 25px 60px -10px rgba(0,0,0,0.15);
+        font-size: 1rem;
+        color: #555;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .5s ease;
+        z-index: 100;
+        backdrop-filter: blur(6px);
+        font-weight: 500;
+      }
+      
+      .summary.visible {
+        opacity: 5;
+      }
+      
+      #summary-text {
+        margin: 0;
+        white-space: pre-wrap; /* כדי לשמור שורות אם יש */
+      }
+      
+      
