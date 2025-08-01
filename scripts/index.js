@@ -65,3 +65,25 @@ const summaryLines = [
     }, 3000);
   });
   
+  
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cloneNav = document.querySelector(".nav-on-hero.clone");
+    const hero = document.getElementById("hero");
+    if (!cloneNav || !hero) return;
+  
+    function onScroll() {
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      if (heroBottom <= 0) {
+        cloneNav.classList.add("visible");
+      } else {
+        cloneNav.classList.remove("visible");
+      }
+    }
+  
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    onScroll();
+  });
+  

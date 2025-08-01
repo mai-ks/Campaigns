@@ -28,42 +28,58 @@
     </div>
   </section> -->
 
-  <section class="hero">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="top-bar">
-          <p class="top-bar-text">משלוחים לכל הארץ</p>
+  <section class="hero" id="hero">
+    <div class="shared-container">
+      <div class="top-bar">
+        <p class="top-bar-text">KAMPA WITH US - One month trial Free</p>
+      </div>
+  
+      <div class="image-card">
+        <!-- ניווט בתוך התמונה, בלי רקע חיצוני -->
+        <div class="nav-on-hero">
+          <div class="logo">
+            <img src="images/kampalogo.png" alt="לוגו המותג" height="32" />
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="#" class="active">Banner Editor</a></li>
+              <li><a href="#">Marketing Page Editor</a></li>
+              <li><a href="#">Landing Page Editor</a></li>
+              <li><a href="#">My Campaigns</a></li>
+            </ul>
+          </nav>
         </div>
-    
-        <div class="image-card">
-          <!-- ניווט בתוך התמונה, בלי רקע חיצוני -->
-          <div class="nav-on-hero">
-           
-            <div class="logo">
-              <img src="images/kampalogo.png" alt="לוגו המותג" height="32" />
-            </div>
-            <nav class="main-nav">
-              <ul>
-                <li><a href="#" class="active">Banner Editor</a></li>
-                <li><a href="#">Marketing Page Editor</a></li>
-                <li><a href="#">Landing Page Editor</a></li>
-                <li><a href="#">My Campaigns</a></li>
-              </ul>
-            </nav>
-            
-          </div>
-    
-          <img src="images/hero.png" alt="Hero image" class="hero-image" />
-          <div class="text-group">
-            <h1 class="title">Start your new campaign with Kampa</h1>
-            <p class="subtitle">One month trial Free</p>
-            <a href="#" class="btn-primary">Sign with google</a>
-          </div>
+  
+        <img src="images/hero.png" alt="Hero image" class="hero-image" />
+        <div class="text-group">
+          <h1 class="title">Start your new campaign with Kampa</h1>
+          <p class="subtitle">One month trial Free</p>
+          <a href="#" class="btn-primary">Sign with google</a>
         </div>
       </div>
-    </section>
-
-    <section class="about">
+    </div>
+  </section>
+  
+  <div id="clone-nav-wrapper">
+    <div class="nav-on-hero clone" aria-label="ניווט משני">
+      <div class="logo">
+        <img src="images/kampalogo.png" alt="לוגו המותג" height="32" />
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#" class="active">Banner Editor</a></li>
+          <li><a href="#">Marketing Page Editor</a></li>
+          <li><a href="#">Landing Page Editor</a></li>
+          <li><a href="#">My Campaigns</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <div id="hero-end" aria-hidden="true"></div>
+  
+  <section class="about">
+    <div class="shared-container">
       <div class="about-content">
         <div class="text-block">
           <h2>Get your experience today with Kampa</h2>
@@ -71,14 +87,67 @@
             Kampa is an advanced campaign management and design platform that brings together creativity, analytics, and control in one place. We create personalized experiences that drive real results, with smart tools and a modern interface.
           </p>
           <p class="tagline">kampa with us</p>
+          
+          <button class="btn-primary solid">Kampa with us</button>
+
+
         </div>
         <div class="image-block">
           <img src="images/banner.png" alt="Example visual" />
         </div>
       </div>
-    </section>
-    
-    
+    </div>
+  </section>
+  
+  <section class="features">
+    <div class="shared-container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="title-wrapper">
+            <h3>Campaign Design</h3>
+          </div>
+          <p>בני קמפיינים מותאמים אישית במהירות, עם תצוגה ברורה של שינויים בזמן אמת.</p>
+        </div>
+  
+        <div class="feature-card">
+          <div class="title-wrapper">
+            <h3>Smart Analytics</h3>
+          </div>
+          <p>קבלת החלטות מבוססת נתונים עם דשבורדים חכמים שמסתנכרנים אוטומטית עם פעילות הקמפיין.</p>
+        </div>
+  
+        <div class="feature-card">
+          <div class="title-wrapper">
+            <h3>Auto Optimization</h3>
+          </div>
+          <p>המערכת לומדת ומשפרת עבורך פרמטרים בזמן אמת בלי שתצטרכי להתערב.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="logo-wrapper">
+        <img src="images/kampalogo.png" alt="Kampa logo" class="footer-logo" />
+      </div>
+  
+      <div class="footer-links">
+        <a href="#">Banner Editor</a>
+        <a href="#">Marketing Page Editor</a>
+        <a href="#">Landing Page Editor</a>
+        <a href="#">My Campaigns</a>
+      </div>
+  
+      <div class="footer-legal">
+        <p>&copy; 2025 Kampa. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  
     <script src="scripts/index.js"></script>
 </body>
 </html>

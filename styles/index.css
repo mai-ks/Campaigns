@@ -7,6 +7,13 @@
     font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   
+  .shared-container {
+    max-width: 1700px;
+    margin: 0 auto;
+    padding: 0 1cm; /* אותו גריד אופקי כמו בהירו */
+    box-sizing: border-box;
+  }
+  
   /* בסיס */
   body {
     margin: 0;
@@ -18,7 +25,7 @@
   /* גריד של ההירו + קו עליון: שומר 3 ס"מ רווח מכל צד */
   .hero {
     background: #fff; /* רקע לבן מתחת לתמונה */
-    padding: 2rem 0 4rem;
+    
   }
   
   .hero-grid {
@@ -32,12 +39,15 @@
   
   /* קו עליון */
   .top-bar {
-    background: #f0f0f3;
+    background: rgba(90,87,80,0.5);;
     border-radius: 12px;
     padding: 0.75rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    margin-bottom: 1rem;
+
   }
   
   .top-bar-text {
@@ -54,7 +64,7 @@
     border-radius: 18px;
     overflow: hidden;
     background: #ffffff;
-    min-height: 700px;
+    min-height: 620px;
     display: flex;
     align-items: flex-end;
     box-shadow: 0 20px 60px -10px rgba(0,0,0,0.15);
@@ -119,6 +129,19 @@
     transform: translateY(-2px);
   }
   
+  .btn-primary.solid {
+    background: rgba(90,87,80,0.5); ;
+    color: #222;
+    border: none;
+
+  }
+  
+  .btn-primary.solid:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+    color: black;
+  }
+  
   /* רספונסיבי */
   @media (max-width: 900px) {
     .hero-grid {
@@ -130,108 +153,96 @@
   }
 
 
-  /* ניווט בתוך ההירו, על התמונה עצמה */
-.nav-on-hero {
+  .nav-on-hero {
     position: absolute;
-    inset: 0; /* ממקם למעלה בתוך image-card */
+    inset: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3cm 0 1rem; /* שמאל 1rem במקום 3cm */
+    padding: 0 3cm 0 1rem;
     gap: 1rem;
-    z-index: 3; /* מעל התמונה, מתחת לטקסט אם צריך */
-    pointer-events: auto;
     height: 60px;
-    justify-content: space-between; /* לוגו משמאל, פריטים מימין */
-    direction: ltr; /* מוודא שה־flex לא הופך בגלל RTL */
-
-
+    z-index: 15;
+    direction: ltr;
+    transition: all .35s ease;
+    background: transparent;
   }
-
+  
   /* לוגו */
-.nav-on-hero .logo {
+  .nav-on-hero .logo {
     font-weight: 900;
     font-size: 50px;
     color: #fff;
     letter-spacing: .5px;
     text-align: left;
-    direction: ltr; /* מוודא ש־flex מפרש שמאל/ימין כצפוי */
-
   }
-
-  .logo {
-    margin-right: auto; /* דוחף את שאר התפריטים ימינה */
-  }
-
-
-  /* תפריט אופקי על התמונה */
-.nav-on-hero .main-nav ul {
+  
+  /* תפריט */
+  .nav-on-hero .main-nav ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
     margin: 0;
     padding: 0;
-
   }
-
-  .logo img {
-    height: 40px;
-    width: auto;
-    display: block;
-    transition: transform .25s ease;
-    margin-right: auto; 
-  }
-  .logo img:hover {
-    transform: scale(1.08);
-  }
-
   
-  .nav-on-hero .main-nav a:hover::after,
-  .nav-on-hero .main-nav a.active::after {
-    transform: scaleX(1);
-  }
-
   .nav-on-hero .main-nav a {
+    position: relative;
     text-decoration: none;
     color: #fff;
     font-weight: 600;
-    position: relative;
     padding: 0.35rem 0.75rem;
     font-size: 20px;
     display: inline-block;
-    transition: color .2s;
-
+    transition: transform .2s ease, color .2s ease;
   }
-
-
-  /* מעבר חלק */
-.nav-on-hero {
-    transition: all .3s ease;
+  .nav-on-hero .main-nav a:hover {
+    transform: translateY(-2px) scale(1.03);
   }
   
-  /* כשהניווט הופך לסטיקי אחרי גלילה */
+  /* אפקט “נחיתה” */
+  @keyframes drop {
+    0% {
+      transform: translate(-50%, -10px) scale(1.03);
+      opacity: 0.9;
+    }
+    60% {
+      transform: translate(-50%, 4px) scale(1);
+    }
+    100% {
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+  
+  /* מצב אחרי גלילה */
   .nav-on-hero.scrolled {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    color: #111;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    border-radius: 0;
-    padding: 0 3cm;
-    z-index: 50;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 6cm);
+    max-width: 1200px;
+    background: rgba(240,240,243,0.95);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    box-shadow: 0 25px 60px -10px rgba(0,0,0,0.15);
+    padding: 0 1rem;
+    height: 60px;
+    z-index: 100;
+    animation: drop .45s cubic-bezier(.4,0,.2,1);
   }
   
-  /* מותאם לקישורים כשהוא סטיקי */
+  /* התאמת קישורים בסטייט הזה */
   .nav-on-hero.scrolled .main-nav a {
     color: #222;
   }
   
-  /* אם הלוגו צריך להיראות שונה בסטייט הזה (לדוגמה לשבור את הלבן) */
-  .nav-on-hero.scrolled .logo img {
-    filter: none;
-  }
+
+
+
+
+
   
 
 
@@ -239,6 +250,7 @@
     .about {
         
         padding: 1rem 0;
+        background: #fff;
       }
       
       .about-content {
@@ -254,6 +266,7 @@
           ". image";
         position: relative;
         min-height: 70px;
+        margin-top: 5rem; /* רווח מעל */
       }
       
      /* טקסט למעלה שמאל */
@@ -295,20 +308,27 @@
     justify-self: end; /* ימינה */
     align-self: end;   /* למטה */
     position: relative;
+    max-width: 500px; /* אפשר לכוונן כדי לא להגדיל מדי */
+
   }
       
   .image-block img {
     display: block;
-    width: 340px;
+    width: 420px; /* רחב יותר */
+    height: 260px; 
+    
     height: auto;
     border-radius: 14px;
     object-fit: cover;
     box-shadow: 0 25px 80px -10px rgba(0,0,0,0.15);
     transition: transform .3s ease;
+    aspect-ratio: 16 / 9; /* יחס מלבני רחב */
+
   }
       .image-block img:hover {
         transform: scale(1.02);
       }
+     
       
       /* רספונסיביות */
       @media (max-width: 1000px) {
@@ -359,3 +379,232 @@
       }
       
       
+
+
+
+  /* clone nav*/
+  /* קלון ניווט אחרי ההירו */
+#clone-nav-wrapper {
+  position: relative; /* כדי שהקלון לא ישתבש */
+}
+
+/* קלון ניווט אחרי ההירו */
+.nav-on-hero.clone {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-10%); /* ממרכז אותו */
+  width: calc(100% - 3cm); /* שומר על גריד של 3 ס״מ מכל צד כמו בהירו */
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem; /* פנימי כדי שהתוכן לא יידבק לקצוות */
+  gap: 0rem;
+  height: 60px;
+  background:  rgba(90,87,80,0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  box-shadow: 0 25px 60px -10px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  z-index: 200;
+  direction: ltr; /* מוודא שה־flex לא הופך בגלל rtl */
+}
+
+/* הופעה כשהוא צריך להיות גלוי */
+.nav-on-hero.clone.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* קישורים */
+.nav-on-hero.clone .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-on-hero.clone .main-nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  padding: .35rem .75rem;
+  transition: transform .2s ease;
+}
+.nav-on-hero.clone .main-nav a:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.nav-on-hero.clone .logo img {
+  height: 32px;
+  display: block;
+}
+
+
+
+/*featurs section*/
+:root {
+  --card-bg: rgba(90,87,80,0.5); /* אפור־חום כהה כמו בתמונה */
+  --radius: 14px;
+  --orange: #ff7f11;
+}
+
+.features {
+  padding: 4rem 0;
+  background: #fff;
+}
+
+.features-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.feature-card {
+  background: rgba(90,87,80,0.35);
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+  min-height: 420px;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow:  rgba(240,240,243,0.95);
+}
+
+/* קו דק כתום לחיזוק מעל הכותרת */
+.feature-card .title-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.feature-card .title-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.feature-card p {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* אפקט hover כדי להרגיש פעילות */
+.feature-card:hover {
+  box-shadow: 0 40px 100px -15px rgba(0,0,0,0.3);
+}
+
+/* רספונסיבי */
+@media (max-width: 1000px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .feature-card {
+    min-height: auto;
+    padding: 1.75rem 1rem 2rem;
+  }
+}
+
+
+/* footer*/
+.site-footer {
+  background: rgba(90,87,80,0.5);
+  color: #fff;
+  padding: 3rem 0 2rem;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1cm; /* יישור אחיד כמו בהירו / about / features */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.logo-wrapper {
+  /* הלוגו במרכז */
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+  filter: brightness(1);
+  transition: transform .25s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 0;
+  font-size: 0.95rem;
+  transition: opacity .2s;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+
+.footer-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.footer-legal {
+  font-size: .75rem;
+  opacity: .8;
+  text-align: center;
+  margin-top: .5rem;
+}
+
