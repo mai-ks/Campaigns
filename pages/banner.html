@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <title>עורך באנרים</title>
+  <link rel="stylesheet" href="/styles/banner.css" />
+</head>
+<body>
+  <h1>עורך באנרים</h1>
+
+  <div class="control-group">
+    <label for="bannerType">בחר גודל באנר:</label>
+    <select id="bannerType">
+      <option value="250x250">באנר לרוחב (250×250)</option>
+      <option value="300x600">באנר לאורך (300×600)</option>
+    </select>
+  </div>
+
+  <div class="control-group">
+    <label for="bannerText">טקסט לבאנר:</label>
+    <input type="text" id="bannerText" placeholder="הקלד כאן את הטקסט…" />
+  </div>
+
+  <div class="control-group">
+    <label for="bgColor">צבע רקע:</label>
+    <input type="color" id="bgColor" value="#ffffff" />
+  </div>
+
+  <div class="control-group">
+    <label for="textColor">צבע טקסט:</label>
+    <input type="color" id="textColor" value="#000000" />
+  </div>
+
+  <div class="control-group">
+    <label for="fontSize">גודל גופן (px):</label>
+    <input type="number" id="fontSize" value="24" min="10" max="72" />
+  </div>
+
+  <div class="control-group">
+    <label for="fontFamily">סוג גופן:</label>
+    <select id="fontFamily">
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="'Times New Roman', serif">Times New Roman</option>
+      <option value="'Courier New', monospace">Courier New</option>
+    </select>
+  </div>
+
+  <div class="control-group">
+    <label for="template">בחר תבנית עיצוב:</label>
+    <select id="template">
+      <option value="template-1">תבנית 1 – פשוטה</option>
+      <option value="template-2">תבנית 2 – עם הצללה</option>
+      <option value="template-3">תבנית 3 – קו מנוקד</option>
+    </select>
+  </div>
+
+  <div id="preview">
+    <span id="previewText"></span>
+  </div>
+
+  <script type="module" src="/scripts/banner/index.js"></script>
+</body>
+</html>
