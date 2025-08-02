@@ -1,0 +1,334 @@
+:root {
+    --orange: #ff7f11;
+    --gray: rgba(90, 87, 80, 0.5);
+    --radius: 14px;
+    font-family: system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background: #ffffff;
+    direction: rtl;
+    color: #111;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #ffffff !important;
+  }
+  
+  
+  .top-bar {
+    background: rgba(90, 87, 80, 0.5);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 1cm 1rem 1cm; /* רווח צדדי כמו בהירו */
+  }
+  
+  .top-bar-text {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #333;
+  }
+  .main-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+    margin: 1rem 1cm 1rem 1cm; /* רווח צדדי כמו בהירו */
+    border-radius: 12px;
+
+
+  }
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse; /* 👈 משנה את הסדר - לוגו שמאל, ניווט ימין */
+    padding: 1rem 2rem;
+  }
+  
+  
+  .nav-logo {
+    height: 30px;
+    transition: transform 0.3s ease; /* מעבר חלק */
+    cursor: pointer;
+  }
+  
+  .nav-logo:hover {
+    transform: translateY(-3px) scale(1.05); /* קפיצה עדינה */
+  }
+  
+  
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #555;
+    transition: transform 0.3s ease, color 0.2s ease;
+
+  }
+  
+  .main-nav a:hover {
+    transform: translateY(-3px) scale(1.05);
+
+  }
+
+  .editor {
+    direction: ltr;
+    text-align: left;
+  }
+  
+  
+  .editor-preview {
+    display: grid;
+    grid-template-columns: 1fr 650px;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: start;
+  }
+  
+  .editor, .preview {
+    background: white;
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .editor h2,
+  .preview h2 {
+    margin-top: 0;
+  }
+  
+  .editor label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  
+  .editor input,
+  .editor textarea {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+  }
+  
+  .editor button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--gray);
+    border-radius: var(--radius);
+    color: var(--gray);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px; /* 👈 מוסיף אורך מינימלי */
+
+  }
+  
+  .editor button:hover {
+    background: var(--orange); /* אפשר גם white אם את מעדיפה */
+    color: white;
+    border-color: var(--orange);
+  }
+
+  .preview img {
+    margin-top: 1rem;
+    max-width: 100%;
+    border-radius: var(--radius);
+  }
+  
+  /* תבניות עיצוב לפי הבחירה מה־<select> */
+
+/* תבנית ברירת מחדל */
+.theme-default {
+    background-color: #ffffff;
+    color: #111;
+    font-family: "Segoe UI", sans-serif;
+    border: 1px solid #ddd;
+  }
+  
+  /* תבנית בהירה ונעימה */
+  .theme-light {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: "Georgia", serif;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  /* תבנית צבעונית עם אווירה חיה */
+  .theme-colored {
+    background-color: #fff7e6;
+    color: #4a2f0b;
+    font-family: "Tahoma", sans-serif;
+    border: 2px solid #ff7f11;
+    box-shadow: 0 0 15px rgba(255, 127, 17, 0.2);
+  }
+
+  /* עיצוב כללי של לייבלים */
+.editor label {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  /* עיצוב לתפריטי select */
+  .editor select {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    background: #fdfdfd;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #111;
+    appearance: none; /* מסיר את הסגנון הדיפולטי של הדפדפן */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%22292%22%20height%3D%22292%22%20viewBox%3D%220%200%20292%20292%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M287%2069c5-5%205-13%200-18L275%2039c-5-5-13-5-18%200L146%20150%2035%2039c-5-5-13-5-18%200L5%2051c-5%205-5%2013%200%2018l128%20128c5%205%2013%205%2018%200L287%2069z%22%20fill%3D%22%23666%22/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 12px;
+    padding-left: 2.5rem;
+    transition: border-color 0.2s;
+  }
+  
+  .editor select:focus {
+    border-color: var(--orange);
+    outline: none;
+  }
+  
+  /* עיצוב מרווחים בין התפריטים והכפתור */
+  .editor select,
+  .editor button {
+    margin-top: 1rem;
+  }
+  
+  
+
+
+
+  /* footer*/
+.site-footer {
+    background: white; /* או השאר את ה־rgba שברצונך */
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  
+  .footer-box {
+    width: 100%;
+    max-width: 1500px;           /* תואם להירו */
+    padding: 0 1cm;             /* אותו גריד אופקי כמו בשאר הקטעים */
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+  
+  .footer-inner {
+    background: rgba(90,87,80,0.5); /* הרקע של הקופסה */
+    border-radius: 14px;            /* פינות מעוגלות */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    position: relative;
+    backdrop-filter: blur(6px);   
+    max-width: 1400px;              /* תואם לגריד של שאר הסקשנים */
+    /* אם רוצים אפקט מטושטש מתחת */
+  }
+  
+  /* מרכזי: לוגו, קישורים מתחת, טקסט חוקי מתחת */
+  .footer-inner.centered {
+    background: rgba(90,87,80,0.5);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    position: relative;
+    backdrop-filter: blur(6px);
+    color: #fff;
+  }
+  
+  .logo-wrapper {
+    flex: 0 0 auto;
+  }
+  
+  .footer-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    transition: transform .25s ease, filter .25s ease;
+    cursor: pointer;
+  }
+  
+  .footer-logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: opacity .2s;
+  }
+  
+  .footer-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+  
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+  }
+  
+  .footer-links a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .footer-legal {
+    font-size: .75rem;
+    opacity: .8;
+    text-align: center;
+    flex: 1 1 100%;
+    margin-top: 4px;
+  }

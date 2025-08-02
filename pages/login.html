@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kampa - התחברות</title>
+  <link rel="stylesheet" href="/styles/login.css" />
+</head>
+<body>
+
+  <!-- פס עליון -->
+  <div class="top-bar">
+    <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
+  </div>
+
+  <!-- ניווט -->
+  <header class="main-header">
+    <div class="nav-wrapper">
+      <a href="/index.html">
+        <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo"/>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">My Campaigns</a></li>
+          <li><a href="#">Landing Page Editor</a></li>
+          <li><a href="#">Marketing Page Editor</a></li>
+          <li><a href="/pages/banner.html">Banner Editor</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- טופס התחברות -->
+  <main class="editor-preview">
+    <section class="editor" style="max-width: 500px; margin: auto;">
+      <h2>התחברות למערכת</h2>
+
+      <label for="email">אימייל:</label>
+      <input type="email" id="email" placeholder="example@mail.com" required />
+
+      <label for="password">סיסמה:</label>
+      <input type="password" id="password" placeholder="••••••••" required />
+
+      <button id="loginBtn">התחברי</button>
+    </section>
+  </main>
+
+  <!-- פוטר -->
+  <footer class="site-footer">
+    <div class="footer-box">
+      <div class="footer-inner">
+        <div class="logo-wrapper">
+          <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
+        </div>
+        <div class="footer-links">
+          <a href="#">Banner Editor</a>
+          <a href="#">Marketing Page Editor</a>
+          <a href="#">Landing Page Editor</a>
+          <a href="#">My Campaigns</a>
+        </div>
+        <div class="footer-legal">
+          <p>&copy; 2025 Kampa. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- סקריפט חיצוני שלך -->
+  <script src="/scripts/login/index.js"></script>
+</body>
+</html>
