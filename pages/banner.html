@@ -1,62 +1,84 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-  <meta charset="UTF-8" />
-  <title>עורך באנרים</title>
-  <link rel="stylesheet" href="/styles/banner.css" />
+  <meta charset="UTF-8">
+  <title>Kampa Banner Editor</title>
+  <link rel="stylesheet" href="/styles/banner.css">
 </head>
 <body>
-  <h1>עורך באנרים</h1>
+  <!-- פס עליון -->
+  <div class="top-bar">KAMPA WITH US – One month trial Free</div>
 
-  <div class="control-group">
-    <label for="bannerType">בחר גודל באנר:</label>
-    <select id="bannerType">
-      <option value="250x250">באנר לרוחב (250×250)</option>
-      <option value="300x600">באנר לאורך (300×600)</option>
-    </select>
-  </div>
+  <!-- כותרת ראשית עם לוגו וניווט -->
+  <header class="main-header">
+    <div class="logo">Kampa</div>
+    <nav class="nav-grid">
+      <a href="#">Banner Editor</a>
+      <a href="#">Marketing Page Editor</a>
+      <a href="#">Landing Page Editor</a>
+      <a href="#">My Campaigns</a>
+    </nav>
+  </header>
 
-  <div class="control-group">
-    <label for="bannerText">טקסט לבאנר:</label>
-    <input type="text" id="bannerText" placeholder="הקלד כאן את הטקסט…" />
-  </div>
+  <!-- אזור הירו -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>עיצוב <span class="highlight">קל ובחינם</span></h1>
+      <p>צרו תוכן ויזואלי מרהיב גם בלי ניסיון בעיצוב. התחילו לבד או שתפו פעולה בזמן אמת.</p>
+      <div class="hero-buttons">
+        <button class="primary">התחל לעצב</button>
+        <button class="secondary">דפדף בתבניות</button>
+      </div>
+    </div>
+    <div class="hero-gallery">
+      <img src="/images/example1.jpg" alt="עיצוב 1">
+      <img src="/images/example2.jpg" alt="עיצוב 2">
+      <img src="/images/example3.jpg" alt="עיצוב 3">
+    </div>
+  </header>
 
-  <div class="control-group">
-    <label for="bgColor">צבע רקע:</label>
-    <input type="color" id="bgColor" value="#ffffff" />
-  </div>
-
-  <div class="control-group">
-    <label for="textColor">צבע טקסט:</label>
-    <input type="color" id="textColor" value="#000000" />
-  </div>
-
-  <div class="control-group">
-    <label for="fontSize">גודל גופן (px):</label>
-    <input type="number" id="fontSize" value="24" min="10" max="72" />
-  </div>
-
-  <div class="control-group">
-    <label for="fontFamily">סוג גופן:</label>
-    <select id="fontFamily">
-      <option value="Arial, sans-serif">Arial</option>
-      <option value="'Times New Roman', serif">Times New Roman</option>
-      <option value="'Courier New', monospace">Courier New</option>
-    </select>
-  </div>
-
-  <div class="control-group">
-    <label for="template">בחר תבנית עיצוב:</label>
-    <select id="template">
-      <option value="template-1">תבנית 1 – פשוטה</option>
-      <option value="template-2">תבנית 2 – עם הצללה</option>
-      <option value="template-3">תבנית 3 – קו מנוקד</option>
-    </select>
-  </div>
-
-  <div id="preview">
-    <span id="previewText"></span>
-  </div>
+  <!-- תצוגה מקדימה חיה -->
+  <section class="preview-section">
+    <div class="container">
+      <h2>תצוגה מקדימה חיה</h2>
+      <p class="description">שנו את ההגדרות וראו את התוצאה בזמן אמת – בדיוק כמו במערכת עיצוב מקצועית.</p>
+      <div class="preview-grid">
+        <!-- טופס שליטה -->
+        <div class="controls">
+          <div class="control-group">
+            <label for="bannerText">טקסט:</label>
+            <input type="text" id="bannerText" placeholder="הקלד טקסט...">
+          </div>
+          <div class="control-group">
+            <label for="bgColor">צבע רקע:</label>
+            <input type="color" id="bgColor" value="#FF7A00">
+          </div>
+          <div class="control-group">
+            <label for="textColor">צבע טקסט:</label>
+            <input type="color" id="textColor" value="#FFFFFF">
+          </div>
+          <div class="control-group">
+            <label for="fontSize">גודל גופן:</label>
+            <input type="number" id="fontSize" min="10" max="72" value="32">
+          </div>
+          <div class="control-group">
+            <label for="fontFamily">גופן:</label>
+            <select id="fontFamily">
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="'Times New Roman', serif">Times New Roman</option>
+              <option value="'Courier New', monospace">Courier New</option>
+            </select>
+          </div>
+        </div>
+        <!-- תצוגה מקדימה -->
+        <div class="preview-area">
+          <div id="preview">
+            <span id="previewText">טקסט לדוגמה</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script type="module" src="/scripts/banner/index.js"></script>
 </body>

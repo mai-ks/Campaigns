@@ -1,34 +1,172 @@
+/* צבעים עיקריים */
+:root {
+  --brand-orange: #FF7A00;
+  --brand-blue:   #007BFF;
+  --text-dark:    #333;
+  --text-light:   #f0f0f0;
+  --bg-light:     #f9f9f9;
+}
+
+/* איפוס בסיסי */
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   direction: rtl;
-  padding: 20px;
+  background: #fff;
+  color: var(--text-dark);
 }
 
-.control-group {
-  margin-bottom: 1em;
+/* פס עליון */
+.top-bar {
+  background: #666;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 6px 0;
 }
 
-label {
-  display: block;
-  margin-bottom: 0.3em;
+/* header הראשי */
+.main-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: 12px 50px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.main-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--brand-blue);
+}
+.nav-grid {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+.nav-grid a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-grid a:hover {
+  color: var(--brand-orange);
 }
 
-#preview {
-  margin-top: 20px;
-  border: 1px solid #ccc;
+/* אזור הירו */
+.hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  justify-content: space-between;
+  padding: 60px;
+  background: linear-gradient(135deg, var(--brand-blue) 60%, var(--brand-orange) 40%);
+  color: white;
+}
+.hero-text {
+  max-width: 450px;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.hero-text .highlight {
+  color: var(--brand-orange);
+}
+.hero-text p {
+  margin: 10px 0 20px;
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+.hero-buttons .primary {
+  background: var(--brand-orange);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.hero-buttons .secondary {
+  background: white;
+  color: var(--brand-blue);
+  border: 2px solid var(--brand-blue);
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.hero-gallery {
+  display: flex;
+  gap: 10px;
+}
+.hero-gallery img {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* תבניות עיצוב */
-.template-1 { border: none; }
-.template-2 {
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  border-radius: 8px;
+/* תצוגת Preview */
+.preview-section {
+  background: var(--bg-light);
+  padding: 50px 0;
 }
-.template-3 {
-  border: 3px dashed #666;
-  border-radius: 4px;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.preview-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--brand-blue);
+}
+.preview-section .description {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #666;
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.control-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--brand-blue);
+}
+.preview-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#preview {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--brand-orange);
+}
+#previewText {
+  font-size: 32px;
+  color: white;
+  font-weight: bold;
 }
