@@ -1,172 +1,298 @@
-/* צבעים עיקריים */
 :root {
-  --brand-orange: #FF7A00;
-  --brand-blue:   #007BFF;
-  --text-dark:    #333;
-  --text-light:   #f0f0f0;
-  --bg-light:     #f9f9f9;
+  --orange:    #ff7f11;
+  --blue:      #007BFF;
+  --gray:      rgba(90,87,80,0.5);
+  --radius:    14px;
+  --bg-light:  #f0f4f8;
+  --text-dark: #111;
+  --text-light:#555;
+  --card-bg:   #fff;
 }
 
-/* איפוס בסיסי */
+/* רקע כללי */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  background: var(--bg-light);
   direction: rtl;
-  background: #fff;
+  font-family: system-ui, sans-serif;
   color: var(--text-dark);
 }
 
 /* פס עליון */
 .top-bar {
-  background: #666;
-  color: white;
+  background: var(--gray);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 1rem 1cm;
   text-align: center;
+}
+.top-bar-text {
+  margin: 0;
+  font-weight: 600;
   font-size: 0.9rem;
-  padding: 6px 0;
 }
 
-/* header הראשי */
+/* ניווט סטיקי */
 .main-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  padding: 12px 50px;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  margin: 0 1cm 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
 }
-.main-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--brand-blue);
-}
-.nav-grid {
+.nav-wrapper {
   display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-}
-.nav-grid a {
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.nav-grid a:hover {
-  color: var(--brand-orange);
-}
-
-/* אזור הירו */
-.hero {
-  display: flex;
-  align-items: center;
+  flex-direction: row-reverse; /* לוגו מימין, ניווט משמאל */
   justify-content: space-between;
-  padding: 60px;
-  background: linear-gradient(135deg, var(--brand-blue) 60%, var(--brand-orange) 40%);
-  color: white;
+  align-items: center;
+  padding: 1rem 2rem;
 }
-.hero-text {
-  max-width: 450px;
-}
-.hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
-.hero-text .highlight {
-  color: var(--brand-orange);
-}
-.hero-text p {
-  margin: 10px 0 20px;
-  font-size: 1.2rem;
-  color: var(--text-light);
-}
-.hero-buttons {
-  display: flex;
-  gap: 12px;
-}
-.hero-buttons .primary {
-  background: var(--brand-orange);
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 8px;
+.nav-logo {
+  height: 32px;
   cursor: pointer;
-  font-weight: bold;
+  transition: transform .2s ease;
 }
-.hero-buttons .secondary {
-  background: white;
-  color: var(--brand-blue);
-  border: 2px solid var(--brand-blue);
-  padding: 12px 22px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+.nav-logo:hover {
+  transform: translateY(-2px) scale(1.05);
 }
-.hero-gallery {
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  gap: 10px;
+  gap: 2rem;
 }
-.hero-gallery img {
-  width: 140px;
-  height: 140px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: color .2s, transform .2s;
+}
+.main-nav a:hover {
+  color: var(--orange);
+  transform: translateY(-2px);
 }
 
-/* תצוגת Preview */
-.preview-section {
-  background: var(--bg-light);
-  padding: 50px 0;
+/* קטע השראה */
+.sample-section {
+  margin: 1.5rem auto;
+  max-width: 1000px;
+  padding: 0 1cm;
 }
-.container {
-  max-width: 1100px;
+.sample-section h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-dark);
+  font-size: 1.25rem;
+}
+.sample-grid {
+  display: grid;
+  /* כל עמודה תהיה מינימום 180px, ומקסימום 1fr (חלק שווה משאר השורה) */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem; /* רווח אחיד בין כל הכרטיסים */
+  padding: 0 1rem; /* ריווח צדדי */
+}
+
+.sample-card {
+  /* ככה הכרטיס יתפוס 100% מעמודת הגריד */
+  width: 100%;
+  height: 260px; /* או כל גובה שאת רוצה */
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.sample-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* תמלא את כל הכרטיס, חותכת בקצוות */
+  object-position: center;
+}
+
+
+
+/* כרטיס העורך */
+.editor-section {
+  margin-bottom: 2rem;
+}
+.editor-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 1000px;
   margin: 0 auto;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 2rem 2.5rem;
 }
-.preview-section h2 {
+.editor-card h1 {
   text-align: center;
-  margin-bottom: 10px;
-  color: var(--brand-blue);
+  margin-bottom: 1.5rem;
+  color: var(--orange);
+  font-size: 1.75rem;
 }
-.preview-section .description {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #666;
-}
-.preview-grid {
+
+/* פריסה של Preview + Controls */
+.editor-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 2rem;
 }
-.control-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
+
+/* Preview panel */
+.preview-panel h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-dark);
 }
-.control-group label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: var(--brand-blue);
-}
-.preview-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.preview-panel p {
+  margin: .25rem 0 1rem;
+  color: var(--text-light);
 }
 #preview {
+  width: 250px;
+  height: 250px;
+  background: var(--orange);
   border: 2px dashed #ccc;
-  border-radius: 10px;
-  width: 100%;
-  height: 300px;
+  border-radius: 6px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: var(--brand-orange);
+  justify-content: center;
 }
 #previewText {
-  font-size: 32px;
-  color: white;
+  color: #fff;
+  font-size: 1.5rem;
   font-weight: bold;
 }
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+.control-group {
+  margin-bottom: 1rem;
+}
+.control-group label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+.control-group input,
+.control-group select {
+  width: 100%;
+  padding: .5rem .75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+ /* footer*/
+.site-footer {
+    background: white; /* או השאר את ה־rgba שברצונך */
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  
+  .footer-box {
+    width: 100%;
+    max-width: 1500px;           /* תואם להירו */
+    padding: 0 1cm;             /* אותו גריד אופקי כמו בשאר הקטעים */
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+  
+  .footer-inner {
+    background: rgba(90,87,80,0.5); /* הרקע של הקופסה */
+    border-radius: 14px;            /* פינות מעוגלות */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    position: relative;
+    backdrop-filter: blur(6px);   
+    max-width: 1400px;              /* תואם לגריד של שאר הסקשנים */
+    /* אם רוצים אפקט מטושטש מתחת */
+  }
+  
+  /* מרכזי: לוגו, קישורים מתחת, טקסט חוקי מתחת */
+  .footer-inner.centered {
+    background: rgba(90,87,80,0.5);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    position: relative;
+    backdrop-filter: blur(6px);
+    color: #fff;
+  }
+  
+  .logo-wrapper {
+    flex: 0 0 auto;
+  }
+  
+  .footer-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    transition: transform .25s ease, filter .25s ease;
+    cursor: pointer;
+  }
+  
+  .footer-logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: opacity .2s;
+  }
+  
+  .footer-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+  
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+  }
+  
+  .footer-links a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .footer-legal {
+    font-size: .75rem;
+    opacity: .8;
+    text-align: center;
+    flex: 1 1 100%;
+    margin-top: 4px;
+  }

@@ -2,84 +2,140 @@
 <html lang="he">
 <head>
   <meta charset="UTF-8">
-  <title>Kampa Banner Editor</title>
+  <title>Banner Editor</title>
   <link rel="stylesheet" href="/styles/banner.css">
 </head>
 <body>
+
   <!-- פס עליון -->
-  <div class="top-bar">KAMPA WITH US – One month trial Free</div>
+  <div class="top-bar">
+    <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
+  </div>
 
-  <!-- כותרת ראשית עם לוגו וניווט -->
+  <!-- ניווט סטיקי -->
   <header class="main-header">
-    <div class="logo">Kampa</div>
-    <nav class="nav-grid">
-      <a href="#">Banner Editor</a>
-      <a href="#">Marketing Page Editor</a>
-      <a href="#">Landing Page Editor</a>
-      <a href="#">My Campaigns</a>
-    </nav>
+    <div class="nav-wrapper">
+      <a href="/index.html">
+        <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo"/>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">My Campaigns</a></li>
+          <li><a href="#">Landing Page Editor</a></li>
+          <li><a href="#">Marketing Page Editor</a></li>
+          <li><a href="/pages/banner.html" class="active">Banner Editor</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- אזור הירו -->
-  <header class="hero">
-    <div class="hero-text">
-      <h1>עיצוב <span class="highlight">קל ובחינם</span></h1>
-      <p>צרו תוכן ויזואלי מרהיב גם בלי ניסיון בעיצוב. התחילו לבד או שתפו פעולה בזמן אמת.</p>
-      <div class="hero-buttons">
-        <button class="primary">התחל לעצב</button>
-        <button class="secondary">דפדף בתבניות</button>
+  <!-- קטע השראה עם תמונות -->
+  <section class="sample-section">
+    <h2>Sample Banners</h2>
+    <div class="sample-grid">
+      <div class="sample-card">
+        <img src="/images/ROBOT.jpg" alt="Futuristic Digital Marketing">
       </div>
-    </div>
-    <div class="hero-gallery">
-      <img src="/images/example1.jpg" alt="עיצוב 1">
-      <img src="/images/example2.jpg" alt="עיצוב 2">
-      <img src="/images/example3.jpg" alt="עיצוב 3">
-    </div>
-  </header>
-
-  <!-- תצוגה מקדימה חיה -->
-  <section class="preview-section">
-    <div class="container">
-      <h2>תצוגה מקדימה חיה</h2>
-      <p class="description">שנו את ההגדרות וראו את התוצאה בזמן אמת – בדיוק כמו במערכת עיצוב מקצועית.</p>
-      <div class="preview-grid">
-        <!-- טופס שליטה -->
-        <div class="controls">
-          <div class="control-group">
-            <label for="bannerText">טקסט:</label>
-            <input type="text" id="bannerText" placeholder="הקלד טקסט...">
-          </div>
-          <div class="control-group">
-            <label for="bgColor">צבע רקע:</label>
-            <input type="color" id="bgColor" value="#FF7A00">
-          </div>
-          <div class="control-group">
-            <label for="textColor">צבע טקסט:</label>
-            <input type="color" id="textColor" value="#FFFFFF">
-          </div>
-          <div class="control-group">
-            <label for="fontSize">גודל גופן:</label>
-            <input type="number" id="fontSize" min="10" max="72" value="32">
-          </div>
-          <div class="control-group">
-            <label for="fontFamily">גופן:</label>
-            <select id="fontFamily">
-              <option value="Arial, sans-serif">Arial</option>
-              <option value="'Times New Roman', serif">Times New Roman</option>
-              <option value="'Courier New', monospace">Courier New</option>
-            </select>
-          </div>
-        </div>
-        <!-- תצוגה מקדימה -->
-        <div class="preview-area">
-          <div id="preview">
-            <span id="previewText">טקסט לדוגמה</span>
-          </div>
-        </div>
+      <div class="sample-card">
+        <img src="/images/BORADSIGN.jpg" alt="BORADSIGN">
+      </div>
+      <div class="sample-card">
+        <img src="/images/STARTWITHKAMPA.jpg" alt="Created with Kampa">
+      </div>
+      <div class="sample-card">
+        <img src="/images/WINTERSALE.jpg" alt="Winter Sale">
       </div>
     </div>
   </section>
 
+  <!-- עורך באנרים -->
+  <main>
+    <section class="editor-section">
+      <div class="editor-card">
+        <h1>Banner Editor</h1>
+
+        <div class="editor-content">
+
+          <!-- Preview בצד שמאל -->
+          <div class="preview-panel">
+            <h2> Highlight</h2>
+<p>.This is a sample view that will be updated from within the editor</p>
+            <div id="preview">
+              <span id="previewText">enter text</span>
+            </div>
+          </div>
+
+          <!-- שדות ההגדרות בצד ימין -->
+          <div class="controls">
+            <div class="control-group">
+              <label for="bannerType">גודל באנר:</label>
+              <select id="bannerType">
+                <option value="250x250">באנר 250×250</option>
+                <option value="300x600">באנר 300×600</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="bannerText">Text:</label>
+              <input type="text" id="bannerText" placeholder="הקלד טקסט…" />
+            </div>
+            <div class="control-group">
+              <label for="bgColor">BackRound Color:</label>
+              <input type="color" id="bgColor" value="#FFA500" />
+            </div>
+            <div class="control-group">
+              <label for="textColor">Text Color:</label>
+              <input type="color" id="textColor" value="#FFFFFF" />
+            </div>
+            <div class="control-group">
+              <label for="fontSize">Font Size(px):</label>
+              <input type="number" id="fontSize" min="10" max="72" value="24" />
+            </div>
+            <div class="control-group">
+              <label for="fontFamily">גופן:</label>
+              <select id="fontFamily">
+                <option value="Arial, sans-serif">Arial</option>
+                <option value="'Times New Roman', serif">Times New Roman</option>
+                <option value="'Courier New', monospace">Courier New</option>
+              </select>
+            </div>
+            <div class="control-group full-width">
+              <label for="template">תבנית עיצוב:</label>
+              <select id="template">
+                <option value="template-1">תבנית 1 – פשוטה</option>
+                <option value="template-2">תבנית 2 – עם הצללה</option>
+                <option value="template-3">תבנית 3 – מסגרת מנוקדת</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
   <script type="module" src="/scripts/banner/index.js"></script>
 </body>
+
+
+
+  
+
+<footer class="site-footer">
+    <div class="footer-box">
+      <div class="footer-inner">
+        <div class="logo-wrapper">
+          <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
+        </div>
+        <div class="footer-links">
+          <a href="#">Banner Editor</a>
+          <a href="#">Marketing Page Editor</a>
+          <a href="#">Landing Page Editor</a>
+          <a href="#">My Campaigns</a>
+        </div>
+        <div class="footer-legal">
+          <p>&copy; 2025 Kampa. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
