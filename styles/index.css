@@ -64,7 +64,7 @@
     border-radius: 18px;
     overflow: hidden;
     background: #ffffff;
-    min-height: 620px;
+    min-height: 700px;
     display: flex;
     align-items: flex-end;
     box-shadow: 0 20px 60px -10px rgba(0,0,0,0.15);
@@ -79,6 +79,7 @@
     object-fit: cover;
     display: block;
     filter: brightness(1);
+    
   }
   
   /* טקסט על גבי התמונה */
@@ -489,7 +490,7 @@
 
 .feature-card {
   background: rgba(90,87,80,0.35);
-  position: relative;
+
   background: var(--card-bg);
   border-radius: var(--radius);
   padding: 2rem 1.5rem 1rem;
@@ -501,7 +502,44 @@
   overflow: hidden;
   transition: transform .3s ease, box-shadow .3s ease;
   box-shadow:  rgba(240,240,243,0.95);
+  position: relative;
+  overflow: hidden;
 }
+/* תמונה שמופיעה רק ב־hover */
+.hover-image-wrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+  z-index: 1;
+}
+.hover-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transform: scale(1.05);
+  transition: transform .35s ease;
+  border-radius: 14px;
+}
+/* טקסט מעל התמונה */
+.feature-card > .title-wrapper,
+.feature-card > p {
+  position: relative;
+  z-index: 2;
+}
+
+/* כשהעכבר מעל הכרטיס – מראים את התמונה וממתנים את ההגדלה */
+.feature-card:hover .hover-image-wrapper {
+  opacity: 1;
+}
+
+.feature-card:hover .hover-image-wrapper img {
+  transform: scale(1);
+}
+
+  
 
 /* קו דק כתום לחיזוק מעל הכותרת */
 .feature-card .title-wrapper {
@@ -657,3 +695,74 @@
   flex: 1 1 100%;
   margin-top: 4px;
 }
+
+/*  המבורגר רספונסיביות */
+/* המבורגר בסיסי */
+/* בסיסי */
+.hamburger {
+  display: none; /* יופיע רק במובייל */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.hamburger .bar {
+  width: 24px;
+  height: 3px;
+  background: #555; /* צבע רצוי */
+
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+/* המראה פתוח */
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ברירת מחדל: תפריט נייד מוסתר */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 1cm;
+  left: 1cm;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 25px 60px -10px rgba(0,0,0,0.1);
+  flex-direction: column;
+  gap: .75rem;
+  z-index: 9;
+}
+.mobile-menu a {
+  color: #222;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.03);
+  transition: background .2s ease;
+}
+.mobile-menu a:hover {
+  background: rgba(0,0,0,0.08);
+}
+/* רספונסיביות: במובייל מפעילים המבורגר ומסתירים ניווט רגיל */
+@media (max-width: 900px) {
+  .nav-on-hero .main-nav {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+

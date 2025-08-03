@@ -33,6 +33,11 @@
       <div class="top-bar">
         <p class="top-bar-text">KAMPA WITH US - One month trial Free</p>
       </div>
+      <button class="hamburger" aria-label="תפריט" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
   
       <div class="image-card">
         <!-- ניווט בתוך התמונה, בלי רקע חיצוני -->
@@ -48,6 +53,12 @@
               <li><a href="#">My Campaigns</a></li>
             </ul>
           </nav>
+        </div>
+        <div class="mobile-menu" id="mobile-menu" aria-label="תפריט נייד">
+          <a href="/pages/banner.html">Banner Editor</a>
+          <a href="#">Marketing Page Editor</a>
+          <a href="#">Landing Page Editor</a>
+          <a href="#">My Campaigns</a>
         </div>
   
         <img src="images/hero.png" alt="Hero image" class="hero-image" />
@@ -83,7 +94,7 @@
     </div>
   </section>
   
-  <section class="features">
+  <!-- <section class="features">
     <div class="shared-container">
       <div class="features-grid">
         <div class="feature-card">
@@ -109,6 +120,47 @@
       </div>
     </div>
   </section>
+ -->
+
+ <section class="features">
+  <div class="shared-container">
+    <div class="features-grid">
+      <div class="feature-card">
+        <!-- תמונה שמופיעה רק ב־hover -->
+        <div class="hover-image-wrapper" aria-hidden="true">
+          <img src="images/card1.png" alt="Campaign Design Visual" />
+        </div>
+
+        <div class="title-wrapper">
+          <h3>Campaign Design</h3>
+        </div>
+        <p>בני קמפיינים מותאמים אישית במהירות, עם תצוגה ברורה של שינויים בזמן אמת.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="hover-image-wrapper" aria-hidden="true">
+          <img src="images/csrd2new.png" alt="Smart Analytics Visual" />
+        </div>
+
+        <div class="title-wrapper">
+          <h3>Smart Analytics</h3>
+        </div>
+        <p>קבלת החלטות מבוססת נתונים עם דשבורדים חכמים שמסתנכרנים אוטומטית עם פעילות הקמפיין.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="hover-image-wrapper" aria-hidden="true">
+          <img src="images/card3.png" alt="Auto Optimization Visual" />
+        </div>
+
+        <div class="title-wrapper">
+          <h3>Auto Optimization</h3>
+        </div>
+        <p>המערכת לומדת ומשפרת עבורך פרמטרים בזמן אמת בלי שתצטרכי להתערב.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
