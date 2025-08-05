@@ -23,7 +23,8 @@ body {
   background: var(--gray);
   border-radius: var(--radius);
   padding: 0.75rem 1rem;
-  margin: 1rem 1cm;
+  /* מחליפים margin: עליון/ימין/תחתון/שמאל */
+  margin: 0 1cm 1rem 1cm; /* אין מרווח עליון, יש 1rem מתחת */
   text-align: center;
 }
 .top-bar-text {
@@ -78,8 +79,8 @@ body {
 /* קטע השראה */
 .sample-section {
   margin: 1.5rem auto;
-  max-width: 1000px;
-  padding: 0 1cm;
+
+  padding: 0;
 }
 .sample-section h2 {
   margin-bottom: 1rem;
@@ -92,7 +93,9 @@ body {
   /* כל עמודה תהיה מינימום 180px, ומקסימום 1fr (חלק שווה משאר השורה) */
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem; /* רווח אחיד בין כל הכרטיסים */
-  padding: 0 1rem; /* ריווח צדדי */
+
+  
+  
 }
 
 .sample-card {
@@ -104,6 +107,15 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
 }
+
+.shared-container {
+  max-width: 1400px;    /* או הגודל שאת רוצה */
+  margin: 0 auto;       /* מרכז את הקונטיינר */
+  padding: 0 1cm;       /* הפדינג האחיד מכל צד */
+  box-sizing: border-box;
+  overflow: hidden;     /* מונע “דליפה” של התוכן */
+}
+
 
 .sample-card img {
   width: 100%;
@@ -127,11 +139,21 @@ body {
 }
 
 .hover-gallery .container {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: flex-start;
   align-items: center;
   padding: 0 1rem;
-  overflow: visible;  /* מאפשר לכרטיסים לצאת החוצה */
+  overflow-x: auto;       מאפשר גלילה אופקית */
+  display: flex;
+  /* מסירים את justify-content:center; */
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 0 1rem;
+  /* גלילה אופקית פעילה */
+  overflow-x: auto;
+  /* לא לחתוך את התוכן שמרחיב כלפי מטה */
+  overflow-y: visible;
+
 }
 
 /* הגדרת חפיפה בין הכרטיסים */
@@ -145,6 +167,8 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: transform .3s, box-shadow .3s;
   z-index: 0;            /* ברירת מחדל */
+  overflow: visible; /* מאפשר ל־:hover “להתנפח” מעל */
+
   cursor: pointer;
 }
 
@@ -275,7 +299,7 @@ body {
 
  /* footer*/
 .site-footer {
-    background: white; /* או השאר את ה־rgba שברצונך */
+  background: var(--bg-light);/* או השאר את ה־rgba שברצונך */
     padding: 1rem 0;
     display: flex;
     justify-content: center;
@@ -283,8 +307,8 @@ body {
   }
   
   .footer-box {
-    width: 100%;
-    max-width: 1500px;           /* תואם להירו */
+    width: 190%;
+    max-width: 1900px;           /* תואם להירו */
     padding: 0 1cm;             /* אותו גריד אופקי כמו בשאר הקטעים */
     box-sizing: border-box;
     margin-bottom: 0;
