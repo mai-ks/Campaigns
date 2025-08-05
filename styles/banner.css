@@ -111,6 +111,89 @@ body {
   object-fit: cover;       /* תמלא את כל הכרטיס, חותכת בקצוות */
   object-position: center;
 }
+/* ––––– Hover Effect Gallery ––––– */
+/* ––––– Hover Effect Gallery ––––– */
+.hover-gallery {
+  padding: 2rem 0;
+  background: var(--bg-light);
+  overflow: visible;  /* מאפשר לכרטיס המורחב לצאת החוצה */
+}
+
+.hover-gallery .gallery-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.hover-gallery .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  overflow: visible;  /* מאפשר לכרטיסים לצאת החוצה */
+}
+
+/* הגדרת חפיפה בין הכרטיסים */
+.hover-gallery .container li {
+  position: relative;
+  flex: 0 0 500px;       /* רוחב קבוע לכל כרטיס */
+  height: 300px;         /* גובה קבוע לכל כרטיס */
+  margin-left: 5px;    /* חפיפה בין הכרטסיות*/
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform .3s, box-shadow .3s;
+  z-index: 0;            /* ברירת מחדל */
+  cursor: pointer;
+}
+
+/* לבטל את ה־margin-left על הכרטיס הראשון */
+.hover-gallery .container li:first-child {
+  margin-left: 0;
+}
+
+/* אפקט הובר – התרחבות ו־z-index גבוה */
+.hover-gallery .container li:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 10;           /* מוודא שהכרטיס יעמוד מעל השאר */
+}
+
+/* תמונה ממלאת את כל הכרטיס */
+.hover-gallery .container li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* טקסט מופיע רק בהובר, בתחתית הכרטיס */
+.hover-gallery .container li .content {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  color: white;
+  opacity: 0;
+  transition: opacity .3s;
+  display: flex;
+  align-items: flex-end;
+  text-align: left;
+}
+.hover-gallery .container li:hover .content {
+  opacity: 1;
+}
+.hover-gallery .container li .content h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+.hover-gallery .container li .content p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
 
 
 
@@ -296,3 +379,4 @@ body {
     flex: 1 1 100%;
     margin-top: 4px;
   }
+  
