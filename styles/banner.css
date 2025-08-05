@@ -106,14 +106,14 @@ body {
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
+  
 }
 
 .shared-container {
-  max-width: 1400px;    /* או הגודל שאת רוצה */
+  max-width: 2000px;    /* או הגודל שאת רוצה */
   margin: 0 auto;       /* מרכז את הקונטיינר */
   padding: 0 1cm;       /* הפדינג האחיד מכל צד */
   box-sizing: border-box;
-  overflow: hidden;     /* מונע “דליפה” של התוכן */
 }
 
 
@@ -139,37 +139,27 @@ body {
 }
 
 .hover-gallery .container {
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 1rem;
-  overflow-x: auto;       מאפשר גלילה אופקית */
-  display: flex;
-  /* מסירים את justify-content:center; */
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
-  padding: 0 1rem;
-  /* גלילה אופקית פעילה */
-  overflow-x: auto;
-  /* לא לחתוך את התוכן שמרחיב כלפי מטה */
-  overflow-y: visible;
+  margin: 0 1cm;      /* תואם לגריד של shared-container */
+  padding: 0;
+  overflow: visible;  /* מאפשר ל־li להגדיל ב-hover מבלי להיחתך */
+  border-radius: 16px;
 
 }
 
-/* הגדרת חפיפה בין הכרטיסים */
 .hover-gallery .container li {
   position: relative;
-  flex: 0 0 500px;       /* רוחב קבוע לכל כרטיס */
-  height: 300px;         /* גובה קבוע לכל כרטיס */
-  margin-left: 5px;    /* חפיפה בין הכרטסיות*/
+  height: 300px;
   border-radius: 16px;
-  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: visible;
   transition: transform .3s, box-shadow .3s;
-  z-index: 0;            /* ברירת מחדל */
-  overflow: visible; /* מאפשר ל־:hover “להתנפח” מעל */
-
   cursor: pointer;
+  list-style: none;   /* וודא שגם על li אין בולטים */
+  
+
 }
 
 /* לבטל את ה־margin-left על הכרטיס הראשון */
@@ -189,6 +179,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 /* טקסט מופיע רק בהובר, בתחתית הכרטיס */
