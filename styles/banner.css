@@ -119,6 +119,7 @@ body {
   padding: 2rem 0;
   background: var(--bg-light);
   overflow: visible;      /* מאפשר לכרטיסים לצאת מהגבול */
+  
 }
 
 .hover-gallery .gallery-title {
