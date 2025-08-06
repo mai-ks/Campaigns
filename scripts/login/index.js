@@ -52,4 +52,14 @@ window.addEventListener('DOMContentLoaded', () => {
     errorMsg.style.color = 'green';
     errorMsg.textContent = 'נרשמת בהצלחה! עכשיו אפשר להתחבר';
   });
-  
+
+// מוודא שיש רשימת משתמשים (users) ב־localStorage
+
+// בסוף scripts/login/index.js
+if (!window.location.pathname.endsWith('login.html')) {
+  // רק בדפים שלא הינם login.html
+  document.addEventListener('DOMContentLoaded', () => {
+    const user = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+    if (!user) window.location.replace('/login.html');
+  });
+}

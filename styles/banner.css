@@ -137,6 +137,8 @@ body {
   margin: 0 1rem;         /* ריווח אופקי כמו שאר התוכן */
   padding: 0;
   list-style: none;
+  justify-content: center;  /* ← מיישר אופקית במרכז */
+  gap: 10px;
 }
 
 /* כל כרטיס */
@@ -144,7 +146,7 @@ body {
   position: relative;
   flex: 0 0 300px;        /* רוחב קבוע */
   height: 180px;          /* גובה קבוע */
-  margin-left: 20px;     /* חפיפה של 60px */
+      /* חפיפה של 60px */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);

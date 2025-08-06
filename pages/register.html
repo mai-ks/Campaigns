@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kampa - התחברות</title>
-  <link rel="stylesheet" href="/styles/login.css" />
+  <link rel="stylesheet" href="/styles/register.css" />
 </head>
 <body>
 
@@ -37,19 +37,21 @@
   <!-- טופס התחברות -->
   <main class="editor-preview">
     <section class="editor" >
-      <h2>Login</h2>
+      <h2>Create Account</h2>
 
-      <label for="email"></label>
-      <input type="email" id="email" placeholder="Email" required />
+      <label for="reg-name"></label>
+      <input type="text" id="reg-name" placeholder="FULL NAME" required />
+  
+      <label for="reg-email"></label>
+      <input type="email" id="reg-email" placeholder="Email" required />
+  
+      <label for="reg-password"></label>
+      <input type="password" id="reg-password" placeholder="Password" required />
 
-      <label for="password"></label>
-      <input type="password" id="password" placeholder="Password" required />
-
-      <button id="loginBtn">SIGN IN</button>
+  
+      <button id="registerBtn" class="btn-primary solid">REGISTER NOW</button>
       <p style="text-align:center; margin-top:1rem;">
-        Don't have an account? 
-
- <a href="/pages/register.html">Sign up</a>
+        Already have an account? <a href="/pages/login.html">Sign in</a>
       </p>
     </section>
   </main>

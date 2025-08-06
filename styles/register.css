@@ -84,7 +84,6 @@
   }
   .hero {
     position: relative;
-   
     margin: 0 1cm;            /* שומר על אותו גריד אופקי */
     border-radius: 18px;      /* לפי העיגול שלך */
     min-height: calc(100vh - 6rem); /* 6rem = גובה top-bar + main-header */
