@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>עורך דף נחיתה</title>
   <link rel="stylesheet" href="/styles/landing.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Kampa</div>
-    <nav>
-      <a href="#">Banner Editor</a>
-      <a href="#">Marketing Page Editor</a>
-      <a href="#" class="active">Landing Page Editor</a>
-      <a href="#">My Campaigns</a>
-    </nav>
+   <!-- פס עליון -->
+  <div class="top-bar">
+    <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
+  </div>
+
+  <!-- ניווט סטיקי -->
+  <header class="main-header">
+    <div class="nav-wrapper">
+      <a href="/index.html">
+        <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo"/>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">My Campaigns</a></li>
+          <li><a href="#">Landing Page Editor</a></li>
+          <li><a href="#">Marketing Page Editor</a></li>
+          <li><a href="/pages/banner.html" class="active">Banner Editor</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   </header>
 
   <main class="container">
@@ -22,63 +37,80 @@
       <h2>כלי עיצוב</h2>
 
       <!-- 1. בחירת תבנית -->
-      <label for="templateSelect">בחר תבנית:</label>
-      <select id="templateSelect">
-        <option value="template1">תבנית 1</option>
-        <option value="template2">תבנית 2</option>
-        <option value="template3">תבנית 3</option>
-      </select>
+      <section class="editor-section">
+        <header>
+          <h3>בחר תבנית</h3>
+        </header>
+        <label for="templateSelect">תבנית:</label>
+        <select id="templateSelect" name="templateSelect">
+          <option value="template1">תבנית 1</option>
+          <option value="template2">תבנית 2</option>
+          <option value="template3">תבנית 3</option>
+        </select>
+      </section>
 
       <hr>
 
       <!-- 2. עריכת טקסט ותמונות -->
-      <fieldset>
-        <legend>תוכן</legend>
-        <label>כותרת:</label>
-        <input type="text" id="titleInput" placeholder="הכנס כותרת">
-        <label>פסקה:</label>
-        <textarea id="paragraphInput" rows="4" placeholder="הכנס טקסט"></textarea>
-        <label>CTA – טקסט:</label>
-        <input type="text" id="ctaTextInput" placeholder="נקנה עכשיו">
-        <label>CTA – קישור:</label>
-        <input type="text" id="ctaLinkInput" placeholder="https://">
-        <label>URL תמונה:</label>
-        <input type="text" id="imageUrlInput" placeholder="https://...jpg">
-      </fieldset>
+      <section class="editor-section">
+        <header>
+          <h3>תוכן</h3>
+        </header>
+        <label for="titleInput">כותרת:</label>
+        <input type="text" id="titleInput" name="titleInput" placeholder="הכנס כותרת">
+
+        <label for="paragraphInput">פסקה:</label>
+        <textarea id="paragraphInput" name="paragraphInput" rows="4" placeholder="הכנס טקסט"></textarea>
+
+        <label for="ctaTextInput">CTA – טקסט:</label>
+        <input type="text" id="ctaTextInput" name="ctaTextInput" placeholder="נקנה עכשיו">
+
+        <label for="ctaLinkInput">CTA – קישור:</label>
+        <input type="url" id="ctaLinkInput" name="ctaLinkInput" placeholder="https://">
+
+        <label for="imageUrlInput">URL תמונה:</label>
+        <input type="url" id="imageUrlInput" name="imageUrlInput" placeholder="https://...jpg">
+      </section>
 
       <hr>
 
       <!-- 3. התאמה אישית: צבעים, פונטים -->
-      <fieldset>
-        <legend>עיצוב</legend>
-        <label>צבע רקע:</label>
-        <input type="color" id="bgColorInput" value="#ffffff">
-        <label>צבע כותרת:</label>
-        <input type="color" id="titleColorInput" value="#333333">
-        <label>גופן כותרת:</label>
-        <select id="fontSelect">
+      <section class="editor-section">
+        <header>
+          <h3>עיצוב</h3>
+        </header>
+        <label for="bgColorInput">צבע רקע:</label>
+        <input type="color" id="bgColorInput" name="bgColorInput" value="#ffffff">
+
+        <label for="titleColorInput">צבע כותרת:</label>
+        <input type="color" id="titleColorInput" name="titleColorInput" value="#333333">
+
+        <label for="fontSelect">גופן כותרת:</label>
+        <select id="fontSelect" name="fontSelect">
           <option value="Arial">Arial</option>
           <option value="Tahoma">Tahoma</option>
           <option value="Georgia">Georgia</option>
         </select>
-      </fieldset>
+      </section>
 
       <hr>
 
       <!-- 4. איסוף לידים: טופס בסיסי -->
-      <fieldset>
-        <legend>איסוף לידים</legend>
-        <label>
-          <input type="checkbox" id="leadFormToggle">
+      <section class="editor-section">
+        <header>
+          <h3>איסוף לידים</h3>
+        </header>
+        <label for="leadFormToggle">
+          <input type="checkbox" id="leadFormToggle" name="leadFormToggle">
           הוסף טופס איסוף שם ואימייל
         </label>
-      </fieldset>
+      </section>
 
       <hr>
 
-      <!-- 5. פעולות שמירה וטען -->
-      <button id="saveBtn">שמור ל-LocalStorage</button>
-      <button id="loadBtn">טען מהזיכרון</button>
+      <!-- 5. פעולות שמירה וטעינה -->
+      <button id="saveBtn" type="button">שמור ל-LocalStorage</button>
+      <button id="loadBtn" type="button">טען מהזיכרון</button>
     </aside>
 
     <!-- צד ימין: תצוגת תוצאה בזמן אמת -->
@@ -88,6 +120,6 @@
     </section>
   </main>
 
-  <script src="/scripts/landing/index.js"></script>
+  <script type="module" src="/scripts/landing/index.js"></script>
 </body>
 </html>
