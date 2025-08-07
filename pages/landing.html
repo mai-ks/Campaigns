@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>עורך דף נחיתה</title>
+  <link rel="stylesheet" href="/styles/landing.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Kampa</div>
+    <nav>
+      <a href="#">Banner Editor</a>
+      <a href="#">Marketing Page Editor</a>
+      <a href="#" class="active">Landing Page Editor</a>
+      <a href="#">My Campaigns</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- צד שמאל: כלי העריכה -->
+    <aside class="editor-panel">
+      <h2>כלי עיצוב</h2>
+
+      <!-- 1. בחירת תבנית -->
+      <label for="templateSelect">בחר תבנית:</label>
+      <select id="templateSelect">
+        <option value="template1">תבנית 1</option>
+        <option value="template2">תבנית 2</option>
+        <option value="template3">תבנית 3</option>
+      </select>
+
+      <hr>
+
+      <!-- 2. עריכת טקסט ותמונות -->
+      <fieldset>
+        <legend>תוכן</legend>
+        <label>כותרת:</label>
+        <input type="text" id="titleInput" placeholder="הכנס כותרת">
+        <label>פסקה:</label>
+        <textarea id="paragraphInput" rows="4" placeholder="הכנס טקסט"></textarea>
+        <label>CTA – טקסט:</label>
+        <input type="text" id="ctaTextInput" placeholder="נקנה עכשיו">
+        <label>CTA – קישור:</label>
+        <input type="text" id="ctaLinkInput" placeholder="https://">
+        <label>URL תמונה:</label>
+        <input type="text" id="imageUrlInput" placeholder="https://...jpg">
+      </fieldset>
+
+      <hr>
+
+      <!-- 3. התאמה אישית: צבעים, פונטים -->
+      <fieldset>
+        <legend>עיצוב</legend>
+        <label>צבע רקע:</label>
+        <input type="color" id="bgColorInput" value="#ffffff">
+        <label>צבע כותרת:</label>
+        <input type="color" id="titleColorInput" value="#333333">
+        <label>גופן כותרת:</label>
+        <select id="fontSelect">
+          <option value="Arial">Arial</option>
+          <option value="Tahoma">Tahoma</option>
+          <option value="Georgia">Georgia</option>
+        </select>
+      </fieldset>
+
+      <hr>
+
+      <!-- 4. איסוף לידים: טופס בסיסי -->
+      <fieldset>
+        <legend>איסוף לידים</legend>
+        <label>
+          <input type="checkbox" id="leadFormToggle">
+          הוסף טופס איסוף שם ואימייל
+        </label>
+      </fieldset>
+
+      <hr>
+
+      <!-- 5. פעולות שמירה וטען -->
+      <button id="saveBtn">שמור ל-LocalStorage</button>
+      <button id="loadBtn">טען מהזיכרון</button>
+    </aside>
+
+    <!-- צד ימין: תצוגת תוצאה בזמן אמת -->
+    <section class="preview-panel">
+      <h2>תצוגה מקדימה</h2>
+      <div id="previewArea"></div>
+    </section>
+  </main>
+
+  <script src="/scripts/landing/index.js"></script>
+</body>
+</html>
