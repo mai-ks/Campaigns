@@ -1,84 +1,89 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kampa - התחברות</title>
-  <link rel="stylesheet" href="/styles/register.css" />
-</head>
-<body>
-
-  <!-- פס עליון -->
-  <div class="top-bar">
-    <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
-  </div>
-
-  <section class="hero" id="hero">
-    <div class="hero-grid">
-  <!-- ניווט -->
-  <header class="main-header">
-    <div class="nav-wrapper">
-      <a href="/index.html">
-        <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo"/>
-      </a>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#">My Campaigns</a></li>
-          <li><a href="#">Landing Page Editor</a></li>
-          <li><a href="#">Marketing Page Editor</a></li>
-          <li><a href="/pages/banner.html">Banner Editor</a></li>
-        </ul>
-      </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kampa - התחברות</title>
+    <link rel="stylesheet" href="/styles/register.css" />
+  </head>
+  <body>
+    <!-- פס עליון -->
+    <div class="top-bar">
+      <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
     </div>
-  </header>
-
- 
-
-  <!-- טופס התחברות -->
-  <main class="editor-preview">
-    <section class="editor" >
-      <h2>Create Account</h2>
-
-      <label for="reg-name"></label>
-      <input type="text" id="reg-name" placeholder="FULL NAME" required />
-  
-      <label for="reg-email"></label>
-      <input type="email" id="reg-email" placeholder="Email" required />
-  
-      <label for="reg-password"></label>
-      <input type="password" id="reg-password" placeholder="Password" required />
-
-  
-      <button id="registerBtn" class="btn-primary solid">REGISTER NOW</button>
-      <p style="text-align:center; margin-top:1rem;">
-        Already have an account? <a href="/pages/login.html">Sign in</a>
-      </p>
+    
+    <section class="hero" id="hero">
+      <div class="hero-grid">
+        <!-- ניווט -->
+        <header class="main-header">
+          <div class="nav-wrapper">
+            <a href="/index.html">
+              <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo" />
+            </a>
+            <nav class="main-nav">
+              <ul>
+                <li><a href="#">My Campaigns</a></li>
+                <li><a href="#">Landing Page Editor</a></li>
+                <li><a href="#">Marketing Page Editor</a></li>
+                <li><a href="/pages/banner.html">Banner Editor</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        
+        <!-- טופס התחברות -->
+        <main class="editor-preview">
+          <section class="editor">
+            <form action="" id="registerForm">
+              <h2>Create Account</h2>
+              
+              <label for="reg-name"></label>
+              <input type="text" id="first-name" placeholder="first name" required />
+              
+              <label for="reg-name"></label>
+              <input type="text" id="last-name" placeholder="last name" required />
+              
+              <label for="reg-email"></label>
+              <input type="email" id="reg-email" placeholder="Email" required />
+              
+              <label for="reg-password"></label>
+              <input type="password" id="reg-password" placeholder="Password" required />
+              
+              <label for="reg-password"></label>
+              <input type="password" id="con-password" placeholder="Confirm Password" required />
+              
+              <button id="registerBtn" class="btn-primary solid" type="submit" >REGISTER NOW</button>
+              <p >
+                Already have an account? <a href="/pages/login.html">Sign in</a>
+              </p>
+            </form>
+          </section>
+        </main>
+      </div>
     </section>
-  </main>
-</div>
-</section>
-
-  <!-- פוטר -->
-  <footer class="site-footer">
-    <div class="footer-box">
-      <div class="footer-inner">
-        <div class="logo-wrapper">
-          <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
-        </div>
-        <div class="footer-links">
-          <a href="#">Banner Editor</a>
-          <a href="#">Marketing Page Editor</a>
-          <a href="#">Landing Page Editor</a>
-          <a href="#">My Campaigns</a>
-        </div>
-        <div class="footer-legal">
-          <p>&copy; 2025 Kampa. All rights reserved.</p>
+    
+    <!-- פוטר -->
+    <footer class="site-footer">
+      <div class="footer-box">
+        <div class="footer-inner">
+          <div class="logo-wrapper">
+            <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
+          </div>
+          <div class="footer-links">
+            <a href="#">Banner Editor</a>
+            <a href="#">Marketing Page Editor</a>
+            <a href="#">Landing Page Editor</a>
+            <a href="#">My Campaigns</a>
+          </div>
+          <div class="footer-legal">
+            <p>&copy; 2025 Kampa. All rights reserved.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-
-  <!-- סקריפט חיצוני שלך -->
-  <script src="/scripts/login/index.js"></script>
-</body>
-</html>
+    </footer>
+    
+    <!-- סקריפט חיצוני שלך -->
+    <script type="module" src="../scripts//register/index.js"></script>
+  </body>
+  </html>
+  
