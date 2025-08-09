@@ -147,6 +147,8 @@
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: var(--radius);
+    direction: ltr;
+  text-align: left;
   }
   
   .editor button {
@@ -168,6 +170,11 @@
     border-color: var(--orange);
   }
   
+
+  .loginBtn
+  {
+    text-align:center; margin-top:1rem;
+  }
   /* פוטר */
   .site-footer {
     background: white;
