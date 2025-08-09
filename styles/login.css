@@ -87,7 +87,7 @@
    
     margin: 0 1cm;            /* שומר על אותו גריד אופקי */
     border-radius: 18px;      /* לפי העיגול שלך */
-    min-height: calc(100vh - 6rem); /* 6rem = גובה top-bar + main-header */
+    min-height: calc(100vh - 4rem); /* 6rem = גובה top-bar + main-header */
 
   }
   
@@ -139,6 +139,8 @@
     display: block;
     margin-top: 1rem;
     font-weight: 600;
+
+    
   }
   
   .editor input {
@@ -149,6 +151,8 @@
     border-radius: var(--radius);
     direction: ltr;
   text-align: left;
+  align-items: center;
+  box-sizing: border-box; 
   }
   
   .editor button {

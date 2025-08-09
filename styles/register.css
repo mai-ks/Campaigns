@@ -148,6 +148,8 @@
     border-radius: var(--radius);
     direction: ltr;
   text-align: left;
+    align-items: center;
+    box-sizing: border-box; 
   }
 
   

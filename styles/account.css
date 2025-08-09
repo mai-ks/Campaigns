@@ -1,0 +1,200 @@
+:root {
+    --orange: #ff7f11;
+    --gray: rgba(90, 87, 80, 0.5);
+    --radius: 14px;
+    font-family: system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background: #ffffff;
+    direction: rtl;
+    color: #111;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #ffffff !important;
+  }
+  
+  
+  .top-bar {
+    background: rgba(90, 87, 80, 0.5);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 1cm 1rem 1cm; /* רווח צדדי כמו בהירו */
+  }
+  
+  .top-bar-text {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #333;
+  }
+  .main-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+    margin: 1rem 1cm 1rem 1cm; /* רווח צדדי כמו בהירו */
+    border-radius: 12px;
+
+
+  }
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse; /* 👈 משנה את הסדר - לוגו שמאל, ניווט ימין */
+    padding: 1rem 2rem;
+  }
+  
+  
+  .nav-logo {
+    height: 30px;
+    transition: transform 0.3s ease; /* מעבר חלק */
+    cursor: pointer;
+  }
+  
+  .nav-logo:hover {
+    transform: translateY(-3px) scale(1.05); /* קפיצה עדינה */
+  }
+  
+  
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #555;
+    transition: transform 0.3s ease, color 0.2s ease;
+
+  }
+  
+  .main-nav a:hover {
+    transform: translateY(-3px) scale(1.05);
+
+  }
+
+
+
+
+
+  /* footer*/
+.site-footer {
+    background: white; /* או השאר את ה־rgba שברצונך */
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  
+  .footer-box {
+    width: 100%;
+    max-width: 1500px;           /* תואם להירו */
+    padding: 0 1cm;             /* אותו גריד אופקי כמו בשאר הקטעים */
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+  
+  .footer-inner {
+    background: rgba(90,87,80,0.5); /* הרקע של הקופסה */
+    border-radius: 14px;            /* פינות מעוגלות */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    position: relative;
+    backdrop-filter: blur(6px);   
+    max-width: 1400px;              /* תואם לגריד של שאר הסקשנים */
+    /* אם רוצים אפקט מטושטש מתחת */
+  }
+  
+  /* מרכזי: לוגו, קישורים מתחת, טקסט חוקי מתחת */
+  .footer-inner.centered {
+    background: rgba(90,87,80,0.5);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    position: relative;
+    backdrop-filter: blur(6px);
+    color: #fff;
+  }
+  
+  .logo-wrapper {
+    flex: 0 0 auto;
+  }
+  
+  .footer-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    transition: transform .25s ease, filter .25s ease;
+    cursor: pointer;
+  }
+  
+  .footer-logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: opacity .2s;
+  }
+  
+  .footer-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+  
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+  }
+  
+  .footer-links a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .footer-legal {
+    font-size: .75rem;
+    opacity: .8;
+    text-align: center;
+    flex: 1 1 100%;
+    margin-top: 4px;
+  }

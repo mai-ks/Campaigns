@@ -714,9 +714,10 @@
   width: 24px;
   height: 3px;
   background: #555; /* צבע רצוי */
-
+margin-top: 0;
   border-radius: 2px;
   transition: transform .3s ease, opacity .3s ease;
+  
 }
 
 /* המראה פתוח */
@@ -734,7 +735,7 @@
 .mobile-menu {
   display: none;
   position: absolute;
-  top: 60px;
+  top: 40px;
   right: 1cm;
   left: 1cm;
   background: rgba(255,255,255,0.95);
@@ -742,29 +743,46 @@
   padding: 1rem;
   box-shadow: 0 25px 60px -10px rgba(0,0,0,0.1);
   flex-direction: column;
-  gap: .75rem;
-  z-index: 9;
-}
+  gap: 1px;
+  z-index: 1000; 
+} 
+
+
+
 .mobile-menu a {
-  color: #222;
+  color: #555;
   text-decoration: none;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1rem;
   border-radius: 8px;
   background: rgba(0,0,0,0.03);
   transition: background .2s ease;
+  font-weight: 700;
+  letter-spacing: .04em;
+
 }
 .mobile-menu a:hover {
   background: rgba(0,0,0,0.08);
 }
-/* רספונסיביות: במובייל מפעילים המבורגר ומסתירים ניווט רגיל */
+
+/* במובייל: מסתירים את הניווט, לוגו משמאל, המבורגר מימין */
 @media (max-width: 900px) {
-  .nav-on-hero .main-nav {
-    display: none;
+  .nav-on-hero .main-nav { display: none; }
+
+  .nav-on-hero {
+    justify-content: space-between;  /* מפזר שמאלה/ימינה */
+    direction: ltr;                   /* שומר על סדר שמאל–ימין */
   }
-  .hamburger {
+
+  .nav-on-hero .logo { order: 1; }    /* שמאל */
+  .nav-on-hero .hamburger {
+    order: 2;                         /* ימין */
+    margin: 0;                        /* מבטל את ה-push שמאלה */
     display: flex;
   }
 }
+
+
+
 
 /* --------------------------------
    סגנונות לדף הרשמה
