@@ -296,3 +296,95 @@
     margin-top: 4px;
   }
   
+
+
+/* רספונסיביות נייד מהוברגר*/
+
+/* נייד – תפריט המבורגר */
+/* ========== 2B) כפתור המבורגר ========== */
+/* כפתור המבורגר */
+:root{
+  --drawerTop: 0px; 
+} 
+
+/* כפתור המבורגר */
+.hamburger{
+  display:none; background:transparent; border:none; cursor:pointer;
+  padding:6px; flex-direction:column; gap:4px; align-items:center;
+}
+.hamburger .bar{
+  width:26px; height:3px; background:#333; border-radius:2px;
+  transition:transform .3s ease, opacity .3s ease;
+}
+.hamburger.open .bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.hamburger.open .bar:nth-child(2){ opacity:0; }
+.hamburger.open .bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* המגירה – מצד ימין, חצי רוחב מסך */
+.mobile-menu{
+  position: fixed;
+  top: var(--navH);        /* מתחיל מתחת לנאב */
+  right: 0;
+  bottom: 0;
+  width: 50vw;            /* חצי רוחב מסך */
+  max-width: 420px;       /* תקרה נוחה */
+  min-width: 300px;       /* שלא יהיה צר מדי */
+  top: calc(var(--drawerTop) - 10px); 
+  background: rgba(255,255,255,0.98);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 16px 0 0 0;
+  padding: 16px;
+  box-shadow: -24px 0 60px -20px rgba(0,0,0,.25);
+  z-index: 1200;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+
+  transform: translateX(100%);   /* מוסתר מחוץ למסך */
+  transition: transform .28s ease;
+  opacity: 1;                    /* לא מסתירים עם אטימות, רק עם טרנספורם */
+}
+.mobile-menu.open{ transform: translateX(0); }
+
+/* כפתור X בפנים (אופציונלי) */
+.mobile-menu .close-drawer{
+  align-self: flex-end;
+  background: transparent;
+  border: 0;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+/* קישורים במגירה */
+.mobile-menu a{
+  display:block; padding:14px 16px; border-radius:10px;
+  background: rgba(0,0,0,0.04); color:#222; text-decoration:none;
+  font-weight:700; letter-spacing:.03em;
+  transition: background .2s ease, transform .2s ease;
+}
+.mobile-menu a + a{ margin-top:8px; }
+.mobile-menu a:active{ transform: scale(.98); }
+
+/* שכבת כהות מאחורי המגירה (רק מתחת לנאב) */
+.mobile-scrim{
+  position: fixed;
+  top: var(--navH);
+  left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,.28);
+  z-index: 1100;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.mobile-scrim.open{ opacity: 1; pointer-events: auto; }
+
+/* מובייל: מסתירים תפריט רגיל, מראים המבורגר */
+@media (max-width:900px){
+  .main-nav{ display:none; }
+  .hamburger{ display:flex; }
+}
+

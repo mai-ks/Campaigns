@@ -42,11 +42,10 @@
       <div class="image-card">
         <!-- ניווט בתוך התמונה, בלי רקע חיצוני -->
         <div class="nav-on-hero">
-          <button class="hamburger" aria-label="תפריט" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
+          <!-- כפתור המבורגר: שימי לו id -->
+    <button class="hamburger" id="hamburger" aria-label="תפריט" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
           <div class="logo">
             <img src="images/LOGOKAMPAnew.svg" alt="לוגו המותג" />
           </div>
@@ -54,11 +53,20 @@
             <ul>
               <li><a href="/pages/banner.html" class="active">BANNER EDITOR</a></li>
               <li><a href="/pages/marketing.html">MARKETING PAGE</a></li>
-              <li><a href="#">LANDING PAGE </a></li>
+              <li><a href="/pages/landing.html">LANDING PAGE </a></li>
               <li><a href="/pages/login.html">ACCOUNT</a></li>
             </ul>
           </nav>
         </div>
+        <nav class="mobile-menu" id="mobileMenu" hidden>
+          <button class="close-drawer" type="button" aria-label="סגור תפריט">✕</button>
+          <a href="/pages/banner.html">Banner Editor</a>
+          <a href="#">Marketing Page Editor</a>
+          <a href="#">Landing Page Editor</a>
+          <a href="#">My Campaigns</a>
+        </nav>
+        
+        <div class="mobile-scrim" id="mobileScrim" hidden></div>
         <!-- <div class="mobile-menu" id="mobile-menu" aria-label="תפריט נייד">
           <a href="/pages/banner.html">Banner Editor</a>
           <a href="#">Marketing Page Editor</a>
@@ -68,12 +76,17 @@
    -->
         <img src="images/hero.png" alt="Hero image" class="hero-image" />
 
-        <div class="mobile-menu" id="mobile-menu" aria-label="תפריט נייד">
+        <!-- <nav class="mobile-menu" id="mobileMenu" hidden>
+          <button class="close-drawer" type="button" aria-label="סגור תפריט">✕</button>
           <a href="/pages/banner.html">Banner Editor</a>
           <a href="#">Marketing Page Editor</a>
           <a href="#">Landing Page Editor</a>
           <a href="#">My Campaigns</a>
-        </div>
+        </nav>
+
+        שכבת רקע/סגירה -->
+  <!-- <div class="mobile-scrim" id="mobileScrim" hidden></div> -->
+
   
         <div class="text-group">
           <h1 class="title">Start your new campaign with Kampa</h1>

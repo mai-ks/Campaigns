@@ -699,70 +699,102 @@
 /*  המבורגר רספונסיביות */
 /* המבורגר בסיסי */
 /* בסיסי */
-.hamburger {
-  display: none; /* יופיע רק במובייל */
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
+:root{
+  /* JS יעדכן את זה לגובה המיקום של הניווט על ההירו */
+  --drawerTop: 0px; 
 }
 
-.hamburger .bar {
-  width: 24px;
-  height: 3px;
-  background: #555; /* צבע רצוי */
-margin-top: 0;
-  border-radius: 2px;
-  transition: transform .3s ease, opacity .3s ease;
+/* כפתור המבורגר */
+.hamburger{
+  display:none; 
+  background:transparent;
+   border:none; 
+   cursor:pointer;
+  padding:6px; 
+  flex-direction:column; 
+  gap:4px; 
+  align-items:center;
   
 }
+.hamburger .bar{
+  width:26px; height:3px; background:#333; border-radius:2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.hamburger.open .bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.hamburger.open .bar:nth-child(2){ opacity:0; }
+.hamburger.open .bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
-/* המראה פתוח */
-.hamburger.open .bar:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-.hamburger.open .bar:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open .bar:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
+/* מגירה מימין – חצי מסך, מתחילה מתחת לניווט שעל ההירו */
+.mobile-menu{
+  position: fixed;
+  top: var(--drawerTop);
+  right: 0; bottom: 0;
+  width: 50vw;                /* חצי רוחב מסך */
+  max-width: 500px;           /* תקרה נוחה */
+  min-width: 300px;
 
-/* ברירת מחדל: תפריט נייד מוסתר */
-.mobile-menu {
-  display: none;
-  position: absolute;
-  top: 40px;
-  right: 1cm;
-  left: 1cm;
-  background: rgba(255,255,255,0.95);
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 25px 60px -10px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.98);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 16px 0 0 0;
+  padding: 16px;
+  box-shadow: -24px 0 60px -20px rgba(0,0,0,.25);
+  z-index: 1200;
+top: calc(var(--drawerTop) - 10px); 
+  display: flex;
   flex-direction: column;
-  gap: 1px;
-  z-index: 1000; 
-} 
+  gap: 10px;
+  overflow-y: auto;
 
-
-
-.mobile-menu a {
-  color: #555;
-  text-decoration: none;
-  padding: 1rem 1rem;
-  border-radius: 8px;
-  background: rgba(0,0,0,0.03);
-  transition: background .2s ease;
-  font-weight: 700;
-  letter-spacing: .04em;
-
+  transform: translateX(100%);   /* מוסתר מחוץ למסך */
+  transition: transform .28s ease;
 }
-.mobile-menu a:hover {
-  background: rgba(0,0,0,0.08);
+
+.mobile-menu.open{ transform: translateX(0); }
+/* כפתור X בפנים (אופציונלי) */
+.mobile-menu .close-drawer{
+  align-self: flex-end;
+  background: transparent;
+  border: 0;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  margin-bottom: 8px;
 }
+.mobile-menu .close-drawer:active{ transform: scale(.96); }
+
+/* לוודא שה-X תמיד קליקבילי */
+.mobile-menu .close-drawer{ pointer-events: auto !important; }
+
+.mobile-menu a{
+  display:block; padding:14px 16px; border-radius:10px;
+  background:rgba(0,0,0,0.04); color:#222; text-decoration:none;
+  font-weight:700; letter-spacing:.03em;
+  transition: background .2s ease, transform .2s ease;
+}
+.mobile-menu a + a{ margin-top:8px; }
+.mobile-menu a:active{ transform: scale(.98); }
+
+/* שכבת כהות מאחורי המגירה (גם מתחילה מתחת לניווט) */
+.mobile-scrim{
+  position: fixed;
+  top: var(--navH);
+  left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,.28);
+  z-index: 1100;                /* מתחת למגירה, מעל ההירו */
+  opacity: 0; pointer-events: none; transition: opacity .25s ease;
+}
+.mobile-scrim.open{ opacity: 1; pointer-events: auto; }
+/* במובייל – מסתירים את התפריט הרגיל ומראים המבורגר */
+@media (max-width: 900px){
+  .nav-on-hero .main-nav{ display:none; }
+  .hamburger{ display:flex; }
+  /* לשים המבורגר מימין והלוגו משמאל */
+  .nav-on-hero{ justify-content: space-between; direction:ltr; z-index: 1500; }
+  .nav-on-hero .logo{ order:1; }
+  .nav-on-hero .hamburger{ order:2; }
+}
+
 
 /* במובייל: מסתירים את הניווט, לוגו משמאל, המבורגר מימין */
 @media (max-width: 900px) {
@@ -780,6 +812,16 @@ margin-top: 0;
     display: flex;
   }
 }
+/* כשהמגירה פתוחה — מסתירים את ההמבורגר שמעל ההירו */
+body.menu-open .nav-on-hero .hamburger {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* אופציונלי: למנוע הצצה דרך הרקע */
+.mobile-menu { background: #fff; } /* במקום rgba אם עדיין רואים */
+
+.mobile-menu .close-drawer { pointer-events: auto; z-index: 2; }
 
 
 
