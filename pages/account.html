@@ -28,7 +28,94 @@
         </nav>
       </div>
     </header>
+     <!-- לוח הקמפיינים -->
+    <main class="campaigns-dashboard">
+      <div class="dashboard-header">
+          <h1>My Campaigns Dashboard</h1>
+          <p>Manage and analyze your active campaigns</p>
+      </div>
 
+      <div class="dashboard-container">
+          <!-- צד שמאל - קמפיין קיים -->
+          <div class="existing-campaign">
+              <div class="company-header">
+                  <div class="company-logo">O</div>
+                  <div class="company-info">
+                      <h2>Olivetto</h2>
+                      <div class="subtitle">Italian Food Import & Marketing</div>
+                  </div>
+              </div>
+
+              <div class="campaign-options">
+                  <div class="option-card" data-panel="panel-new">
+                      <div class="icon">✨</div>
+                      <h3>Create New Campaign</h3>
+                      <p>Start a fresh campaign with new goals and targets</p>
+                  </div>
+
+                  <div class="option-card" onclick="selectOption('existing')">
+                      <div class="icon">📊</div>
+                      <h3>Edit Existing Campaign</h3>
+                      <p>Improve and optimize active campaigns or update settings</p>
+                  </div>
+
+                  <div class="option-card" onclick="selectOption('analyze')">
+                      <div class="icon">📈</div>
+                      <h3>Performance Analytics</h3>
+                      <p>Detailed review of results and ROI analysis</p>
+                  </div>
+
+                  <div class="option-card" onclick="selectOption('duplicate')">
+                      <div class="icon">📋</div>
+                      <h3>Duplicate Successful Campaign</h3>
+                      <p>Create a new campaign based on existing successful one</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- צד ימין - טיימליין מורחב
+          <div class="timeline-section">
+              <div class="timeline-header">
+                  <h2>Campaign Timeline</h2>
+              </div>
+
+              <div class="timeline">
+                  <div class="timeline-item completed">
+                      <div class="timeline-date">📅 15/12/2024</div>
+                      <div class="timeline-content">
+                          <h3>🎄 Christmas Campaign 2024</h3>
+                          <div class="stats">
+                              1,245 Views • 45 Clicks • 3.7% Conversion Rate
+                          </div>
+                          <span class="status-badge status-completed">Active Now</span>
+                      </div>
+                  </div>
+
+                  <div class="timeline-item completed">
+                      <div class="timeline-date">📅 25/11/2024</div>
+                      <div class="timeline-content">
+                          <h3>🛒 Black Friday 2024</h3>
+                          <div class="stats">
+                              2,850 Views • 126 Clicks • 340% ROI
+                          </div>
+                          <span class="status-badge status-completed">Completed</span>
+                      </div>
+                  </div>
+
+                  <div class="timeline-item">
+                      <div class="timeline-date">📅 01/01/2025</div>
+                      <div class="timeline-content">
+                          <h3>🎊 New Year Campaign</h3>
+                          <div class="stats">
+                              Scheduled campaign launching January 1st
+                          </div>
+                          <span class="status-badge status-active">In Progress</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+    </main>
 
     <script type="module" src="/scripts/account/index.js"></script>
 </body>

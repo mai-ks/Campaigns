@@ -485,7 +485,121 @@ body {
 
 /* –reusable styles – */
 /* banners*/
-/* טאבלטים וטלפונים: הופכים לגלילה אופקית עם snap, במקום hover כבד */
+/* ===== רספונסיביות - טאבלט (עד 900px) ===== */
+@media (max-width: 900px) {
+  .editor-card {
+    width: 95%;
+    padding: 1.5rem 1rem;
+    margin: 0 auto;
+  }
+  
+  .editor-content {
+    /* משנים ל-עמודה אחת במקום שתיים */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* Preview למעלה, Controls למטה */
+  .preview-panel {
+    order: 1;
+  }
+  
+  .controls {
+    order: 2;
+    /* מחלקים את השדות לשני עמודות */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    column-gap: 1.5rem;
+  }
+  
+  /* שדות מסוימים תופסים שתי עמודות */
+  .control-group.full-width {
+    grid-column: 1 / -1;
+  }
+  
+  #preview {
+    max-width: 280px;
+    height: 220px;
+  }
+}
+
+/* ===== רספונסיביות - מובייל (עד 600px) ===== */
+@media (max-width: 600px) {
+  .editor-card {
+    width: 98%;
+    padding: 1rem 0.75rem;
+    margin: 0.5rem auto;
+  }
+  
+  .editor-card h1 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  
+  .editor-content {
+    gap: 1.5rem;
+  }
+  
+  .controls {
+    /* חזרה לעמודה אחת במובייל קטן */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .control-group label {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .control-group input,
+  .control-group select {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+  
+  #preview {
+    max-width: 250px;
+    height: 200px;
+  }
+  
+  #previewText {
+    font-size: 1.2rem;
+  }
+  
+  .preview-panel h2 {
+    font-size: 1.1rem;
+  }
+  
+  .preview-panel p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== רספונסיביות - מובייל קטן מאוד (עד 400px) ===== */
+@media (max-width: 400px) {
+  .editor-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 1rem 0.5rem;
+  }
+  
+  .control-group input,
+  .control-group select {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  #preview {
+    max-width: 220px;
+    height: 180px;
+  }
+  
+  #previewText {
+    font-size: 1.1rem;
+  }
+}
 @media (max-width: 900px) {
   .hover-gallery .container {
     justify-content: flex-start;
@@ -503,46 +617,3 @@ body {
     opacity: 1;               /* מציגים טקסט גם בלי hover */
   }
 }
-
-/* טלפונים קטנים במיוחד */
-@media (max-width: 600px) {
-  .hover-gallery .container li { flex-basis: 88vw; }
-  .hover-gallery .container li .content h2 { font-size: .95rem; }
-  .hover-gallery .container li .content p  { font-size: .8rem; }
-}
-
-
-/* editor banner responsive*/
-
-/* Preview — ריבוע גמיש, תמיד אמצע במובייל */
-
-@media (max-width: 900px) {
-  #preview {
-    width: min(92vw, 360px);
-    margin-inline: auto;        /* מרכז את הפריוויו במסכים צרים */
-  }
-}
-
-@media (min-width: 900px) {
-  .controls {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
-    column-gap: 1.25rem;
-    row-gap: 1rem;
-  }
-  .controls .full-width { grid-column: 1 / -1; } /* לדוגמת ה-Template */
-}
-
-/* שדות */
-.control-group label { font-size: clamp(.9rem, 2vw, 1rem); }
-.control-group input,
-.control-group select {
-  width: 100%;
-  padding: .6rem .75rem;
-  font-size: clamp(.95rem, 2.2vw, 1rem);
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-/* קצת ריווח כללי בין מקטעים */
-.sample-section { margin: clamp(1.2rem, 3vw, 2rem) auto; }
-.editor-section { margin-bottom: clamp(1.2rem, 3vw, 2rem); }

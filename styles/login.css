@@ -362,3 +362,60 @@
   .hamburger{ display:flex; }
 }
 
+
+
+/* רובוט*/
+/* רובוט אנימציה */
+.robot {
+  position: absolute;
+  z-index: 1;
+  animation: robotMove 40s linear infinite; /* הרבה יותר איטי - 25 שניות */
+  bottom: 10%; /* בתחתית הדף */
+  right: -150px; /* מתחיל מחוץ למסך */
+}
+
+.robot-image {
+  width: 200px; /* גדול יותר */
+  height: 200px; /* גדול יותר */
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  animation: robotFloat 6s ease-in-out infinite; /* גם הציפה איטית יותר */
+}
+
+@keyframes robotMove {
+  0% { 
+      right: -150px; /* מתחיל מחוץ למסך מימין */
+  }
+  50% { 
+      right: calc(100% + 150px); /* מגיע לצד השמאלי */
+  }
+  100% { 
+      right: -150px; /* חזרה לצד הימני */
+  }
+}
+
+@keyframes robotFloat {
+  0%, 100% { 
+      transform: translateY(0px) scale(1);
+  }
+  50% { 
+      transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* ודאי שהרובוט נשאר בתוך הרקע */
+.hero {
+  overflow: hidden;
+}
+
+/* רספונסיביות למובייל */
+@media (max-width: 768px) {
+  .robot-image {
+      width: 120px;
+      height: 120px;
+  }
+  
+  .robot {
+      bottom: 5%;
+  }
+}

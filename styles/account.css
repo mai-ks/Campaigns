@@ -198,3 +198,207 @@
     flex: 1 1 100%;
     margin-top: 4px;
   }
+
+
+
+
+   /* עיצוב לוח הקמפיינים */
+   .campaigns-dashboard {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #f8f9fa;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.dashboard-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* כרטיסיית קמפיין קיים - צד שמאל */
+.existing-campaign {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #e9ecef;
+}
+
+.company-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.company-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.company-info h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.company-info .subtitle {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.campaign-options {
+    display: grid;
+    gap: 15px;
+}
+
+.option-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 20px;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-card:hover {
+    transform: translateY(-3px);
+    border-color: #3498db;
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.15);
+}
+
+.option-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.option-card p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.option-card .icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    color: #3498db;
+}
+
+/* טיימליין פשוט - צד ימין */
+.timeline-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.timeline-header h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.timeline-item.completed {
+    border-left-color: #27ae60;
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.timeline-content h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content .stats {
+    color: #5a6c7d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.status-active {
+    background: #e8f5e8;
+    color: #27ae60;
+}
+
+.status-completed {
+    background: #e3f2fd;
+    color: #2196f3;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

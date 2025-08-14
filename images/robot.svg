@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 202.5 290">
+  <defs>
+    <style>
+      .cls-1 {
+        isolation: isolate;
+        opacity: .08;
+      }
+
+      .cls-2 {
+        fill: #d3d7e1;
+      }
+
+      .cls-3 {
+        fill: #e2e6ee;
+      }
+
+      .cls-4 {
+        fill: #e7ebf3;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke: #c9ced9;
+      }
+
+      .cls-8 {
+        fill: #ff7f11;
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-5, .cls-7 {
+        stroke-width: 2px;
+      }
+
+      .cls-9 {
+        fill: #fff;
+        stroke: #d7dbe4;
+      }
+
+      .cls-6 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-width: 3px;
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-10 {
+        fill: #1b1b1b;
+      }
+
+      .cls-11 {
+        fill: #cfd5e2;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-364.01" y1="656.99" x2="-364.01" y2="655.99" gradientTransform="translate(51053.5 98659) scale(140 -150)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7f7f7"/>
+      <stop offset="1" stop-color="#e6e9ef"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-364.18" y1="655.24" x2="-363.18" y2="654.24" gradientTransform="translate(43733.5 52449) scale(120 -80)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#e8edf6"/>
+    </linearGradient>
+  </defs>
+  <ellipse class="cls-1" cx="132.5" cy="278" rx="70" ry="12"/>
+  <g id="bot">
+    <rect class="cls-5" x="22.5" y="110" width="140" height="150" rx="20" ry="20"/>
+    <rect class="cls-9" x="42.5" y="135" width="100" height="60" rx="10" ry="10"/>
+    <circle class="cls-8" cx="57.5" cy="165" r="6"/>
+    <path class="cls-3" d="M75.5,155h54c1.66,0,3,1.34,3,3h0c0,1.66-1.34,3-3,3h-54c-1.66,0-3-1.34-3-3h0c0-1.66,1.34-3,3-3Z"/>
+    <path class="cls-3" d="M75.5,168h54c1.66,0,3,1.34,3,3h0c0,1.66-1.34,3-3,3h-54c-1.66,0-3-1.34-3-3h0c0-1.66,1.34-3,3-3Z"/>
+    <rect class="cls-7" x="32.5" y="30" width="120" height="80" rx="18" ry="18"/>
+    <line class="cls-6" x1="92.5" y1="20" x2="92.5" y2="10"/>
+    <circle class="cls-8" cx="92.5" cy="6" r="6"/>
+    <circle class="cls-10" cx="67.5" cy="65" r="8"/>
+    <circle class="cls-10" cx="117.5" cy="65" r="8"/>
+    <rect x="52.5" y="52" width="30" height="26" rx="6" ry="6"/>
+    <rect x="102.5" y="52" width="30" height="26" rx="6" ry="6"/>
+    <path class="cls-2" d="M67.5,85h50c2.76,0,5,2.24,5,5h0c0,2.76-2.24,5-5,5h-50c-2.76,0-5-2.24-5-5h0c0-2.76,2.24-5,5-5Z"/>
+    <g>
+      <path class="cls-4" d="M13.5,130h0c7.18,0,13,5.82,13,13v54c0,7.18-5.82,13-13,13h0c-7.18,0-13-5.82-13-13v-54c0-7.18,5.82-13,13-13Z"/>
+      <circle class="cls-4" cx="13.5" cy="215" r="12"/>
+    </g>
+    <g>
+      <path class="cls-4" d="M171.5,130h0c7.18,0,13,5.82,13,13v54c0,7.18-5.82,13-13,13h0c-7.18,0-13-5.82-13-13v-54c0-7.18,5.82-13,13-13Z"/>
+      <circle class="cls-4" cx="171.5" cy="215" r="12"/>
+    </g>
+    <rect class="cls-11" x="50.5" y="260" width="30" height="26" rx="8" ry="8"/>
+    <rect class="cls-11" x="104.5" y="260" width="30" height="26" rx="8" ry="8"/>
+  </g>
+</svg>
