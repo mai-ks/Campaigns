@@ -331,3 +331,211 @@ body {
   .hamburger{ display:flex; }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+  --orange:#ff7f11;
+  --bg: #fafafb;
+  --card:#fff;
+  --ink:#111;
+  --muted:#6b7280;
+  --radius: 18px;
+  --shadow: 0 24px 60px rgba(0,0,0,.08), 0 6px 18px rgba(0,0,0,.05);
+  --ring: 0 0 0 3px rgba(255,127,17,.18);
+}
+
+/* רקע כללי רך */
+body{
+  background:
+    radial-gradient(1200px 400px at 50% -200px, rgba(0,0,0,.06), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+}
+
+/* מכולה דו־עמודתית */
+.container{
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.2fr .9fr; /* תצוגה גדולה משמאל, עורך מימין */
+  gap: 28px;
+}
+
+/* כותרות פאנלים */
+.panel-title{
+  margin: 0 0 18px;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* ====== פאנל תצוגה ====== */
+.preview-panel{
+  background: transparent;
+  padding: 0;
+  min-height: 520px;
+}
+#previewArea{
+  width: 100%;
+}
+
+/* כרטיס התצוגה כמו בצילום */
+.lp-card{
+  background: var(--card);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  padding: 34px 40px;
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+}
+
+/* טיפוגרפיה בכרטיס */
+.lp-title{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 900;
+  text-align: right;
+}
+
+.lp-paragraph{
+  margin: 0 0 20px;
+  font-size: 18px;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* תמונה בתוך הכרטיס (אופציונלית) */
+.lp-image{
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+  margin: 14px 0 0 auto; /* מיושר לימין */
+}
+
+/* כפתור CTA */
+.lp-cta{
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--orange);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 10px 20px rgba(255,127,17,.18);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.lp-cta:hover{ transform: translateY(-1px); box-shadow: 0 12px 24px rgba(255,127,17,.22); }
+.lp-cta:active{ transform: translateY(0); opacity:.9; }
+
+/* ====== פאנל העורך ====== */
+.editor-panel{
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 22px 20px;
+  position: sticky;
+  top: 16px; /* נשאר נראה בגלילה */
+  align-self: start;
+}
+
+.editor-section{ margin-bottom: 18px; }
+.editor-section > header h3{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: .3px;
+}
+
+/* שדות */
+.editor-panel label{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+  margin: 10px 0 6px;
+}
+.editor-panel input[type="text"],
+.editor-panel input[type="url"],
+.editor-panel input[type="color"],
+.editor-panel textarea,
+.editor-panel select{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .15s ease, background .15s ease;
+}
+.editor-panel textarea{ min-height: 110px; resize: vertical; }
+.editor-panel input:focus,
+.editor-panel textarea:focus,
+.editor-panel select:focus{
+  border-color: rgba(255,127,17,.55);
+  box-shadow: var(--ring);
+}
+
+/* כפתורי שמירה/טעינה */
+#saveBtn,#loadBtn{
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 8px;
+}
+#saveBtn{ background: var(--orange); color: #fff; }
+#loadBtn{ background: #111; color:#fff; }
+
+/* טופס לידים */
+.lead-form{
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+}
+.lead-form input{
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+.lead-form button{
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+}
+
+/* רספונסיביות */
+@media (max-width:1100px){
+  .container{ grid-template-columns: 1fr; }
+  .editor-panel{ position: static; }
+}
+
