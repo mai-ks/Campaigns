@@ -45,7 +45,7 @@
     background: white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     z-index: 100;
-    margin: 1rem 0cm;
+    margin: 1rem 1cm;
     border-radius: 12px;
     margin-top: 1rem;
   }
@@ -59,7 +59,7 @@
   }
   
   .nav-logo {
-    height: 30px;
+    height: 32px;
     transition: transform 0.3s ease;
     cursor: pointer;
   }
@@ -82,25 +82,23 @@
     color: #222;
     transition: color 0.2s;
   }
-  .hero {
+  .hero{
     position: relative;
-    margin: 0 1cm;            /* שומר על אותו גריד אופקי */
-    border-radius: 18px;      /* לפי העיגול שלך */
-    min-height: calc(100vh - 6rem); /* 6rem = גובה top-bar + main-header */
-
-  }
-  
-  /* הפקודה הזו מייצרת את התמונה כרקע צמוד לכל התחתית של ה־hero */
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: 6rem;                /* כוונו לפי גובה ה־top-bar + main-header (למשל 3rem+3rem) */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('/images/heroback.png') center top/cover no-repeat;
+    margin: 0 1cm;
+    border-radius: 18px;
+    min-height: 100dvh;       /* מסך מלא יפה */
+    overflow: hidden;         /* שיחתוך את הרקע לפינות המעוגלות */
     z-index: 0;
   }
+  
+  .hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;                 /* שווה ל: top:0; right:0; bottom:0; left:0; */
+    background: url('/images/heroback.png') center top / cover no-repeat;
+    z-index: 0;               /* מאחורי הכול */
+  }
+     
   
   /* טופס התחברות */
   .editor-preview {

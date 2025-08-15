@@ -3,39 +3,7 @@ import { loginUser,initHamburger } from './functions.js';
 
 let form = document.getElementById('loginForm');
 form.addEventListener('submit', loginUser);
-// המבורגד
-document.addEventListener("DOMContentLoaded", () => {
-  const hamburger = document.querySelector(".hamburger");
-  const mobileMenu = document.querySelector(".mobile-menu");
 
-  if (!hamburger || !mobileMenu) return;
-
-  hamburger.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const expanded = hamburger.getAttribute("aria-expanded") === "true";
-    if (expanded) {
-      hamburger.setAttribute("aria-expanded", "false");
-      hamburger.classList.remove("open");
-      mobileMenu.classList.remove("visible");
-      mobileMenu.style.display = "none";
-    } else {
-      hamburger.setAttribute("aria-expanded", "true");
-      hamburger.classList.add("open");
-      mobileMenu.classList.add("visible");
-      mobileMenu.style.display = "flex";
-    }
-  });
-
-  // סגור כשמקליקים מחוץ
-  document.addEventListener("click", (e) => {
-    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-      hamburger.setAttribute("aria-expanded", "false");
-      hamburger.classList.remove("open");
-      mobileMenu.classList.remove("visible");
-      mobileMenu.style.display = "none";
-    }
-  });
-});
 // פרלקסה עדינה: מזיז משתני CSS --mx/--my לפי העכבר
 (function () {
   const hero = document.getElementById('hero');
@@ -109,3 +77,39 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 });
+
+
+
+
+// ----- Robot Boop Animation -----
+function initRobotBoop() {
+  const robot = document.querySelector('.robot');
+  const img   = robot?.querySelector('.robot-image');
+  if (!robot || !img) return;
+
+  const boop = () => {
+    // ריסט לאנימציה כדי שתרוץ כל פעם מחדש
+    robot.classList.remove('boop');
+    void robot.offsetWidth; // reflow
+    robot.classList.add('boop');
+    setTimeout(() => robot.classList.remove('boop'), 600);
+  };
+
+  // קליק/טאץ'/הובר
+  ['pointerdown','click','touchstart','mouseenter'].forEach(evt => {
+    img.addEventListener(evt, boop, { passive: true });
+  });
+
+  // נגישות במקלדת
+  robot.setAttribute('tabindex','0');
+  robot.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') boop();
+  });
+}
+
+// לדאוג שזה ירוץ תמיד, גם אם DOMContentLoaded כבר קרה
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRobotBoop);
+} else {
+  initRobotBoop();
+}

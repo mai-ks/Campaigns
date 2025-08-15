@@ -15,7 +15,7 @@ export function loginUser(event) {
 
   localStorage.setItem("USER", JSON.stringify(user));  
 
-  window.location.assign("../pages/banner.html"); // Redirect to home page
+  window.location.assign("../pages/account.html"); // Redirect to home page
 }
 export  function initHamburger() {
     const hamburger = document.querySelector(".hamburger");

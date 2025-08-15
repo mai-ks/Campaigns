@@ -28,75 +28,97 @@
         </nav>
       </div>
     </header>
-     <!-- לוח הקמפיינים -->
-    
-        <!-- מסגרת הקמפיינים -->
-        <div class="campaigns-container">
-          <!-- עמודה שמאלית - כרטיסיות הקמפיינים -->
-          <div class="campaigns-sidebar">
-              <div class="sidebar-header">
-                  <h2>Olivetto Campaigns</h2>
-                  <button class="new-campaign-btn" onclick="showContent('new')">+ New Campaign</button>
-              </div>
-              
-              <div class="campaigns-list">
-                  <div class="option-card active" onclick="showContent('analytics')">
-                      <div class="icon">📊</div>
-                      <h3>Website Analytics</h3>
-                      <p>Traffic, visitors, and page views data</p>
-                  </div>
+     <!-- ========== OLIVETTO DASHBOARD ========== -->
+<main class="dashboard">
+  <!-- Sidebar Tabs (left) -->
+  <aside class="dash-sidebar" aria-label="Dashboard sections">
+    <div class="brand">
+      <img src="/images/olivettologo.svg" alt="Olivetto logo" class="brand-logo" />
+      <div class="brand-meta">
+        <h2>Olivetto</h2>
+        <p>Italian Restaurant</p>
+      </div>
+    </div>
 
-                  <div class="option-card" onclick="showContent('social')">
-                      <div class="icon">📱</div>
-                      <h3>Social Media Performance</h3>
-                      <p>Instagram, Facebook engagement metrics</p>
-                  </div>
+    <nav class="dash-tabs" role="tablist" aria-orientation="vertical">
+      <button class="tab-btn is-active" data-target="panel-analytics"  role="tab" aria-selected="true">📈 אנליטיקס</button>
+      <button class="tab-btn"            data-target="panel-social"     role="tab" aria-selected="false">#️⃣ דאטה רשתות חברתיות</button>
+      <button class="tab-btn"            data-target="panel-customers"  role="tab" aria-selected="false">👤 Customer Insights</button>
+      <button class="tab-btn"            data-target="panel-reviews"    role="tab" aria-selected="false">⭐ Reviews & Feedback</button>
+    </nav>
+  </aside>
 
-                  <div class="option-card" onclick="showContent('reservations')">
-                      <div class="icon">📅</div>
-                      <h3>Reservations Report</h3>
-                      <p>Booking trends and customer data</p>
-                  </div>
+  <!-- Content (right) -->
+  <section class="dash-content">
+    <!-- כותרת עליונה קטנה -->
+    <header class="content-header">
+      <h1>Olivetto – Campaigns Dashboard</h1>
+      <p>Manage, analyze and optimize your restaurant campaigns</p>
+    </header>
 
-                  <div class="option-card" onclick="showContent('revenue')">
-                      <div class="icon">💰</div>
-                      <h3>Revenue Analysis</h3>
-                      <p>Sales performance and profit margins</p>
-                  </div>
+    <!-- Panels -->
+    <div id="panel-analytics"  class="panel is-active" role="tabpanel">
+      <h3>אנליטיקס</h3>
+      <div class="cards-grid">
+        <article class="kpi-card"><h4>Visits</h4><p class="kpi">12,480</p><span class="delta up">+8.2%</span></article>
+        <article class="kpi-card"><h4>CTR</h4><p class="kpi">3.7%</p><span class="delta up">+0.4%</span></article>
+        <article class="kpi-card"><h4>Bookings</h4><p class="kpi">312</p><span class="delta down">-1.2%</span></article>
+      </div>
+      <div class="panel-card">
+        <h4>Traffic Sources</h4>
+        <p>Google 54% • Instagram 28% • Direct 12% • Other 6%</p>
+      </div>
+    </div>
 
-                  <div class="option-card" onclick="showContent('campaigns')">
-                      <div class="icon">🎯</div>
-                      <h3>Active Campaigns</h3>
-                      <p>Current marketing campaigns status</p>
-                  </div>
+    <div id="panel-social" class="panel" role="tabpanel" hidden>
+      <h3>דאטה רשתות חברתיות</h3>
+      <div class="cards-grid">
+        <article class="kpi-card"><h4>IG Followers</h4><p class="kpi">18.2K</p><span class="delta up">+320</span></article>
+        <article class="kpi-card"><h4>Engagement</h4><p class="kpi">5.1%</p><span class="delta up">+0.6%</span></article>
+        <article class="kpi-card"><h4>Top Post</h4><p class="kpi">🍝 Pappardelle</p></article>
+      </div>
+      <div class="panel-card">
+        <h4>Mentions & Hashtags</h4>
+        <p>#olivetto #italianfood #pasta #telaviv</p>
+      </div>
+    </div>
 
-                  <div class="option-card" onclick="showContent('customers')">
-                      <div class="icon">👥</div>
-                      <h3>Customer Insights</h3>
-                      <p>Customer demographics and behavior</p>
-                  </div>
+    <div id="panel-customers" class="panel" role="tabpanel" hidden>
+      <h3>Customer Insights</h3>
+      <div class="panel-card">
+        <h4>Segments</h4>
+        <ul>
+          <li>Local Foodies (25–34) – frequent lunch bookings</li>
+          <li>Families (35–44) – weekend dinners</li>
+          <li>Tourists – high interest in tasting menu</li>
+        </ul>
+      </div>
+      <div class="panel-card">
+        <h4>Recommendations</h4>
+        <p>Push “Lunch Special” ads 11:00–13:00 • Retarget weekend diners • Promote wine-pairing posts on IG Stories</p>
+      </div>
+    </div>
 
-                  <div class="option-card" onclick="showContent('reviews')">
-                      <div class="icon">⭐</div>
-                      <h3>Reviews & Feedback</h3>
-                      <p>Customer reviews and ratings analysis</p>
-                  </div>
-              </div>
-          </div>
+    <div id="panel-reviews" class="panel" role="tabpanel" hidden>
+      <h3>Reviews & Feedback</h3>
+      <div class="panel-card">
+        <h4>Latest</h4>
+        <ul>
+          <li>“Best ravioli in town!” — 5★</li>
+          <li>“Service was quick, will come back.” — 4★</li>
+          <li>“Loved the tiramisu.” — 5★</li>
+        </ul>
+      </div>
+      <div class="panel-card">
+        <h4>Average Rating</h4>
+        <p class="kpi">4.6 / 5</p>
+      </div>
+    </div>
+  </section>
+</main>
+ <!-- אזור הבאנרים של Olivetto -->
 
-<!-- עמודה ימנית - תצוגת פרטי הקמפיין -->
-            <div class="campaign-details">
-                <div id="campaign-content" class="content-area">
-                    <!-- תוכן ברירת מחדל -->
-                    <div class="welcome-content">
-                        <div class="welcome-icon">👋</div>
-                        <h2>Welcome to Your Campaigns</h2>
-                        <p>Select a campaign from the left to view details and analytics</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+<!-- ===== /OLIVETTO — My Banners ===== -->
 
 
           <!-- צד ימין - טיימליין מורחב
