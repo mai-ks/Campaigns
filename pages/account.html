@@ -29,49 +29,75 @@
       </div>
     </header>
      <!-- לוח הקמפיינים -->
-    <main class="campaigns-dashboard">
-      <div class="dashboard-header">
-          <h1>My Campaigns Dashboard</h1>
-          <p>Manage and analyze your active campaigns</p>
-      </div>
-
-      <div class="dashboard-container">
-          <!-- צד שמאל - קמפיין קיים -->
-          <div class="existing-campaign">
-              <div class="company-header">
-                  <div class="company-logo">O</div>
-                  <div class="company-info">
-                      <h2>Olivetto</h2>
-                      <div class="subtitle">Italian Food Import & Marketing</div>
-                  </div>
+    
+        <!-- מסגרת הקמפיינים -->
+        <div class="campaigns-container">
+          <!-- עמודה שמאלית - כרטיסיות הקמפיינים -->
+          <div class="campaigns-sidebar">
+              <div class="sidebar-header">
+                  <h2>Olivetto Campaigns</h2>
+                  <button class="new-campaign-btn" onclick="showContent('new')">+ New Campaign</button>
               </div>
-
-              <div class="campaign-options">
-                  <div class="option-card" data-panel="panel-new">
-                      <div class="icon">✨</div>
-                      <h3>Create New Campaign</h3>
-                      <p>Start a fresh campaign with new goals and targets</p>
-                  </div>
-
-                  <div class="option-card" onclick="selectOption('existing')">
+              
+              <div class="campaigns-list">
+                  <div class="option-card active" onclick="showContent('analytics')">
                       <div class="icon">📊</div>
-                      <h3>Edit Existing Campaign</h3>
-                      <p>Improve and optimize active campaigns or update settings</p>
+                      <h3>Website Analytics</h3>
+                      <p>Traffic, visitors, and page views data</p>
                   </div>
 
-                  <div class="option-card" onclick="selectOption('analyze')">
-                      <div class="icon">📈</div>
-                      <h3>Performance Analytics</h3>
-                      <p>Detailed review of results and ROI analysis</p>
+                  <div class="option-card" onclick="showContent('social')">
+                      <div class="icon">📱</div>
+                      <h3>Social Media Performance</h3>
+                      <p>Instagram, Facebook engagement metrics</p>
                   </div>
 
-                  <div class="option-card" onclick="selectOption('duplicate')">
-                      <div class="icon">📋</div>
-                      <h3>Duplicate Successful Campaign</h3>
-                      <p>Create a new campaign based on existing successful one</p>
+                  <div class="option-card" onclick="showContent('reservations')">
+                      <div class="icon">📅</div>
+                      <h3>Reservations Report</h3>
+                      <p>Booking trends and customer data</p>
+                  </div>
+
+                  <div class="option-card" onclick="showContent('revenue')">
+                      <div class="icon">💰</div>
+                      <h3>Revenue Analysis</h3>
+                      <p>Sales performance and profit margins</p>
+                  </div>
+
+                  <div class="option-card" onclick="showContent('campaigns')">
+                      <div class="icon">🎯</div>
+                      <h3>Active Campaigns</h3>
+                      <p>Current marketing campaigns status</p>
+                  </div>
+
+                  <div class="option-card" onclick="showContent('customers')">
+                      <div class="icon">👥</div>
+                      <h3>Customer Insights</h3>
+                      <p>Customer demographics and behavior</p>
+                  </div>
+
+                  <div class="option-card" onclick="showContent('reviews')">
+                      <div class="icon">⭐</div>
+                      <h3>Reviews & Feedback</h3>
+                      <p>Customer reviews and ratings analysis</p>
                   </div>
               </div>
           </div>
+
+<!-- עמודה ימנית - תצוגת פרטי הקמפיין -->
+            <div class="campaign-details">
+                <div id="campaign-content" class="content-area">
+                    <!-- תוכן ברירת מחדל -->
+                    <div class="welcome-content">
+                        <div class="welcome-icon">👋</div>
+                        <h2>Welcome to Your Campaigns</h2>
+                        <p>Select a campaign from the left to view details and analytics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
 
           <!-- צד ימין - טיימליין מורחב
           <div class="timeline-section">
@@ -115,27 +141,27 @@
               </div>
           </div>
       </div> -->
-    </main>
-
-    <script type="module" src="/scripts/account/index.js"></script>
-</body>
-
-<footer class="site-footer">
-  <div class="footer-box">
-    <div class="footer-inner">
-      <div class="logo-wrapper">
-        <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
-      </div>
-      <div class="footer-links">
-        <a href="#">Banner Editor</a>
-        <a href="#">Marketing Page Editor</a>
-        <a href="#">Landing Page Editor</a>
-        <a href="#">My Campaigns</a>
-      </div>
-      <div class="footer-legal">
-        <p>&copy; 2025 Kampa. All rights reserved.</p>
-      </div>
-    </div>
-  </div>
-</footer>
+    
+      
+      <footer class="site-footer">
+        <div class="footer-box">
+          <div class="footer-inner">
+            <div class="logo-wrapper">
+              <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
+            </div>
+            <div class="footer-links">
+              <a href="#">Banner Editor</a>
+              <a href="#">Marketing Page Editor</a>
+              <a href="#">Landing Page Editor</a>
+              <a href="#">My Campaigns</a>
+            </div>
+            <div class="footer-legal">
+              <p>&copy; 2025 Kampa. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+          <script type="module" src="/scripts/account/index.js"></script>
+      </body>
 </html>
