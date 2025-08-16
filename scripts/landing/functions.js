@@ -1,10 +1,13 @@
 // --- מאגר התבניות ---
+// --- תבניות עם תמונת ברירת-מחדל ומחלקות יפות ---
 export const templates = {
   template1: `
     <div class="preview-content" id="lp-root">
+      <img id="lp-image" class="hero-img"
+           src="https://picsum.photos/seed/kampa/960/540"
+           alt="תמונה לדוגמה">
       <h1 id="lp-title">כותרת ברירת מחדל</h1>
       <p id="lp-paragraph">פסקת טקסט לדוגמה.</p>
-      <img id="lp-image" src="https://via.placeholder.com/400x200" alt="תמונה">
       <a id="lp-cta" href="#" class="cta">לחץ כאן</a>
       <div id="lp-lead-form"></div>
     </div>
@@ -12,7 +15,8 @@ export const templates = {
   template2: `
     <div class="preview-content" id="lp-root">
       <h1 id="lp-title">Template 2 Title</h1>
-      <img id="lp-image" src="https://via.placeholder.com/300x300" alt="Placeholder">
+      <img id="lp-image" class="hero-img"
+           src="https://picsum.photos/seed/kampa2/960/540" alt="">
       <p id="lp-paragraph">Some description goes here.</p>
       <a id="lp-cta" href="#" class="cta">Sign Up</a>
       <div id="lp-lead-form"></div>
@@ -20,7 +24,8 @@ export const templates = {
   `,
   template3: `
     <div class="preview-content" id="lp-root">
-      <img id="lp-image" src="https://via.placeholder.com/600x150" alt="Banner">
+      <img id="lp-image" class="hero-img"
+           src="https://picsum.photos/seed/kampa3/960/540" alt="">
       <h1 id="lp-title">Welcome!</h1>
       <p id="lp-paragraph">Join us now.</p>
       <a id="lp-cta" href="#" class="cta">Get Started</a>
@@ -28,6 +33,7 @@ export const templates = {
     </div>
   `
 };
+
 
 /**
  * טוען תבנית לתוך previewArea ומחזיר את האלמנטים הקשורים
@@ -54,11 +60,17 @@ function bindPreviewElements() {
  * מחבר אירועי תוכן (text, link, image)
  */
 export function bindContentEvents(inputs, elements) {
-  inputs.title.oninput    = () => elements.lpTitle.textContent = inputs.title.value;
-  inputs.paragraph.oninput = () => elements.lpPara.textContent = inputs.paragraph.value;
-  inputs.ctaText.oninput   = () => elements.lpCta.textContent = inputs.ctaText.value;
-  inputs.ctaLink.oninput   = () => elements.lpCta.href = inputs.ctaLink.value;
-  inputs.imageUrl.oninput  = () => elements.lpImage.src = inputs.imageUrl.value;
+  inputs.title.oninput     = () => elements.lpTitle.textContent = inputs.title.value;
+  inputs.paragraph.oninput = () => elements.lpPara.textContent  = inputs.paragraph.value;
+  inputs.ctaText.oninput   = () => elements.lpCta.textContent   = inputs.ctaText.value;
+  inputs.ctaLink.oninput   = () => elements.lpCta.href          = inputs.ctaLink.value;
+
+  // עדכון תמונה עם ברירת-מחדל כששדה ריק
+  const fallback = "https://picsum.photos/seed/kampa/960/540";
+  inputs.imageUrl.oninput  = () => {
+    const url = inputs.imageUrl.value.trim();
+    elements.lpImage.src = url || fallback;
+  };
 }
 
 /**

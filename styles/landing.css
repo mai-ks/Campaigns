@@ -1,541 +1,207 @@
-:root {
-  --orange:    #ff7f11;
-  --blue:      #007BFF;
-  --gray:      rgba(90,87,80,0.5);
-  --radius:    14px;
-  --bg-light:  #f0f4f8;
-  --text-dark: #111;
-  --text-light:#555;
-  --card-bg:   #fff;
-}
-
-/* רקע כללי */
-body {
-  margin: 0;
-  background: white; 
-  direction: rtl;
-  font-family: system-ui, sans-serif;
-  color: var(--text-dark);
-}
-
-/* פס עליון */
-.top-bar {
-  background: var(--gray);
-  border-radius: var(--radius);
-  padding: 0.75rem 1rem;
-  /* מחליפים margin: עליון/ימין/תחתון/שמאל */
-  margin: 0 1cm 1rem 1cm; /* אין מרווח עליון, יש 1rem מתחת */
-  text-align: center;
-}
-.top-bar-text {
-  margin: 0;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-/* ניווט סטיקי */
-.main-header {
-  position: sticky;
-  top: 0;
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  margin: 0 1cm 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  z-index: 10;
-}
-.nav-wrapper {
-  display: flex;
-  flex-direction: row-reverse; /* לוגו מימין, ניווט משמאל */
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-.nav-logo {
-  height: 32px;
-  cursor: pointer;
-  transition: transform .2s ease;
-}
-.nav-logo:hover {
-  transform: translateY(-2px) scale(1.05);
-}
-.main-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 2rem;
-}
-.main-nav a {
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--text-dark);
-  transition: color .2s, transform .2s;
-}
-.main-nav a:hover {
-  color: var(--orange);
-  transform: translateY(-2px);
-}
-
-
-.container {
-  display: flex;
-  padding: 1rem;
-  gap: 1rem;
-}
-
-.editor-panel {
-  flex: 1;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  max-width: 300px;
-}
-
-.preview-panel {
-  flex: 2;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  min-height: 600px;
-}
-
-.preview-content {
-  padding: 2rem;
-  border: 1px dashed #ccc;
-}
-
-.preview-content h1 {
-  margin-bottom: 1rem;
-}
-
-.preview-content p {
-  margin-bottom: 1.5rem;
-}
-
-.preview-content .cta {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-  background: #f90;
-  color: #fff;
-}
-
-.lead-form {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.lead-form input {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-}
-
-
-
-/* footer*/
-.site-footer {
-  background: white; /* או השאר את ה־rgba שברצונך */
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-}
-
-.footer-box {
-  width: 100%;
-  max-width: 1500px;           /* תואם להירו */
-  padding: 0 1cm;             /* אותו גריד אופקי כמו בשאר הקטעים */
-  box-sizing: border-box;
-  margin-bottom: 0;
-}
-
-.footer-inner {
-  background: rgba(90,87,80,0.5); /* הרקע של הקופסה */
-  border-radius: 14px;            /* פינות מעוגלות */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8rem;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 1rem;
-  position: relative;
-  backdrop-filter: blur(6px);   
-  max-width: 1400px;              /* תואם לגריד של שאר הסקשנים */
-  /* אם רוצים אפקט מטושטש מתחת */
-}
-
-/* מרכזי: לוגו, קישורים מתחת, טקסט חוקי מתחת */
-.footer-inner.centered {
-  background: rgba(90,87,80,0.5);
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 1rem;
-  position: relative;
-  backdrop-filter: blur(6px);
-  color: #fff;
-}
-
-.logo-wrapper {
-  flex: 0 0 auto;
-}
-
-.footer-logo {
-  height: 60px;
-  width: auto;
-  display: block;
-  transition: transform .25s ease, filter .25s ease;
-  cursor: pointer;
-}
-
-.footer-logo:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-weight: 600;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  padding: 4px 0;
-  transition: opacity .2s;
-}
-
-.footer-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 3px;
-
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform .25s ease;
-}
-
-.footer-links a:hover::after {
-  transform: scaleX(1);
-}
-
-.footer-legal {
-  font-size: .75rem;
-  opacity: .8;
-  text-align: center;
-  flex: 1 1 100%;
-  margin-top: 4px;
-}
-
-
-/* נייד – תפריט המבורגר */
-/* ========== 2B) כפתור המבורגר ========== */
-/* כפתור המבורגר */
+/* =========================
+   Variables
+========================= */
 :root{
-  --drawerTop: 0px; 
-} 
+  /* רוחב לשונית כלי העיצוב (שנה ידנית) */
+  --editor-w: 480px;
 
-/* כפתור המבורגר */
-.hamburger{
-  display:none; background:transparent; border:none; cursor:pointer;
-  padding:6px; flex-direction:column; gap:4px; align-items:center;
-}
-.hamburger .bar{
-  width:26px; height:3px; background:#333; border-radius:2px;
-  transition:transform .3s ease, opacity .3s ease;
-}
-.hamburger.open .bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
-.hamburger.open .bar:nth-child(2){ opacity:0; }
-.hamburger.open .bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
-
-/* המגירה – מצד ימין, חצי רוחב מסך */
-.mobile-menu{
-  position: fixed;
-  top: var(--navH);        /* מתחיל מתחת לנאב */
-  right: 0;
-  bottom: 0;
-  width: 50vw;            /* חצי רוחב מסך */
-  max-width: 420px;       /* תקרה נוחה */
-  min-width: 300px;       /* שלא יהיה צר מדי */
-  top: calc(var(--drawerTop) - 10px); 
-  background: rgba(255,255,255,0.98);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-radius: 16px 0 0 0;
-  padding: 16px;
-  box-shadow: -24px 0 60px -20px rgba(0,0,0,.25);
-  z-index: 1200;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  overflow-y: auto;
-
-  transform: translateX(100%);   /* מוסתר מחוץ למסך */
-  transition: transform .28s ease;
-  opacity: 1;                    /* לא מסתירים עם אטימות, רק עם טרנספורם */
-}
-.mobile-menu.open{ transform: translateX(0); }
-
-/* כפתור X בפנים (אופציונלי) */
-.mobile-menu .close-drawer{
-  align-self: flex-end;
-  background: transparent;
-  border: 0;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  margin-bottom: 8px;
-}
-
-/* קישורים במגירה */
-.mobile-menu a{
-  display:block; padding:14px 16px; border-radius:10px;
-  background: rgba(0,0,0,0.04); color:#222; text-decoration:none;
-  font-weight:700; letter-spacing:.03em;
-  transition: background .2s ease, transform .2s ease;
-}
-.mobile-menu a + a{ margin-top:8px; }
-.mobile-menu a:active{ transform: scale(.98); }
-
-/* שכבת כהות מאחורי המגירה (רק מתחת לנאב) */
-.mobile-scrim{
-  position: fixed;
-  top: var(--navH);
-  left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,.28);
-  z-index: 1100;
-  opacity: 0; pointer-events: none;
-  transition: opacity .25s ease;
-}
-.mobile-scrim.open{ opacity: 1; pointer-events: auto; }
-
-/* מובייל: מסתירים תפריט רגיל, מראים המבורגר */
-@media (max-width:900px){
-  .main-nav{ display:none; }
-  .hamburger{ display:flex; }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:root {
+  /* צבעים וכללי */
   --orange:#ff7f11;
-  --bg: #fafafb;
+  --blue:#007BFF;
+  --gray:rgba(90,87,80,0.5);
+  --radius:14px;
+
+  /* תאימות לשמות ישנים/חדשים */
+  --bg-light:#f0f4f8;
+  --bg:#fafafb;
+  --card-bg:#fff;
   --card:#fff;
-  --ink:#111;
-  --muted:#6b7280;
-  --radius: 18px;
-  --shadow: 0 24px 60px rgba(0,0,0,.08), 0 6px 18px rgba(0,0,0,.05);
-  --ring: 0 0 0 3px rgba(255,127,17,.18);
+  --text-dark:#111;
+  --text-light:#555;
+
+  /* עזר למובייל */
+  --navH: 64px;
+  --drawerTop: 0px;
 }
 
-/* רקע כללי רך */
+/* =========================
+   Base
+========================= */
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ height:100%; }
 body{
+  margin:0;
+  direction:rtl;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text-dark);
   background:
     radial-gradient(1200px 400px at 50% -200px, rgba(0,0,0,.06), transparent 60%),
     var(--bg);
-  color: var(--ink);
 }
 
-/* מכולה דו־עמודתית */
+/* =========================
+   Top bar & Header
+========================= */
+.top-bar{
+  background:var(--gray);
+  color:#111;
+  border-radius:var(--radius);
+  padding:.75rem 1rem;
+  max-width: clamp(960px,92vw,1280px);
+  margin:0 auto 12px;
+  text-align:center;
+}
+.top-bar-text{ margin:0; font-weight:700; font-size:.95rem; }
+
+.main-header{ position:sticky; top:0; z-index:10; background:transparent; }
+.nav-wrapper{
+  max-width: clamp(960px,92vw,1280px);
+  margin:0 auto;
+  background:var(--card-bg);
+  border-radius:16px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  padding:.9rem 1rem;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.nav-logo{ height:32px; cursor:pointer; transition:transform .2s ease; }
+.nav-logo:hover{ transform:translateY(-1px) scale(1.04); }
+.main-nav ul{ list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; }
+.main-nav a{ text-decoration:none; font-weight:700; color:var(--text-dark); }
+.main-nav a.active{ color:var(--orange); }
+
+/* המבורגר + מגירה */
+.hamburger{ display:none; background:transparent; border:0; padding:6px; flex-direction:column; gap:4px; }
+.hamburger .bar{ width:26px; height:3px; background:#333; border-radius:2px; transition:transform .3s,opacity .3s; }
+.hamburger.open .bar:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.hamburger.open .bar:nth-child(2){ opacity:0; }
+.hamburger.open .bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+.mobile-menu{
+  position:fixed; right:0; left:auto; top:var(--navH); bottom:0;
+  width:52vw; max-width:420px; min-width:300px;
+  background:#fff; border-radius:16px 0 0 0; padding:16px;
+  box-shadow:-24px 0 60px -20px rgba(0,0,0,.25);
+  display:flex; flex-direction:column; gap:10px;
+  transform:translateX(100%); transition:transform .28s ease; z-index:1200;
+}
+.mobile-menu.open{ transform:translateX(0); }
+.mobile-menu .close-drawer{ align-self:flex-end; background:none; border:0; font-size:24px; cursor:pointer; }
+.mobile-menu a{ display:block; padding:14px 16px; border-radius:10px; background:#f6f7f9; color:#222; text-decoration:none; font-weight:800; }
+.mobile-scrim{ position:fixed; inset:0; background:rgba(0,0,0,.28); opacity:0; pointer-events:none; transition:opacity .25s; z-index:1100; }
+.mobile-scrim.open{ opacity:1; pointer-events:auto; }
+
+/* =========================
+   Layout
+========================= */
 .container{
-  max-width: 1200px;
-  margin: 24px auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1.2fr .9fr; /* תצוגה גדולה משמאל, עורך מימין */
-  gap: 28px;
+  max-width: clamp(960px,92vw,1280px);
+  margin:24px auto;
+  padding:0 clamp(12px,2vw,20px);
+  display:grid;
+  /* עמודה שמאלית = תצוגה, ימנית = כלי העיצוב */
+  grid-template-columns: minmax(0,1fr) clamp(320px,34vw, var(--editor-w));
+  gap: clamp(16px,2vw,28px);
+  align-items:start;
 }
+.preview-panel, .editor-panel{ min-width:0; }
 
-/* כותרות פאנלים */
-.panel-title{
-  margin: 0 0 18px;
-  font-size: 28px;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: .2px;
-}
-
-/* ====== פאנל תצוגה ====== */
+/* =========================
+   Preview
+========================= */
 .preview-panel{
-  background: transparent;
-  padding: 0;
-  min-height: 520px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 20px 50px rgba(2,8,23,.06);
+  padding:1rem 1rem 1.25rem;
+  min-height:520px;
 }
 #previewArea{
-  width: 100%;
+  border:2px dashed #e5e7eb;
+  border-radius:12px;
+  min-height:420px;
+  display:grid; place-items:center;
+  padding:1rem;
+  background:radial-gradient(ellipse at top left,#ffffff,#f9fbff);
 }
-
-/* כרטיס התצוגה כמו בצילום */
-.lp-card{
-  background: var(--card);
-  border-radius: 26px;
-  box-shadow: var(--shadow);
-  padding: 34px 40px;
-  min-height: 220px;
-  display: grid;
-  grid-template-columns: 1fr;
-  align-content: center;
+.preview-content{ display:grid; gap:.9rem; text-align:center; max-width:min(880px,95%); }
+.preview-content h1{ margin:.2rem 0; font-size:clamp(24px,4.2vw,46px); }
+.preview-content p{ margin:0 0 .6rem; color:var(--text-light); }
+.hero-img{ width:100%; max-width:860px; aspect-ratio:16/9; object-fit:cover; border-radius:14px; box-shadow:0 8px 24px rgba(15,23,42,.12); margin-bottom:.75rem; }
+.preview-content .cta{
+  display:inline-block; padding:.7rem 1.1rem; border-radius:999px;
+  background:var(--orange); color:#fff; text-decoration:none; font-weight:800;
+  transition:transform .06s, box-shadow .15s;
 }
+.preview-content .cta:hover{ box-shadow:0 6px 16px rgba(255,127,17,.3); }
+.preview-content .cta:active{ transform:translateY(1px); }
 
-/* טיפוגרפיה בכרטיס */
-.lp-title{
-  margin: 0 0 10px;
-  font-size: clamp(28px, 3.2vw, 46px);
-  font-weight: 900;
-  text-align: right;
-}
-
-.lp-paragraph{
-  margin: 0 0 20px;
-  font-size: 18px;
-  color: var(--muted);
-  text-align: right;
-}
-
-/* תמונה בתוך הכרטיס (אופציונלית) */
-.lp-image{
-  width: 100%;
-  max-width: 400px;
-  border-radius: 16px;
-  display: block;
-  object-fit: cover;
-  margin: 14px 0 0 auto; /* מיושר לימין */
-}
-
-/* כפתור CTA */
-.lp-cta{
-  display: inline-block;
-  margin-top: 16px;
-  padding: 12px 20px;
-  border-radius: 12px;
-  background: var(--orange);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 800;
-  box-shadow: 0 10px 20px rgba(255,127,17,.18);
-  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-}
-.lp-cta:hover{ transform: translateY(-1px); box-shadow: 0 12px 24px rgba(255,127,17,.22); }
-.lp-cta:active{ transform: translateY(0); opacity:.9; }
-
-/* ====== פאנל העורך ====== */
+/* =========================
+   Editor panel
+========================= */
 .editor-panel{
-  background: var(--card);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  padding: 22px 20px;
-  position: sticky;
-  top: 16px; /* נשאר נראה בגלילה */
-  align-self: start;
+  width:100%;
+  max-width:none !important;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 20px 50px rgba(2,8,23,.08);
+  padding:22px 20px;
+  position:sticky; top:16px;
 }
-
-.editor-section{ margin-bottom: 18px; }
-.editor-section > header h3{
-  margin: 0 0 10px;
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--muted);
-  letter-spacing: .3px;
+.panel-title{ margin:0 0 18px; font:800 28px/1.2 inherit; }
+.editor-section{
+  background:#fbfdff; border:1px solid #e5e7eb;
+  border-radius:12px; padding:.9rem; margin-bottom:1rem;
 }
-
-/* שדות */
-.editor-panel label{
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: #444;
-  margin: 10px 0 6px;
-}
+.editor-section > header h3{ margin:0 0 .6rem; font:800 16px/1.2 inherit; color:#6b7280; }
+.editor-panel label{ display:block; margin:.35rem 0 .2rem; font-size:.9rem; font-weight:700; color:#444; }
 .editor-panel input[type="text"],
 .editor-panel input[type="url"],
 .editor-panel input[type="color"],
 .editor-panel textarea,
 .editor-panel select{
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 14px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #fff;
-  font: inherit;
-  outline: none;
-  transition: box-shadow .15s ease, border-color .15s ease, background .15s ease;
+  width:100%; padding:.7rem .8rem; border:1px solid #e5e7eb; border-radius:12px; background:#fff; outline:none;
+  transition:border-color .15s, box-shadow .15s;
 }
-.editor-panel textarea{ min-height: 110px; resize: vertical; }
-.editor-panel input:focus,
-.editor-panel textarea:focus,
-.editor-panel select:focus{
-  border-color: rgba(255,127,17,.55);
-  box-shadow: var(--ring);
+.editor-panel textarea{ min-height:100px; resize:vertical; }
+.editor-panel input:focus, .editor-panel textarea:focus, .editor-panel select:focus{
+  border-color:rgba(255,127,17,.55); box-shadow:0 0 0 3px rgba(255,127,17,.18);
 }
+#saveBtn,#loadBtn{ width:100%; padding:.8rem 1rem; border:0; border-radius:12px; font-weight:800; cursor:pointer; margin-top:.5rem; }
+#saveBtn{ background:#ff7f11; color:#fff; }
+#loadBtn{ background:#111; color:#fff; }
 
-/* כפתורי שמירה/טעינה */
-#saveBtn,#loadBtn{
-  width: 100%;
-  padding: 12px 16px;
-  border: 0;
-  border-radius: 12px;
-  font-weight: 800;
-  cursor: pointer;
-  margin-top: 8px;
-}
-#saveBtn{ background: var(--orange); color: #fff; }
-#loadBtn{ background: #111; color:#fff; }
+/* טופס לידים בתוך ה־Preview */
+.lead-form{ margin-top:12px; display:grid; grid-template-columns:1fr 1fr auto; gap:10px; }
+.lead-form input{ padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; }
+.lead-form button{ padding:10px 16px; border:0; border-radius:10px; background:#111; color:#fff; font-weight:800; }
 
-/* טופס לידים */
-.lead-form{
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 10px;
-}
-.lead-form input{
-  padding: 10px 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-}
-.lead-form button{
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 10px;
-  background: #111;
-  color: #fff;
-  font-weight: 800;
-}
+/* =========================
+   Footer
+========================= */
+.site-footer{ background:transparent; padding:28px 0; display:flex; justify-content:center; }
+.footer-box{ width:100%; max-width: clamp(960px,92vw,1280px); padding:0 20px; }
+.footer-inner{ background:rgba(90,87,80,.5); border-radius:14px; display:flex; flex-wrap:wrap; gap:2rem; align-items:center; justify-content:space-between; padding:1.5rem 1rem; color:#fff; }
+.footer-inner.centered{ flex-direction:column; gap:1rem; }
+.footer-logo{ height:60px; display:block; transition:transform .25s, filter .25s; cursor:pointer; }
+.footer-logo:hover{ transform:scale(1.05); filter:brightness(1.1); }
+.footer-links{ display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center; font-weight:600; }
+.footer-links a{ color:#fff; text-decoration:none; position:relative; padding:4px 0; }
+.footer-links a::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:3px; border-radius:2px; transform:scaleX(0); transform-origin:center; transition:transform .25s; background:currentColor; }
+.footer-links a:hover::after{ transform:scaleX(1); }
+.footer-legal{ font-size:.75rem; opacity:.85; text-align:center; flex:1 1 100%; }
 
-/* רספונסיביות */
+/* =========================
+   Responsive
+========================= */
+@media (max-width:1220px){
+  :root{ --editor-w: 420px; } /* מצמצם קצת כשאין מקום */
+}
+@media (max-width:900px){
+  .main-nav{ display:none; }
+  .hamburger{ display:flex; }
+}
 @media (max-width:1100px){
   .container{ grid-template-columns: 1fr; }
-  .editor-panel{ position: static; }
+  .editor-panel{ position:static; order:2; }
+  .preview-panel{ order:1; }
 }
-

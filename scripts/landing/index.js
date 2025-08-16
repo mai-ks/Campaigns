@@ -91,7 +91,17 @@ function init() {
 }
 
 // הפעל אחרי טעינת ה-DOM
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+  // ברירת-מחדל נחמדה כשפותחים
+  titleInput.value = "כותרת ברירת מחדל";
+  paragraphInput.value = "פסקת טקסט לדוגמה.";
+  ctaTextInput.value = "לחץ כאן";
+  ctaLinkInput.value = "#";
+  imageUrlInput.value = ""; // ריק => תיטען תמונת ברירת-מחדל מהפונקציה
+
+  // המשך init שלך כרגיל
+  init();
+});
 
 
 
