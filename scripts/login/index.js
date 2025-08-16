@@ -82,32 +82,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ----- Robot Boop Animation -----
+// ----- Robot Boop Animation - עבור התמונה הקיימת -----
 function initRobotBoop() {
   const robot = document.querySelector('.robot');
-  const img   = robot?.querySelector('.robot-image');
-  if (!robot || !img) return;
+  const img = robot?.querySelector('.robot-image');
+  if (!robot || !img) {
+      console.log('Robot elements not found');
+      return;
+  }
+
+  let isAnimating = false; // מונע אנימציות חופפות
+  let animationTimeout = null;
 
   const boop = () => {
-    // ריסט לאנימציה כדי שתרוץ כל פעם מחדש
-    robot.classList.remove('boop');
-    void robot.offsetWidth; // reflow
-    robot.classList.add('boop');
-    setTimeout(() => robot.classList.remove('boop'), 600);
+      // אם כבר רצה אנימציה, בטל אותה ותתחיל מחדש
+      if (isAnimating) {
+          clearTimeout(animationTimeout);
+          robot.classList.remove('boop');
+          void robot.offsetWidth; // force reflow
+      }
+      
+      isAnimating = true;
+      
+      // הוסף את הקלאס שמפעיל את האנימציה
+      robot.classList.add('boop');
+      
+      // הסר את הקלאס אחרי סיום האנימציה
+      animationTimeout = setTimeout(() => {
+          robot.classList.remove('boop');
+          isAnimating = false;
+      }, 700); // זמן האנימציה + קצת מרווח
+      
+      console.log('🤖 Robot booped!');
   };
 
-  // קליק/טאץ'/הובר
-  ['pointerdown','click','touchstart','mouseenter'].forEach(evt => {
-    img.addEventListener(evt, boop, { passive: true });
+  // מאזין לקליקים על התמונה
+  img.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      boop();
   });
 
-  // נגישות במקלדת
-  robot.setAttribute('tabindex','0');
-  robot.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') boop();
+  // מאזין לנגיעות במובייל
+  img.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      boop();
+  }, { passive: false });
+
+  // מאזין למקלדת (נגישות)
+  robot.setAttribute('tabindex', '0');
+  robot.setAttribute('role', 'button');
+  robot.setAttribute('aria-label', 'לחץ לאנימציית רובוט');
+  
+  robot.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          boop();
+      }
   });
+
+  console.log('Robot animation initialized! 🤖✨');
 }
 
-// לדאוג שזה ירוץ תמיד, גם אם DOMContentLoaded כבר קרה
+// וודא שהפונקציה תרוץ כשהדף נטען
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initRobotBoop);
 } else {

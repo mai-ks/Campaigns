@@ -52,3 +52,76 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   });
   
+
+
+
+
+// ----- Robot Boop Animation -----
+// ----- Robot Boop Animation - עבור התמונה הקיימת -----
+function initRobotBoop() {
+  const robot = document.querySelector('.robot');
+  const img = robot?.querySelector('.robot-image');
+  if (!robot || !img) {
+      console.log('Robot elements not found');
+      return;
+  }
+
+  let isAnimating = false; // מונע אנימציות חופפות
+  let animationTimeout = null;
+
+  const boop = () => {
+      // אם כבר רצה אנימציה, בטל אותה ותתחיל מחדש
+      if (isAnimating) {
+          clearTimeout(animationTimeout);
+          robot.classList.remove('boop');
+          void robot.offsetWidth; // force reflow
+      }
+      
+      isAnimating = true;
+      
+      // הוסף את הקלאס שמפעיל את האנימציה
+      robot.classList.add('boop');
+      
+      // הסר את הקלאס אחרי סיום האנימציה
+      animationTimeout = setTimeout(() => {
+          robot.classList.remove('boop');
+          isAnimating = false;
+      }, 700); // זמן האנימציה + קצת מרווח
+      
+      console.log('🤖 Robot booped!');
+  };
+
+  // מאזין לקליקים על התמונה
+  img.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      boop();
+  });
+
+  // מאזין לנגיעות במובייל
+  img.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      boop();
+  }, { passive: false });
+
+  // מאזין למקלדת (נגישות)
+  robot.setAttribute('tabindex', '0');
+  robot.setAttribute('role', 'button');
+  robot.setAttribute('aria-label', 'לחץ לאנימציית רובוט');
+  
+  robot.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          boop();
+      }
+  });
+
+  console.log('Robot animation initialized! 🤖✨');
+}
+
+// וודא שהפונקציה תרוץ כשהדף נטען
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRobotBoop);
+} else {
+  initRobotBoop();
+}

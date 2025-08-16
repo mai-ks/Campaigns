@@ -368,45 +368,109 @@
 /* שה-hero יהיה עוגן למיקום מוחלט */
 .hero { position: relative; overflow: hidden; }
 
-/* מבטל כל אנימציה ישנה שעל הרובוט */
-.robot { animation: none !important; }
+/* רובוט אנימציה - עם התמונה הקיימת */
+.hero { 
+  position: relative; 
+  overflow: hidden; 
+}
 
 /* הרובוט בתחתית שמאל, קטן, מעל הכל, קולט קליקים */
-.robot{
+.robot {
   position: absolute;
   left: 12px;
   bottom: 12px;
   z-index: 1000;
+  cursor: pointer;
+  /* הסרנו את animation: none !important שהיה מבטל הכל */
 }
-.robot, .robot * { pointer-events: auto !important; }
 
-.robot-image{
+.robot, .robot * { 
+  pointer-events: auto !important; 
+}
+
+.robot-image {
   width: clamp(90px, 18vw, 140px);
   height: auto;
   display: block;
-  transform-origin: 50% 90%;
+  transform-origin: 50% 90%; /* נקודת הסיבוב בתחתית המרכז */
   filter: drop-shadow(0 8px 18px rgba(0,0,0,.18));
-  animation: none !important;   /* שלא תרוץ אנימציה ישנה */
   cursor: pointer;
+  /* מעבר עדין חזרה למצב רגיל */
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* אפקט “בופ” עדין */
-.robot:hover .robot-image,
-.robot.boop .robot-image,
-.robot:active .robot-image{
-  animation: robotBoop .55s ease-out 1;
+/* אנימציה רק כשהקלאס .boop קיים - זו התמונה שלך תזוז! */
+.robot.boop .robot-image {
+  animation: robotBoop 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 forwards;
 }
 
-@keyframes robotBoop{
-  0%   { transform: translateY(0) rotate(0); }
-  30%  { transform: translateY(-8px) rotate(-2deg); }
-  60%  { transform: translateY(0) rotate(0); }
-  80%  { transform: translateY(-4px) rotate(1.5deg); }
-  100% { transform: translateY(0) rotate(0); }
+/* האנימציה החמודה */
+@keyframes robotBoop {
+  0% { 
+      transform: translateY(0) rotate(0deg) scale(1); 
+  }
+  20% { 
+      transform: translateY(-18px) rotate(-5deg) scale(1.1); 
+  }
+  40% { 
+      transform: translateY(-12px) rotate(4deg) scale(1.06); 
+  }
+  60% { 
+      transform: translateY(-8px) rotate(-2deg) scale(1.03); 
+  }
+  80% { 
+      transform: translateY(-4px) rotate(1deg) scale(1.01); 
+  }
+  95% { 
+      transform: translateY(-1px) rotate(-0.5deg) scale(1); 
+  }
+  100% { 
+      transform: translateY(0) rotate(0deg) scale(1); 
+  }
+}
+
+/* אפקט הובר עדין - הרמה קלה */
+.robot:hover .robot-image {
+  transform: translateY(-4px) scale(1.05);
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.25));
+}
+
+/* אפקט כשלוחצים - דחיסה קלה */
+.robot:active .robot-image {
+  transform: translateY(1px) scale(0.95);
+  transition: transform 0.1s ease-out;
+}
+
+/* פוקוס לנגישות */
+.robot:focus {
+  outline: 3px solid rgba(255, 127, 17, 0.6);
+  outline-offset: 2px;
+  border-radius: 50%;
 }
 
 /* מובייל */
-@media (max-width: 900px){
-  .robot{ left: 8px; bottom: 8px; }
-  .robot-image{ width: clamp(80px, 28vw, 120px); }
+@media (max-width: 900px) {
+  .robot { 
+      left: 8px; 
+      bottom: 8px; 
+  }
+  .robot-image { 
+      width: clamp(80px, 28vw, 120px); 
+  }
+  
+  /* אנימציה קצת יותר עדינה במובייל */
+  @keyframes robotBoop {
+      0% { 
+          transform: translateY(0) rotate(0deg) scale(1); 
+      }
+      30% { 
+          transform: translateY(-12px) rotate(-3deg) scale(1.08); 
+      }
+      60% { 
+          transform: translateY(-6px) rotate(2deg) scale(1.04); 
+      }
+      100% { 
+          transform: translateY(0) rotate(0deg) scale(1); 
+      }
+  }
 }

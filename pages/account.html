@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="english" dir="ltr">
-  <head>
+<html lang="en" dir="ltr">
+    <head>
     <meta charset="UTF-8" />
     <title>Banner Editor</title>
     <link rel="stylesheet" href="/styles/account.css" />
@@ -11,12 +11,15 @@
       <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
     </div>
 
-    <!-- ניווט סטיקי -->
-    <header class="main-header">
+     <!-- ניווט סטיקי -->
+     <header class="main-header">
       <div class="nav-wrapper">
         <a href="/index.html">
           <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo" />
         </a>
+        <button class="hamburger" id="hamburger" aria-label="פתח תפריט נייד" aria-controls="mobileMenu" aria-expanded="false">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
         <nav class="main-nav">
           <ul>
             <li><a href="/pages/login.html">ACCOUNT</a></li>
@@ -26,6 +29,21 @@
             <li><a href="/pages/banner.html" class="active">BANNER EDITOR</a></li>
           </ul>
         </nav>
+        <!-- מגירת מובייל מצד ימין -->
+<nav class="mobile-menu" id="mobileMenu" hidden>
+  <button class="close-drawer" aria-label="סגור">✕</button>
+  <a href="/pages/login.html">ACCOUNT</a>
+  <a href="#">LANDING PAGE</a>
+  <a href="/pages/marketing.html">MARKETING PAGE</a>
+  <a href="/pages/banner.html">BANNER EDITOR</a>
+</nav>
+
+<!-- שכבת רקע לסגירה בלחיצה -->
+<div class="mobile-scrim" id="mobileScrim" hidden></div>
+      </div>
+    </header>
+  
+
       </div>
     </header>
      <!-- ========== OLIVETTO DASHBOARD ========== -->
@@ -41,10 +59,17 @@
     </div>
 
     <nav class="dash-tabs" role="tablist" aria-orientation="vertical">
-      <button class="tab-btn is-active" data-target="panel-analytics"  role="tab" aria-selected="true">📈 אנליטיקס</button>
-      <button class="tab-btn"            data-target="panel-social"     role="tab" aria-selected="false">#️⃣ דאטה רשתות חברתיות</button>
+      <button class="tab-btn is-active" data-target="panel-analytics"  role="tab" aria-selected="true">📈 Analytics</button>
+      <button class="tab-btn"            data-target="panel-social"     role="tab" aria-selected="false">#️⃣ Social Network Data</button>
       <button class="tab-btn"            data-target="panel-customers"  role="tab" aria-selected="false">👤 Customer Insights</button>
       <button class="tab-btn"            data-target="panel-reviews"    role="tab" aria-selected="false">⭐ Reviews & Feedback</button>
+
+
+
+      <button id="logout-btn" class="btn-logout" type="button" aria-label="Log out">
+        Log out
+      </button>
+      
     </nav>
   </aside>
 
@@ -118,51 +143,163 @@
 </main>
  <!-- אזור הבאנרים של Olivetto -->
 
-<!-- ===== /OLIVETTO — My Banners ===== -->
+<!-- My Creations Section -->
+<section class="my-creations">   <!-- ← הוסיפי שורה זו -->
+
+<div class="section-header">
+  <div class="header-left">
+    <h1 class="section-title">My Creations </h1>
+    <p class="section-subtitle">Manage your banners, landing pages and campaigns</p>
+  </div>
+  <div class="header-right">
+    <a href="/pages/landing.html" class="create-landing-btn">Create Landing Page </a>
+    <a href="/pages/banner.html" class="create-new-btn">Create New Banner </a>
+  </div>
+</div>
 
 
-          <!-- צד ימין - טיימליין מורחב
-          <div class="timeline-section">
-              <div class="timeline-header">
-                  <h2>Campaign Timeline</h2>
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All Projects (3)</button>
+      <button class="filter-tab" data-filter="banners">Banners (2)</button>
+      <button class="filter-tab" data-filter="landing">Landing Pages (1)</button>
+      <button class="filter-tab" data-filter="draft">Marketing Pages(0)</button>
+      <button class="filter-tab" data-filter="active">Active (3)</button>
+      <button class="filter-tab" data-filter="draft">Drafts (0)</button>
+  </div>
+
+  <!-- Creations Grid -->
+  <div class="creations-grid">
+      <!-- Banner Card 1 -->
+      <article class="creation-card" data-type="banner" data-status="active">
+        <div class="card-image">
+          <img class="card-img"
+               src="/images/olivettolanding.PNG"
+               alt="Olivetto Landing Page preview"
+               loading="lazy" decoding="async" width="800" height="450">
+          <span class="status-badge status-active">Active</span>
+          <div class="card-preview">
+            <button class="preview-btn">👁️ Preview</button>
+          </div>
+        </div>
+          <div class="card-content">
+              <div class="card-info">
+                  <h3 class="card-title">Pizza Special Campaign</h3>
+                  <div class="card-meta">
+                      <span class="card-type banner">Banner</span>
+                      <time>Created: 12/01/2025</time>
+                  </div>
+                  <div class="card-stats">
+                      <div class="stat">
+                          <div class="stat-value">12.4K</div>
+                          <div class="stat-label">Views</div>
+                      </div>
+                      <div class="stat">
+                          <div class="stat-value">3.8%</div>
+                          <div class="stat-label">CTR</div>
+                      </div>
+                  </div>
               </div>
-
-              <div class="timeline">
-                  <div class="timeline-item completed">
-                      <div class="timeline-date">📅 15/12/2024</div>
-                      <div class="timeline-content">
-                          <h3>🎄 Christmas Campaign 2024</h3>
-                          <div class="stats">
-                              1,245 Views • 45 Clicks • 3.7% Conversion Rate
-                          </div>
-                          <span class="status-badge status-completed">Active Now</span>
-                      </div>
-                  </div>
-
-                  <div class="timeline-item completed">
-                      <div class="timeline-date">📅 25/11/2024</div>
-                      <div class="timeline-content">
-                          <h3>🛒 Black Friday 2024</h3>
-                          <div class="stats">
-                              2,850 Views • 126 Clicks • 340% ROI
-                          </div>
-                          <span class="status-badge status-completed">Completed</span>
-                      </div>
-                  </div>
-
-                  <div class="timeline-item">
-                      <div class="timeline-date">📅 01/01/2025</div>
-                      <div class="timeline-content">
-                          <h3>🎊 New Year Campaign</h3>
-                          <div class="stats">
-                              Scheduled campaign launching January 1st
-                          </div>
-                          <span class="status-badge status-active">In Progress</span>
-                      </div>
-                  </div>
+              <div class="card-actions">
+                  <button class="action-btn btn-edit"> Edit</button>
+                  <button class="action-btn btn-duplicate"> Duplicate</button>
+                  <button class="action-btn btn-delete">🗑️</button>
               </div>
           </div>
-      </div> -->
+      </article>
+
+      <!-- Landing Page Card -->
+      <!-- Landing Page Card -->
+<article class="creation-card" data-type="landing" data-status="active">
+  <div class="card-image">
+    <img class="card-img"
+         src="/images/olivettolanding.PNG"
+         alt="Olivetto Landing Page preview"
+         loading="lazy" decoding="async" width="800" height="450">
+    <span class="status-badge status-active">Active</span>
+    <div class="card-preview">
+      <button class="preview-btn">👁️ Preview</button>
+    </div>
+  </div>
+          <div class="card-content">
+              <div class="card-info">
+                  <h3 class="card-title">Olivetto Landing</h3>
+                  <div class="card-meta">
+                      <span class="card-type landing">Landing Page</span>
+                      <time>Created: 10/01/2025</time>
+                  </div>
+                  <div class="card-stats">
+                      <div class="stat">
+                          <div class="stat-value">8.2K</div>
+                          <div class="stat-label">Visitors</div>
+                      </div>
+                      <div class="stat">
+                          <div class="stat-value">5.2%</div>
+                          <div class="stat-label">Conversion</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-actions">
+                  <button class="action-btn btn-edit"> Edit</button>
+                  <button class="action-btn btn-duplicate"> Duplicate</button>
+                  <button class="action-btn btn-delete">🗑️</button>
+              </div>
+          </div>
+      </article>
+
+      <!-- Banner Card 2 -->
+      <article class="creation-card" data-type="banner" data-status="active">
+        <div class="card-image">
+          <img class="card-img"
+               src="/images/olivettologo.svg"
+               alt="Olivetto Landing Page preview"
+               loading="lazy" decoding="async" width="800" height="450">
+          <span class="status-badge status-active">Active</span>
+          <div class="card-preview">
+            <button class="preview-btn">👁️ Preview</button>
+          </div>
+        </div>
+          <div class="card-content">
+              <div class="card-info">
+                  <h3 class="card-title">Christmas Offer Banner</h3>
+                  <div class="card-meta">
+                      <span class="card-type banner">Banner</span>
+                      <time>Created: 08/01/2025</time>
+                  </div>
+                  <div class="card-stats">
+                      <div class="stat">
+                          <div class="stat-value">-</div>
+                          <div class="stat-label">Views</div>
+                      </div>
+                      <div class="stat">
+                          <div class="stat-value">-</div>
+                          <div class="stat-label">CTR</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-actions">
+                  <button class="action-btn btn-edit"> Edit</button>
+                  <button class="action-btn btn-duplicate"> Duplicate</button>
+                  <button class="action-btn btn-delete">🗑️</button>
+              </div>
+          </div>
+      </article>
+
+      <!-- More cards would go here... -->
+      
+  </div>
+
+  <!-- Empty State (hidden by default, shown when no items) -->
+  <div class="empty-state" style="display: none;">
+      <div class="empty-icon">🎨</div>
+      <h3 class="empty-title">No creations yet</h3>
+      <p>Start creating your first banner or landing page!</p>
+      <a href="#" class="create-new-btn">➕ Create Your First Project</a>
+  </div>
+</section>
+
+
+
     
       
       <footer class="site-footer">
