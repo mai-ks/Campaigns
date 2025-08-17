@@ -1,3 +1,5 @@
+import { autoLogIn} from "../general_functions/functions.js";
+
 // שמירת העדפת נושא פשוטה ב־localStorage
 const themeKey = "preferredTheme";
 
@@ -182,9 +184,18 @@ const summaryLines = [
 //   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 // });
 
+  function addAutoLogInEvent() {
+    const autoLoginBtn = document.getElementById("account-link");
+    if (!autoLoginBtn) return;
 
+    autoLoginBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      autoLogIn();
+    });
+  }
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   const hamburger  = document.getElementById('hamburger') 
                   || document.querySelector('.nav-on-hero .hamburger');
   const menu       = document.getElementById('mobileMenu');
@@ -246,4 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
       closeMenu();
     }
   });
+
+  addAutoLogInEvent();
 });

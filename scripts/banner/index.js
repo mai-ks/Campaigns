@@ -1,5 +1,6 @@
 import { loadSettings, saveSettings, applySettings, gatherSettings }
   from './functions.js';
+  import { autoLogIn } from '../general_functions/functions.js';
 
 const fields = {
   bannerType:  document.getElementById('bannerType'),
@@ -30,7 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.entries(fields).forEach(([key, el]) => el.value = settings[key]);
 });
 
+function addAutoLogInEvent() {
+  const autoLoginBtn = document.getElementById('account-link');
+  if (!autoLoginBtn) return;
 
+  autoLoginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    autoLogIn();
+  })
+}
 
 // --- NAV: Mobile Hamburger ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -74,4 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
   closeBtn?.addEventListener('click', closeMenu);
   mobileMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  addAutoLogInEvent()
 });

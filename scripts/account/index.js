@@ -1,3 +1,5 @@
+import { logOutEventHandler } from '../general_functions/functions.js';
+
 // Tabs switching (vanilla)
 document.addEventListener('DOMContentLoaded', () => {
     const tabs = Array.from(document.querySelectorAll('.tab-btn'));
@@ -182,35 +184,20 @@ async function revokeServerSession(){
   } catch (_) { /* מתעלמים בשקט */ }
 }
 
-async function softLogout(){
-  // שומרים אימייל/דגל "נרשמת בעבר"
-  const user = tryJSONParse(localStorage.getItem(STORAGE_KEYS.user));
-  if (user?.email) {
-    localStorage.setItem(STORAGE_KEYS.lastEmail, user.email);
-  }
-  localStorage.setItem(STORAGE_KEYS.registeredFlag, 'true');
 
-  // מבטלים סשן בצד שרת (אם קיים), בלי לחסום את ה-UI
-  revokeServerSession();
+function addLogOutEvent(){
+  const btn = document.getElementById('logout-btn');
+  if (!btn) return;
 
-  // מוחקים רק את מה שקשור להתחברות/סשן
-  [STORAGE_KEYS.auth, STORAGE_KEYS.session, STORAGE_KEYS.cart]
-    .forEach(k => localStorage.removeItem(k));
-
-  // לא מוחקים user/prefs/registeredFlag/lastEmail
-
-  // אות ל-UI שניתקת
-  document.body.classList.add('logged-out');
-
-  // מפנים למסך התחברות (או דף בית) עם קוורי קטן לנראות
-  window.location.href = '/pages/login.html?logged_out=1';
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    logOutEventHandler();
+  });
 }
 
 // חיבור הכפתור
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('logout-btn');
-  if (btn) btn.addEventListener('click', softLogout);
-
+  addLogOutEvent();
   // דוגמה: אם בעמוד התחברות — ממלאים אימייל אחרון אוטומטית
   const emailInput = document.querySelector('#login-email');
   if (emailInput) {
