@@ -1,149 +1,148 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>עורך דף נחיתה</title>
-  <link rel="stylesheet" href="/styles/landing.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landing Page Editor</title>
+  <link rel="stylesheet" href="/styles/landing.css"/>
 </head>
 <body>
-  <!-- פס עליון -->
+  <!-- Top bar -->
   <div class="top-bar">
     <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
   </div>
 
-  <!-- ניווט סטיקי -->
+  <!-- Sticky header -->
   <header class="main-header">
     <div class="nav-wrapper">
       <a href="/index.html">
-        <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo" />
+        <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo"/>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="פתח תפריט נייד" aria-controls="mobileMenu" aria-expanded="false">
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
-      <nav class="main-nav">
+
+      <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#"><div id="account-link">ACCOUNT</div></a></li>
-          <li><a href="/pages/landing.html">LANDING PAGE </a></li>
-          <li><a href="/pages/marketing.html">MARKETING PAGE</a></li>
-
-          <li><a href="/pages/banner.html" class="active">BANNER EDITOR</a></li>
+          <li><a href="/pages/landing.html" class="active">Landing Page</a></li>
+          <li><a href="/pages/marketing.html">Marketing Page</a></li>
+          <li><a href="/pages/banner.html">Banner Editor</a></li>
         </ul>
       </nav>
-      <!-- מגירת מובייל מצד ימין -->
-<nav class="mobile-menu" id="mobileMenu" hidden>
-<button class="close-drawer" aria-label="סגור">✕</button>
-<a href="#"><div id="account-link">ACCOUNT</div></a>
-<a href="/pages/landing.html">LANDING PAGE</a>
-<a href="/pages/marketing.html">MARKETING PAGE</a>
-<a href="/pages/banner.html">BANNER EDITOR</a>
-</nav>
-<!-- שכבת רקע לסגירה בלחיצה -->
-<div class="mobile-scrim" id="mobileScrim" hidden></div>
+
+      <!-- Mobile menu -->
+      <nav class="mobile-menu" id="mobileMenu" hidden>
+        <button class="close-drawer" aria-label="Close">✕</button>
+        <a href="#"><div id="account-link">ACCOUNT</div></a>
+        <a href="/pages/landing.html">Landing Page</a>
+        <a href="/pages/marketing.html">Marketing Page</a>
+        <a href="/pages/banner.html">Banner Editor</a>
+      </nav>
+      <div class="mobile-scrim" id="mobileScrim" hidden></div>
     </div>
   </header>
 
   <main class="container">
-    <!-- צד שמאל: כלי העריכה -->
+    <!-- Editor panel -->
     <aside class="editor-panel">
-      <h2>כלי עיצוב</h2>
+      <h2 class="panel-title">Design Tools</h2>
 
-      <!-- 1. בחירת תבנית -->
+      <!-- 1. Template -->
       <section class="editor-section">
-        <header>
-          <h3>בחר תבנית</h3>
-        </header>
-        <label for="templateSelect">תבנית:</label>
+        <header><h3>Select Template</h3></header>
+        <label for="templateSelect">Template</label>
         <select id="templateSelect" name="templateSelect">
-          <option value="template1">תבנית 1</option>
-          <option value="template2">תבנית 2</option>
-          <option value="template3">תבנית 3</option>
+          <option value="template1">Template 1</option>
+          <option value="template2">Template 2</option>
+          <option value="template3">Template 3</option>
         </select>
       </section>
 
-      <hr>
+      <hr/>
 
-      <!-- 2. עריכת טקסט ותמונות -->
+      <!-- 2. Content -->
       <section class="editor-section">
-        <header>
-          <h3>תוכן</h3>
-        </header>
-        <label for="titleInput">כותרת:</label>
-        <input type="text" id="titleInput" name="titleInput" placeholder="הכנס כותרת">
+        <header><h3>Content</h3></header>
+        <label for="titleInput">Title</label>
+        <input type="text" id="titleInput" placeholder="Enter a title"/>
 
-        <label for="paragraphInput">פסקה:</label>
-        <textarea id="paragraphInput" name="paragraphInput" rows="4" placeholder="הכנס טקסט"></textarea>
+        <label for="paragraphInput">Paragraph</label>
+        <textarea id="paragraphInput" rows="4" placeholder="Enter text"></textarea>
 
-        <label for="ctaTextInput">CTA – טקסט:</label>
-        <input type="text" id="ctaTextInput" name="ctaTextInput" placeholder="נקנה עכשיו">
+        <label for="imageUrlInput">Image URL</label>
+        <input type="url" id="imageUrlInput" placeholder="https://example.com/hero.jpg"/>
 
-        <label for="ctaLinkInput">CTA – קישור:</label>
-        <input type="url" id="ctaLinkInput" name="ctaLinkInput" placeholder="https://">
+        <label for="ctaTextInput">CTA – Text</label>
+        <input type="text" id="ctaTextInput" placeholder="Click Here"/>
 
-        <!-- <label for="imageUrlInput"> עריכה:</label> 
-        <input type="url" id="ctaLinkInput" name="ctaLinkInput" placeholder="https://"> -->
+        <label for="ctaLinkInput">CTA – Link</label>
+        <input type="url" id="ctaLinkInput" placeholder="https://"/>
+        
+                <label for="imageUrlInput">Image URL</label>
+        <input type="url" id="imageUrlInput" placeholder="https://example.com/hero.jpg"/>
 
-      <hr>
+        <!-- NEW: choose a local image file -->
+        <label for="imageFileInput">Or upload an image</label>
+        <input type="file" id="imageFileInput" accept="image/*"/>
 
-      <!-- 3. התאמה אישית: צבעים, פונטים -->
+      </section>
+
+      <hr/>
+
+      <!-- 3. Style -->
       <section class="editor-section">
-        <header>
-          <h3>עיצוב</h3>
-        </header>
-        <label for="bgColorInput">צבע רקע:</label>
-        <input type="color" id="bgColorInput" name="bgColorInput" value="#ffffff">
+        <header><h3>Style</h3></header>
+        <label for="bgColorInput">Background Color</label>
+        <input type="color" id="bgColorInput" value="#ffffff"/>
 
-        <label for="titleColorInput">צבע כותרת:</label>
-        <input type="color" id="titleColorInput" name="titleColorInput" value="#333333">
+        <label for="titleColorInput">Title Color</label>
+        <input type="color" id="titleColorInput" value="#111111"/>
 
-        <label for="fontSelect">גופן כותרת:</label>
-        <select id="fontSelect" name="fontSelect">
-          <option value="Arial">Arial</option>
+        <label for="fontSelect">Title Font</label>
+        <select id="fontSelect">
+          <option value="Arial" selected>Arial</option>
           <option value="Tahoma">Tahoma</option>
           <option value="Georgia">Georgia</option>
         </select>
       </section>
 
-      <hr>
+      <hr/>
 
-      <!-- 4. איסוף לידים: טופס בסיסי -->
+      <!-- 4. Lead form -->
       <section class="editor-section">
-        <header>
-          <h3>איסוף לידים</h3>
-        </header>
-        <label for="leadFormToggle">
-          <input type="checkbox" id="leadFormToggle" name="leadFormToggle">
-          הוסף טופס איסוף שם ואימייל
+        <header><h3>Lead Collection</h3></header>
+        <label for="leadFormToggle" class="checkbox-line">
+          <input type="checkbox" id="leadFormToggle"/>
+          Add a basic form (Name + Email)
         </label>
       </section>
 
-      <hr>
+      <hr/>
 
-      <!-- 5. פעולות שמירה וטעינה -->
-      <button id="saveBtn" type="button">שמור למאגר </button>
-      <button id="loadBtn" type="button">העלה מהמאגר</button>
+      <!-- 5. Save/load -->
+      <button id="saveBtn" type="button">Save to Storage</button>
+      <button id="loadBtn" type="button">Load from Storage</button>
     </aside>
 
-    <!-- צד ימין: תצוגת תוצאה בזמן אמת -->
+    <!-- Preview -->
     <section class="preview-panel">
-      <h2>תצוגה מקדימה</h2>
-      <div id="previewArea"><img src="" alt=""></div>
-     
+      <h2>Preview</h2>
+      <div id="previewArea"></div>
     </section>
   </main>
-
-
 
   <footer class="site-footer">
     <div class="footer-box">
       <div class="footer-inner">
         <div class="logo-wrapper">
-          <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
+          <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo"/>
         </div>
         <div class="footer-links">
-          <a href="#">Banner Editor</a>
-          <a href="#">Marketing Page Editor</a>
-          <a href="#">Landing Page Editor</a>
+          <a href="/pages/banner.html">Banner Editor</a>
+          <a href="/pages/marketing.html">Marketing Page Editor</a>
+          <a href="/pages/landing.html">Landing Page Editor</a>
           <a href="#">My Campaigns</a>
         </div>
         <div class="footer-legal">

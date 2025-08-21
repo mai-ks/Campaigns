@@ -1,14 +1,12 @@
-// --- מאגר התבניות ---
-// --- תבניות עם תמונת ברירת-מחדל ומחלקות יפות ---
+// --- Templates with default image ---
 export const templates = {
   template1: `
     <div class="preview-content" id="lp-root">
       <img id="lp-image" class="hero-img"
-           src="https://picsum.photos/seed/kampa/960/540"
-           alt="תמונה לדוגמה">
-      <h1 id="lp-title">כותרת ברירת מחדל</h1>
-      <p id="lp-paragraph">פסקת טקסט לדוגמה.</p>
-      <a id="lp-cta" href="#" class="cta">לחץ כאן</a>
+           src="https://picsum.photos/seed/kampa/960/540" alt="Image">
+      <h1 id="lp-title">Default Title</h1>
+      <p id="lp-paragraph">Sample paragraph text.</p>
+      <a id="lp-cta" href="#" class="cta">Click Here</a>
       <div id="lp-lead-form"></div>
     </div>
   `,
@@ -31,88 +29,143 @@ export const templates = {
       <a id="lp-cta" href="#" class="cta">Get Started</a>
       <div id="lp-lead-form"></div>
     </div>
-  `
+  `,
 };
 
-
-/**
- * טוען תבנית לתוך previewArea ומחזיר את האלמנטים הקשורים
- * @param {string} name – מפתח התבנית
- * @param {HTMLElement} previewArea
- * @returns {{lpRoot,lpTitle,lpPara,lpImage,lpCta,lpLeadForm}}
- */
-export function loadTemplate(name, previewArea) {
+/** Load template into preview area and return element refs */
+export function loadTemplate(name, previewArea){
   previewArea.innerHTML = templates[name] || '';
   return bindPreviewElements();
 }
 
-function bindPreviewElements() {
-  const lpRoot     = document.getElementById('lp-root');
-  const lpTitle    = document.getElementById('lp-title');
-  const lpPara     = document.getElementById('lp-paragraph');
-  const lpImage    = document.getElementById('lp-image');
-  const lpCta      = document.getElementById('lp-cta');
-  const lpLeadForm = document.getElementById('lp-lead-form');
-  return { lpRoot, lpTitle, lpPara, lpImage, lpCta, lpLeadForm };
+/** Content bindings (text/link/image + file upload + drag&drop) */
+export function bindContentEvents(inputs, elements){
+  // text fields
+  inputs.title.oninput     = () => elements.lpTitle.textContent = inputs.title.value;
+  inputs.paragraph.oninput = () => elements.lpPara.textContent  = inputs.paragraph.value;
+  inputs.ctaText.oninput   = () => elements.lpCta.textContent   = inputs.ctaText.value;
+
+  // CTA link: add https:// if missing, open in new tab
+  const applyLink = () => {
+    const raw = (inputs.ctaLink.value || "").trim();
+    if (!raw){
+      elements.lpCta.removeAttribute("target");
+      elements.lpCta.href = "#";
+      return;
+    }
+    const url = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+    elements.lpCta.href = url;
+    elements.lpCta.target = "_blank";
+    elements.lpCta.rel = "noopener";
+  };
+  inputs.ctaLink.addEventListener("input", applyLink);
+  applyLink();
+
+  // image: URL + File + Drag&Drop
+  const fallback = "https://picsum.photos/seed/kampa/960/540";
+  let objectUrl; // to revoke previous blob URL
+
+  const setImageSrc = (src) => {
+    elements.lpImage.src = src || fallback;
+  };
+
+  const fromUrl = () => {
+    const url = (inputs.imageUrl?.value || "").trim();
+    setImageSrc(url || fallback);
+  };
+
+  const fromFile = (file) => {
+    if (!file) return;
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = URL.createObjectURL(file);
+    setImageSrc(objectUrl);
+  };
+
+  // URL input
+  inputs.imageUrl?.addEventListener("input", fromUrl);
+
+  // File input
+  inputs.imageFile?.addEventListener("change", (e) => {
+    const file = e.target.files?.[0];
+    fromFile(file);
+  });
+
+
+  // Drag & Drop onto preview area
+if (inputs.previewArea){
+  const pa = inputs.previewArea;
+  const prevent = (ev) => { ev.preventDefault(); ev.stopPropagation(); };
+  ["dragenter","dragover","dragleave","drop"].forEach(evt => pa.addEventListener(evt, prevent));
+
+  // הוספת highlight עם class dragover
+  pa.addEventListener("dragenter", () => pa.classList.add("dragover"));
+  pa.addEventListener("dragleave", () => pa.classList.remove("dragover"));
+  pa.addEventListener("drop", () => pa.classList.remove("dragover"));
+
+  pa.addEventListener("drop", (ev) => {
+    const file = ev.dataTransfer?.files?.[0];
+    if (file && file.type.startsWith("image/")) fromFile(file);
+  });
 }
 
-/**
- * מחבר אירועי תוכן (text, link, image)
- */
-export function bindContentEvents(inputs, elements) {
+  // init image
+  fromUrl();
+}
+
+
+/** Content bindings (text/link/image) */
+export function bindContentEvents(inputs, elements){
   inputs.title.oninput     = () => elements.lpTitle.textContent = inputs.title.value;
   inputs.paragraph.oninput = () => elements.lpPara.textContent  = inputs.paragraph.value;
   inputs.ctaText.oninput   = () => elements.lpCta.textContent   = inputs.ctaText.value;
   inputs.ctaLink.oninput   = () => elements.lpCta.href          = inputs.ctaLink.value;
 
-  // עדכון תמונה עם ברירת-מחדל כששדה ריק
   const fallback = "https://picsum.photos/seed/kampa/960/540";
-  inputs.imageUrl.oninput  = () => {
+  const updateImg = () => {
     const url = inputs.imageUrl.value.trim();
     elements.lpImage.src = url || fallback;
   };
+  inputs.imageUrl.addEventListener('input', updateImg);
+  updateImg(); // init
 }
 
-/**
- * מחבר אירועי עיצוב (colors, font)
- */
-export function bindStyleEvents(inputs, elements) {
-  inputs.bgColor.oninput     = () => elements.lpRoot.style.backgroundColor = inputs.bgColor.value;
-  inputs.titleColor.oninput  = () => elements.lpTitle.style.color = inputs.titleColor.value;
-  inputs.fontSelect.onchange  = () => elements.lpTitle.style.fontFamily = inputs.fontSelect.value;
+/** Style bindings (colors/font) */
+export function bindStyleEvents(inputs, elements){
+  inputs.bgColor.addEventListener('input', () =>
+    elements.lpRoot.style.backgroundColor = inputs.bgColor.value
+  );
+  inputs.titleColor.addEventListener('input', () =>
+    elements.lpTitle.style.color = inputs.titleColor.value
+  );
+  inputs.fontSelect.addEventListener('change', () =>
+    elements.lpTitle.style.fontFamily = inputs.fontSelect.value
+  );
 }
 
-/**
- * מחליף מצב טופס לידים
- */
-export function bindLeadFormEvent(toggle, elements) {
-  toggle.onchange = () => {
-    if (toggle.checked) {
+/** Toggle lead form */
+export function bindLeadFormEvent(toggle, elements){
+  const render = () => {
+    if (toggle.checked){
       elements.lpLeadForm.innerHTML = `
         <form class="lead-form">
-          <input type="text" name="name" placeholder="שם">
-          <input type="email" name="email" placeholder="אימייל">
-          <button type="submit">שלח</button>
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <button type="submit">Send</button>
         </form>`;
     } else {
       elements.lpLeadForm.innerHTML = '';
     }
   };
+  toggle.addEventListener('change', render);
+  render();
 }
 
-/**
- * שמירה וטעינה מ־LocalStorage
- */
-export function saveConfig(key, config) {
+/** LocalStorage save/load */
+export function saveConfig(key, config){
   localStorage.setItem(key, JSON.stringify(config));
 }
-export function loadConfig(key) {
+export function loadConfig(key){
   const raw = localStorage.getItem(key);
-  return raw ? JSON.parse(raw) : null;
+  try { return raw ? JSON.parse(raw) : null; }
+  catch { return null; }
 }
-
-
-
-
-
-
