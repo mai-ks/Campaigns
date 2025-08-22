@@ -1,4 +1,6 @@
+import { setLoggedUserToTopBar } from '../general_functions/functions.js';
 // שליפת האלמנטים מה-HTML
+
 const titleInput = document.getElementById('titleInput');
 const paragraphInput = document.getElementById('paragraphInput');
 const imageInput = document.getElementById('imageInput');
@@ -43,7 +45,8 @@ document.getElementById('saveBtn').addEventListener('click', () => {
 });
 
 // בעת טעינת העמוד – משחזר את מה שנשמר
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {  
+  setLoggedUserToTopBar()
   const saved = localStorage.getItem('marketingData');
   if (saved) {
     const data = JSON.parse(saved);
@@ -70,6 +73,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // --- NAV: Mobile Hamburger ---
 document.addEventListener('DOMContentLoaded', () => {
+ 
+
   const header     = document.querySelector('.main-header');
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -111,4 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 });
+
 

@@ -1,119 +1,123 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kampa - עורך דף שיווקי</title>
-  <link rel="stylesheet" href="/styles/marketing.css" />
-   
-</head>
-<body>
-
-  <!-- פס עליון -->
-  <div class="top-bar">
-    <p class="top-bar-text">KAMPA WITH US – One month trial Free</p>
-  </div>
-
-  <!-- ניווט סטיקי -->
-  <header class="main-header">
-    <div class="nav-wrapper">
-      <!-- לוגו כקישור -->
-<a href="/index.html">
-    <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo"/>
-  </a>
-  <button class="hamburger" id="hamburger" aria-label="פתח תפריט נייד" aria-controls="mobileMenu" aria-expanded="false">
-    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-  </button>
-  
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#"><div id="account-link">ACCOUNT</div></a></li>
-      <li><a href="/pages/landing.html">LANDING PAGE </a></li>
-      <li><a href="/pages/marketing.html">MARKETING PAGE</a></li>
-
-      <li><a href="/pages/banner.html" class="active">BANNER EDITOR</a></li>
-    </ul>
-  </nav>
-  <!-- מגירת מובייל מצד ימין -->
-<nav class="mobile-menu" id="mobileMenu" hidden>
-<button class="close-drawer" aria-label="סגור">✕</button>
-<a href="#"><div id="account-link">ACCOUNT</div></a>
-<a href="/pages/landing.html">LANDING PAGE</a>
-<a href="/pages/marketing.html">MARKETING PAGE</a>
-<a href="/pages/banner.html">BANNER EDITOR</a>
-</nav>
-
-<!-- שכבת רקע לסגירה בלחיצה -->
-<div class="mobile-scrim" id="mobileScrim" hidden></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kampa - עורך דף שיווקי</title>
+    <link rel="stylesheet" href="/styles/marketing.css" />
+  </head>
+  <body>
+    <!-- פס עליון -->
+    <div class="top-bar">
+      <p class="top-bar-text" id="top-bar-p">KAMPA WITH US – One month trial Free</p>
     </div>
-  </header>
 
-  <!-- תוכן ראשי -->
-  <main class="editor-preview">
-    <!-- עורך -->
-    <section class="editor">
-      <h2>Content Editor</h2>
-      <label>Title:</label>
-      <input type="text" id="titleInput" placeholder="Enter a title here"/>
+    <!-- ניווט סטיקי -->
+    <header class="main-header">
+      <div class="nav-wrapper">
+        <!-- לוגו כקישור -->
+        <a href="/index.html">
+          <img src="/images/KAMPANEWORANGE.svg" alt="Kampa Logo" class="nav-logo" />
+        </a>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="פתח תפריט נייד"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
 
-      <label>Paragraph:</label>
-      <textarea id="paragraphInput" placeholder="Write a paragraph here"></textarea>
+        <nav class="main-nav">
+          <ul>
+            <li>
+              <a href="#"><div id="account-link">ACCOUNT</div></a>
+            </li>
+            <li><a href="/pages/landing.html">LANDING PAGE </a></li>
+            <li><a href="/pages/marketing.html">MARKETING PAGE</a></li>
 
-      <label>Image link (URL):</label>
-      <input type="text" id="imageInput" placeholder="https://example.com/image.jpg"/>
-      <label for="colorSelect">Background color:</label>
-<select id="colorSelect">
-  <option value="#ffffff">white</option>
-  <option value="#fbeec1">yellow</option>
-  <option value="#e3f2fd">light blue</option>
-</select>
+            <li><a href="/pages/banner.html" class="active">BANNER EDITOR</a></li>
+          </ul>
+        </nav>
+        <!-- מגירת מובייל מצד ימין -->
+        <nav class="mobile-menu" id="mobileMenu" hidden>
+          <button class="close-drawer" aria-label="סגור">✕</button>
+          <a href="#"><div id="account-link">ACCOUNT</div></a>
+          <a href="/pages/landing.html">LANDING PAGE</a>
+          <a href="/pages/marketing.html">MARKETING PAGE</a>
+          <a href="/pages/banner.html">BANNER EDITOR</a>
+        </nav>
 
-<label for="fontSelect">Font Selcet:</label>
-<select id="fontSelect">
-  <option value="Arial">Arial</option>
-  <option value="Georgia">Georgia</option>
-  <option value="Tahoma">Tahoma</option>
-</select>
+        <!-- שכבת רקע לסגירה בלחיצה -->
+        <div class="mobile-scrim" id="mobileScrim" hidden></div>
+      </div>
+    </header>
 
-<label for="themeSelect">Theme Select</label>
-<select id="themeSelect">
-  <option value="theme-default">default/option>
-  <option value="theme-light">light theme</option>
-  <option value="theme-colored">colored theme</option>
-</select>
+    <!-- תוכן ראשי -->
+    <main class="editor-preview">
+      <!-- עורך -->
+      <section class="editor">
+        <h2>Content Editor</h2>
+        <label>Title:</label>
+        <input type="text" id="titleInput" placeholder="Enter a title here" />
 
+        <label>Paragraph:</label>
+        <textarea id="paragraphInput" placeholder="Write a paragraph here"></textarea>
 
-      <button id="saveBtn">SAVE YOUR KAMPA</button>
-    </section>
+        <label>Image link (URL):</label>
+        <input type="text" id="imageInput" placeholder="https://example.com/image.jpg" />
+        <label for="colorSelect">Background color:</label>
+        <select id="colorSelect">
+          <option value="#ffffff">white</option>
+          <option value="#fbeec1">yellow</option>
+          <option value="#e3f2fd">light blue</option>
+        </select>
 
-    <!-- תצוגה -->
-    <section class="preview">
-      <h2 id="previewTitle">כותרת לדוגמה</h2>
-      <p id="previewParagraph">זוהי פסקת דוגמה שתתעדכן מתוך העורך.</p>
-      <img id="previewImage" src="" alt="תמונה מהעורך" />
-    </section>
-  </main>
+        <label for="fontSelect">Font Selcet:</label>
+        <select id="fontSelect">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Tahoma">Tahoma</option>
+        </select>
 
+        <label for="themeSelect">Theme Select</label>
+        <select id="themeSelect">
+          <option value="theme-default">default/option></option>
+          <option value="theme-light">light theme</option>
+          <option value="theme-colored">colored theme</option>
+        </select>
 
-  <footer class="site-footer">
-    <div class="footer-box">
-      <div class="footer-inner">
-        <div class="logo-wrapper">
-          <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
-        </div>
-        <div class="footer-links">
-          <a href="#">Banner Editor</a>
-          <a href="#">Marketing Page Editor</a>
-          <a href="#">Landing Page Editor</a>
-          <a href="#">My Campaigns</a>
-        </div>
-        <div class="footer-legal">
-          <p>&copy; 2025 Kampa. All rights reserved.</p>
+        <button id="saveBtn">SAVE YOUR KAMPA</button>
+      </section>
+
+      <!-- תצוגה -->
+      <section class="preview">
+        <h2 id="previewTitle">כותרת לדוגמה</h2>
+        <p id="previewParagraph">זוהי פסקת דוגמה שתתעדכן מתוך העורך.</p>
+        <img id="previewImage" src="" alt="תמונה מהעורך" />
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-box">
+        <div class="footer-inner">
+          <div class="logo-wrapper">
+            <img src="/images/LOGOKAMPAnew.svg" alt="Kampa logo" class="footer-logo" />
+          </div>
+          <div class="footer-links">
+            <a href="#">Banner Editor</a>
+            <a href="#">Marketing Page Editor</a>
+            <a href="#">Landing Page Editor</a>
+            <a href="#">My Campaigns</a>
+          </div>
+          <div class="footer-legal">
+            <p>&copy; 2025 Kampa. All rights reserved.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-  
-  <script src="/scripts/marketing/index.js"></script>
-</body>
+    </footer>
+
+    <script type="module" src="/scripts/marketing/index.js"></script>
+  </body>
 </html>

@@ -1,16 +1,24 @@
-// ---- הגדרות מפתחות ל-LocalStorage (עדכני לפי שלך אם שונים) ----
-const STORAGE_KEYS = {
-    auth: 'kampa.auth',
-    user: 'kampa.user',
-    lastEmail: 'kampa.userLastEmail',
-    wasRegistered: 'kampa.wasRegistered'
-  };
-  
-  const parseJSON = v => { try { return JSON.parse(v); } catch { return null; } };
-  const isLoggedIn = () => !!parseJSON(localStorage.getItem(STORAGE_KEYS.auth))?.accessToken;
-  
+
+import { setLoggedUserToTopBar } from '../general_functions/functions.js';
+
+  function isLoggedIn(){
+    // משיכת המשתמש מה local storage 
+    const user =  JSON.parse(localStorage.getItem('USER'));
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
   // ---- מודאל ----
   function showModal(){
+    // משיכת המשתמש מה local storage 
+    const user =  JSON.parse(localStorage.getItem('USER'));
+    // במידה והמשתמש מחובר לא נקפיץ את הודעת דרישת התחברות
+    if(user) return;
+    
     document.getElementById('auth-backdrop')?.removeAttribute('hidden');
     document.getElementById('auth-modal')?.removeAttribute('hidden');
   }
@@ -21,53 +29,50 @@ const STORAGE_KEYS = {
   
   // מעבר ל-login עם חזרה לעמוד הנוכחי
   function goToLogin(){
-    const returnTo = location.pathname + location.search + location.hash;
-    const user = parseJSON(localStorage.getItem(STORAGE_KEYS.user));
-    if (user?.email) localStorage.setItem(STORAGE_KEYS.lastEmail, user.email);
-    localStorage.setItem(STORAGE_KEYS.wasRegistered, 'true');
-    window.location.href = `/pages/login.html?return_to=${encodeURIComponent(returnTo)}`;
+    window.location.href = `../pages/login.html`;
   }
   
   // ---- מגן שקוף על אזור הבקרים כשהמשתמש לא מחובר ----
   function setEditorGuard(){
+
+    if(isLoggedIn()) return;
+
+    // תפיסת האלמנט שמכיל את טופס העריכה
     const controls = document.querySelector('.controls'); // אזור הטפסים של העורך
     if (!controls) return;
   
-    // מאפשר/מנטרל inputs למקרה שתרצי לנעול גם במקלדת
+    // הגדרת פונקציה שתאפשר או לא תאפשר שימוש באלמנטים של קלט
     const toggleDisabled = (on) => {
       controls.querySelectorAll('input, select, textarea, button')
         .forEach(el => el.disabled = !on);
     };
-  
-    // אם לא מחובר – ניצור מגן
-    if (!isLoggedIn()){
-      let shield = controls.querySelector('.auth-shield');
-      if (!shield){
-        shield = document.createElement('div');
-        shield.className = 'auth-shield';
-        shield.setAttribute('aria-label','Sign in required');
-        shield.addEventListener('click', showModal);
-        controls.appendChild(shield);
-      }
-      toggleDisabled(false);
-    } else {
-      controls.querySelector('.auth-shield')?.remove();
-      toggleDisabled(true);
-      hideModal();
-    }
+
+    // חסימת אלמטים של קלט
+    toggleDisabled(false);
   }
   
   // ---- קליקים על כפתורים שדורשים התחברות (יצירה/עריכה/מחיקה) ----
   function interceptAuthClicks(){
-    document.addEventListener('click', (ev) => {
-      const needsAuth = ev.target.closest('[data-require-auth], .btn-edit, .btn-delete, .create-new-btn, .create-landing-btn');
-      if (!needsAuth) return;
+    // document.addEventListener('click', (ev) => {
+    //   const needsAuth = ev.target.closest('[data-require-auth], .btn-edit, .btn-delete, .create-new-btn, .create-landing-btn');
+    //   if (!needsAuth) return;
+
+    // }, true);
+    
+    // תפיסת האלמנט שמכיל את טופס העריכה
+    let controls = document.querySelector('.controls'); // אזור הטפסים של העורך
+    controls.addEventListener('click', (ev) => {
       if (!isLoggedIn()){
         ev.preventDefault();
         ev.stopPropagation();
         showModal();
       }
-    }, true);
+    })
+
+    // if (!controls) return;
+    // controls.querySelectorAll('input, select, textarea, button')
+    // .forEach(el => el.addEventListener('click', (ev) => {
+    //   }));
   }
   
   // ---- מודאל האזנות ----
@@ -89,6 +94,7 @@ const STORAGE_KEYS = {
     wireModal();
     interceptAuthClicks();
     setEditorGuard();   // אין מודאל אוטומטי בטעינה; רק המגן + כפתורים
+    setLoggedUserToTopBar();
   });
   
 
