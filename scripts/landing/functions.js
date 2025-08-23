@@ -113,34 +113,6 @@ if (inputs.previewArea){
 }
 
 
-/** Content bindings (text/link/image) */
-export function bindContentEvents(inputs, elements){
-  inputs.title.oninput     = () => elements.lpTitle.textContent = inputs.title.value;
-  inputs.paragraph.oninput = () => elements.lpPara.textContent  = inputs.paragraph.value;
-  inputs.ctaText.oninput   = () => elements.lpCta.textContent   = inputs.ctaText.value;
-  inputs.ctaLink.oninput   = () => elements.lpCta.href          = inputs.ctaLink.value;
-
-  const fallback = "https://picsum.photos/seed/kampa/960/540";
-  const updateImg = () => {
-    const url = inputs.imageUrl.value.trim();
-    elements.lpImage.src = url || fallback;
-  };
-  inputs.imageUrl.addEventListener('input', updateImg);
-  updateImg(); // init
-}
-
-/** Style bindings (colors/font) */
-export function bindStyleEvents(inputs, elements){
-  inputs.bgColor.addEventListener('input', () =>
-    elements.lpRoot.style.backgroundColor = inputs.bgColor.value
-  );
-  inputs.titleColor.addEventListener('input', () =>
-    elements.lpTitle.style.color = inputs.titleColor.value
-  );
-  inputs.fontSelect.addEventListener('change', () =>
-    elements.lpTitle.style.fontFamily = inputs.fontSelect.value
-  );
-}
 
 /** Toggle lead form */
 export function bindLeadFormEvent(toggle, elements){
