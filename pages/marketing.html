@@ -58,7 +58,7 @@
     <main class="editor-preview">
       <!-- עורך -->
       <section class="editor">
-        <h2>Content Editor</h2>
+        <h2>Marketing Page Editor</h2>
         <label>Title:</label>
         <input type="text" id="titleInput" placeholder="Enter a title here" />
 
@@ -89,8 +89,11 @@
         </select>
 
         <button id="saveBtn">SAVE YOUR KAMPA</button>
-      </section>
+        <button id="emailBtn">SEND EMAIL</button>
 
+        <!-- מודל שליחת מייל -->
+      </section>
+      
       <!-- תצוגה -->
       <section class="preview">
         <h2 id="previewTitle">כותרת לדוגמה</h2>
@@ -98,6 +101,24 @@
         <img id="previewImage" src="" alt="תמונה מהעורך" />
       </section>
     </main>
+    <div id="emailModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Send Marketing Page by Email</h3>
+        <form id="emailForm">
+          <label for="recipientEmail">Recipient Email:</label>
+          <input type="email" id="recipientEmail" required placeholder="Enter recipient email">
+          
+          <label for="emailSubject">Subject:</label>
+          <input type="text" id="emailSubject" value="Check out my Marketing Page!" placeholder="Email subject">
+          
+          <label for="emailMessage">Message:</label>
+          <textarea id="emailMessage" placeholder="Add a personal message (optional)"></textarea>
+          
+          <button type="submit" id="sendEmailBtn">Send Email</button>
+        </form>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="footer-box">

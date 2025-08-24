@@ -1,4 +1,5 @@
 import { setLoggedUserToTopBar } from '../general_functions/functions.js';
+import { generateMarketingPageHTML, sendMarketingPageByEmail, openEmailModal, closeEmailModal } from './functions.js';
 // שליפת האלמנטים מה-HTML
 
 const titleInput = document.getElementById('titleInput');
@@ -118,3 +119,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// כפתור שליחת מייל
+// === פונקציונליות שליחת מייל ===
+const emailBtn = document.getElementById('emailBtn');
+const emailModal = document.getElementById('emailModal');
+const closeModal = document.querySelector('.close');
+const emailForm = document.getElementById('emailForm');
+
+// כפתור פתיחת מודל
+if (emailBtn) {
+  emailBtn.addEventListener('click', () => {
+    openEmailModal();
+  });
+}
+
+// כפתור סגירת מודל
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    closeEmailModal();
+  });
+}
+
+// סגירת מודל בלחיצה מחוץ לתוכן
+if (emailModal) {
+  window.addEventListener('click', (event) => {
+    if (event.target === emailModal) {
+      closeEmailModal();
+    }
+  });
+}
+
+// שליחת מייל
+if (emailForm) {
+  emailForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const recipientEmail = document.getElementById('recipientEmail').value;
+    const subject = document.getElementById('emailSubject').value;
+    const message = document.getElementById('emailMessage').value;
+    
+    const htmlContent = generateMarketingPageHTML(
+      titleInput, 
+      paragraphInput, 
+      imageInput, 
+      colorSelect, 
+      fontSelect, 
+      themeSelect
+    );
+    
+    sendMarketingPageByEmail(recipientEmail, subject, message, htmlContent);
+    closeEmailModal();
+    alert('תוכנת המייל נפתחת!');
+    
+    emailForm.reset();
+  });
+}

@@ -69,18 +69,18 @@
   
   .main-nav ul {
     list-style: none;
-    display: flex;
-    gap: 1.5rem;
     margin: 0;
     padding: 0;
+    display: flex;
+    gap: 2rem;
   }
   
+   
   .main-nav a {
     text-decoration: none;
     font-weight: 600;
-    color: #555;
-    transition: transform 0.3s ease, color 0.2s ease;
-
+    color: #222;
+    transition: color 0.2s;
   }
   
   .main-nav a:hover {
@@ -96,10 +96,11 @@
   
   .editor-preview {
     display: grid;
-    grid-template-columns: 1fr 650px;
+    grid-template-columns: 1fr 650px; /* Editor רחב משמאל, Preview קבוע מימין */
     gap: 2rem;
     padding: 2rem;
     align-items: start;
+    direction: ltr; /* 👈 זה עושה את כל ההבדל */
   }
   
   .editor, .preview {
@@ -495,4 +496,132 @@
     width: 100%;
     min-width: unset;             /* כפתור לאורך מלא */
   }
+}
+
+
+/* סגנונות המודל */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 2rem;
+  border: none;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  direction: rtl;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: var(--orange);
+  outline: none;
+}
+
+.modal-content textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.close {
+  color: var(--gray);
+  float: left;
+  font-size: 24px;
+  font-weight: normal;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close:hover {
+  background: rgba(0,0,0,0.05);
+  color: #333;
+}
+
+#sendEmailBtn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius);
+  color: var(--gray);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+#sendEmailBtn:hover {
+  background: var(--orange);
+  color: white;
+  border-color: var(--orange);
+}
+
+#emailBtn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius);
+  color: var(--gray);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+#emailBtn:hover {
+  background: var(--orange);
+  color: white;
+  border-color: var(--orange);
 }

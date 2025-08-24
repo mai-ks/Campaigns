@@ -68,12 +68,12 @@ body {
   display: flex;
   gap: 2rem;
 }
+  
 .main-nav a {
   text-decoration: none;
   font-weight: 600;
-  color: var(--text-dark);
-  transition: color .2s, transform .2s;
-  font-size: 17px;
+  color: #222;
+  transition: color 0.2s;
 }
 .main-nav a:hover {
 

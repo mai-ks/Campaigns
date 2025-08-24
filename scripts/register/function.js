@@ -14,7 +14,7 @@ export function registerUser(event) {
     return;
   }
 
-  debugger;
+ 
   // Crearte a new user object
   const newUser = {
     firstName,
