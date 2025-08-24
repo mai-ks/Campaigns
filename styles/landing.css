@@ -88,12 +88,17 @@ body {
 .container {
   max-width: clamp(960px, 92vw, 1280px);
   margin: 24px auto;
-  padding: 0 clamp(20px, 3vw, 40px); /* יותר padding פנימי */
+  padding: 0 clamp(20px, 3vw, 40px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(360px, 34vw, var(--editor-w)); /* מינימום רחב יותר */
-  gap: 40px; /* מרווח גדול יותר בין הפאנלים */
+  /* 👇 העורך (שמאל) צר/קבוע, הפריוויו (ימין) גמיש/רחב */
+  grid-template-columns: clamp(360px, 34vw, var(--editor-w)) minmax(0, 1fr);
+  gap: 40px;
   align-items: start;
 }
+/* שימי את זה אחרי הגדרת .container */
+.preview-panel { grid-column: 1; grid-row: 1; } /* ימין (עמודה 1), בשורה 1 */
+.editor-panel  { grid-column: 2; grid-row: 1; } /* שמאל (עמודה 2), בשורה 1 */
+
 
 /* =============== Preview =============== */
 .preview-panel {
@@ -115,6 +120,7 @@ body {
   position: sticky;
   top: 16px;
   box-sizing: border-box; /* מונע גלישה של תוכן */
+  text-align: left;
 }
 
 /* שדות */
@@ -131,6 +137,7 @@ body {
   outline: none;
   transition: border-color .15s, box-shadow .15s;
   box-sizing: border-box; /* חשוב כדי שהשדות לא יברחו */
+  text-align: left;
 }
 
 /* =============== Preview =============== */
@@ -431,22 +438,19 @@ body {
   .editor-panel{ top: 12px; padding: 24px; }
 }
 
-/* ≤1024px – טור אחד: התצוגה המקדימה למעלה, העורך מתחת, בלי sticky */
 @media (max-width: 1024px){
   .container{
-    grid-template-columns: 1fr;  /* טור אחד */
+    grid-template-columns: 1fr;  /* עמודה אחת */
     gap: 24px;
   }
   .editor-panel{
-    position: static;   /* לא sticky במובייל */
-    top: auto;
-    order: 1;           /* העורך למעלה */
-    width: 100%;
-    max-width: 760px;
-    margin: 0 auto;
+    position: static;   /* לא sticky במובייל/טאבלט */
   }
+  /* שני הפאנלים תופסים רוחב מלא—הסדר נקבע לפי ה-HTML (עורך ואז Preview) */
+  .editor-panel,
   .preview-panel{
-    order: 2;           /* הפריוויו מתחת */
+    grid-column: 1 / -1;
+    grid-row: auto;
   }
 }
 

@@ -9,7 +9,8 @@ import {
 
 import { autoLogIn, setLoggedUserToTopBar } from '../general_functions/functions.js';
 
-
+let currentTpl = 'template1';
+let previewEls = null;
 // ... existing imports ...
 
 /* ===== Elements ===== */
@@ -106,13 +107,30 @@ loadBtn.addEventListener("click", () => {
 
 /* Friendly defaults on first load */
 document.addEventListener("DOMContentLoaded", () => {
-  if (!loadConfig("lpData")) {
-    titleInput.value     = "Default Title";
+  const savedData = loadConfig("lpData");
+  
+  if (savedData) {
+    // טען נתונים שמורים
+    tplSelect.value = savedData.tpl || 'template1';
+    titleInput.value = savedData.title || "";
+    paragraphInput.value = savedData.paragraph || "";
+    ctaTextInput.value = savedData.ctaText || "";
+    ctaLinkInput.value = savedData.ctaLink || "#";
+    imageUrlInput.value = savedData.imageUrl || "";
+    bgColorInput.value = savedData.bgColor || "#ffffff";
+    titleColorInput.value = savedData.titleColor || "#111111";
+    fontSelect.value = savedData.font || "Arial";
+    leadFormToggle.checked = !!savedData.leadForm;
+    currentTpl = savedData.tpl || 'template1';
+  } else {
+    // ברירות מחדל
+    titleInput.value = "Default Title";
     paragraphInput.value = "Sample paragraph text.";
-    ctaTextInput.value   = "Click Here";
-    ctaLinkInput.value   = "#";
-    imageUrlInput.value  = "";
+    ctaTextInput.value = "Click Here";
+    ctaLinkInput.value = "#";
+    imageUrlInput.value = "";
   }
+  
   init();
 });
 
@@ -172,3 +190,13 @@ function addAutoLogInEvent() {
     autoLogIn();
   })
 }
+
+bindContentEvents({
+  title: titleInput,
+  paragraph: paragraphInput,
+  ctaText: ctaTextInput,
+  ctaLink: ctaLinkInput,
+  imageUrl: imageUrlInput,
+  imageFile: imageFileInput,    // הוסיפי את השורה הזו!
+  previewArea: previewArea      // הוסיפי את השורה הזו!
+}, previewEls);

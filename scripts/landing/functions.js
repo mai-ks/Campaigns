@@ -3,7 +3,7 @@ export const templates = {
   template1: `
     <div class="preview-content" id="lp-root">
       <img id="lp-image" class="hero-img"
-           src="https://picsum.photos/seed/kampa/960/540" alt="Image">
+           src="/images/kampasign.png" alt="Image">
       <h1 id="lp-title">Default Title</h1>
       <p id="lp-paragraph">Sample paragraph text.</p>
       <a id="lp-cta" href="#" class="cta">Click Here</a>
@@ -14,7 +14,7 @@ export const templates = {
     <div class="preview-content" id="lp-root">
       <h1 id="lp-title">Template 2 Title</h1>
       <img id="lp-image" class="hero-img"
-           src="https://picsum.photos/seed/kampa2/960/540" alt="">
+           src="/images/kampasign.png" alt="">
       <p id="lp-paragraph">Some description goes here.</p>
       <a id="lp-cta" href="#" class="cta">Sign Up</a>
       <div id="lp-lead-form"></div>
@@ -23,7 +23,7 @@ export const templates = {
   template3: `
     <div class="preview-content" id="lp-root">
       <img id="lp-image" class="hero-img"
-           src="https://picsum.photos/seed/kampa3/960/540" alt="">
+           src="/images/kampasign.png" alt="">
       <h1 id="lp-title">Welcome!</h1>
       <p id="lp-paragraph">Join us now.</p>
       <a id="lp-cta" href="#" class="cta">Get Started</a>
@@ -62,7 +62,7 @@ export function bindContentEvents(inputs, elements){
   applyLink();
 
   // image: URL + File + Drag&Drop
-  const fallback = "https://picsum.photos/seed/kampa/960/540";
+  const fallback = "/images/kampasign.png";
   let objectUrl; // to revoke previous blob URL
 
   const setImageSrc = (src) => {
@@ -140,4 +140,39 @@ export function loadConfig(key){
   const raw = localStorage.getItem(key);
   try { return raw ? JSON.parse(raw) : null; }
   catch { return null; }
+}
+
+export function bindPreviewElements(){
+  const root = document.getElementById('lp-root');
+  return {
+    lpRoot: root,
+    lpImage:    root?.querySelector('#lp-image'),
+    lpTitle:    root?.querySelector('#lp-title'),
+    lpPara:     root?.querySelector('#lp-paragraph'),
+    lpCta:      root?.querySelector('#lp-cta'),
+    lpLeadForm: root?.querySelector('#lp-lead-form'),
+  };
+}
+
+/** Style bindings - זה מה שחסר! */
+export function bindStyleEvents(inputs, elements) {
+  // Background color
+  inputs.bgColor.addEventListener("input", () => {
+    elements.lpRoot.style.backgroundColor = inputs.bgColor.value;
+  });
+
+  // Title color
+  inputs.titleColor.addEventListener("input", () => {
+    elements.lpTitle.style.color = inputs.titleColor.value;
+  });
+
+  // Font family
+  inputs.fontSelect.addEventListener("change", () => {
+    elements.lpTitle.style.fontFamily = inputs.fontSelect.value;
+  });
+
+  // Apply initial styles
+  elements.lpRoot.style.backgroundColor = inputs.bgColor.value;
+  elements.lpTitle.style.color = inputs.titleColor.value;
+  elements.lpTitle.style.fontFamily = inputs.fontSelect.value;
 }
