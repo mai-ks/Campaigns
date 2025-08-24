@@ -181,43 +181,46 @@ body {
   border-color:rgba(255,127,17,.55); box-shadow:0 0 0 3px rgba(255,127,17,.18);
 }
 .checkbox-line{ display:flex; align-items:center; gap:.5rem; }
-#saveBtn,#loadBtn{ width:100%; padding:.8rem 1rem; border:0; border-radius:12px; font-weight:800; cursor:pointer; margin-top:.5rem; }
-#saveBtn{ background:#ff7f11; color:#fff; }
-#loadBtn{ background:#111; color:#fff; }
+/* כפתורי שמירה/טעינה – אותו לוק שביקשת */
+#saveBtn,
+#loadBtn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--gray);
+  border-radius: var(--radius);
+  color: var(--gray);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px; /* אורך מינימלי */
+  appearance: none; /* יישור קו לדפדפנים */
+}
+
+#saveBtn:hover,
+#loadBtn:hover {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+
+/* נגישות ומצבים */
+#saveBtn:focus-visible,
+#loadBtn:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--orange) 60%, white);
+  outline-offset: 2px;
+}
+#saveBtn:disabled,
+#loadBtn:disabled {
+  opacity: .6;
+  pointer-events: none;
+}
+
 
 /* Lead form inside preview */
 .lead-form{ margin-top:12px; display:grid; grid-template-columns:1fr 1fr auto; gap:10px; }
 .lead-form input{ padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; }
 .lead-form button{ padding:10px 16px; border:0; border-radius:10px; background:#111; color:#fff; font-weight:800; }
-
-/* =============== Responsive =============== */
-@media (max-width:1220px){ :root{ --editor-w:420px; } }
-@media (max-width:1100px){
-  .container{ grid-template-columns:1fr; }
-  .editor-panel{ position:static; order:2; }
-  .preview-panel{ order:1; }
-}
-@media (max-width:900px){
-  .main-nav{ display:none; }
-  .hamburger{ display:flex; }
-}
-#previewArea {
-  border: 2px dashed #e5e7eb;
-  border-radius: 12px;
-  min-height: 420px;
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  background: radial-gradient(ellipse at top left,#ffffff,#f9fbff);
-}
-
-/* רמיזה אינטראקטיבית בזמן גרירה (אופציונלי) */
-#previewArea.dragover {
-  border-color: #ffb26a;
-  background: #fff7f0;
-}
-
-
 
 
 
@@ -416,3 +419,73 @@ body {
   .hamburger{ display:flex; }
 }
 
+
+
+/* רספונסיביות לעורך*/
+/*  כדי למנוע גלילה אופקית כשצפוף */
+.editor-panel { min-width: 0; } 
+
+/* ≤1200px – מצמצמים ריווח, שומרים על sticky עדין */
+@media (max-width: 1200px){
+  :root{ --editor-w: 420px; }
+  .editor-panel{ top: 12px; padding: 24px; }
+}
+
+/* ≤1024px – טור אחד: התצוגה המקדימה למעלה, העורך מתחת, בלי sticky */
+@media (max-width: 1024px){
+  .container{
+    grid-template-columns: 1fr;  /* טור אחד */
+    gap: 24px;
+  }
+  .editor-panel{
+    position: static;   /* לא sticky במובייל */
+    top: auto;
+    order: 1;           /* העורך למעלה */
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .preview-panel{
+    order: 2;           /* הפריוויו מתחת */
+  }
+}
+
+/* ≤768px – מרווחים קטנים יותר, כפתורים מלאי-רוחב, שדות קומפקטיים */
+@media (max-width: 768px){
+  .editor-panel{
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(2,8,23,.08);
+  }
+  .panel-title{ font-size: 22px; }
+
+  .editor-section{ padding: .75rem; }
+  .editor-panel label{ font-size: .9rem; }
+
+  .editor-panel input[type="text"],
+  .editor-panel input[type="url"],
+  .editor-panel input[type="color"],
+  .editor-panel textarea,
+  .editor-panel select{
+    padding: .65rem .75rem;
+    font-size: .95rem;
+  }
+
+  /* כפתורי שמירה/טעינה – מסך מלא */
+  #saveBtn, #loadBtn{
+    width: 100%;
+    min-width: 0;
+  }
+
+
+/* ≤480px – עוד צמצום ריווחים לשוליים קטנים */
+@media (max-width: 480px){
+  .container{ padding: 0 12px; gap: 16px; }
+  .editor-panel{
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(2,8,23,.08);
+  }
+  .editor-section{ margin-bottom: .75rem; }
+}
+}
