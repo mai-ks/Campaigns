@@ -1,0 +1,44 @@
+/* מגן שקוף – לא מטשטש, רק תופס לחיצות */
+.auth-shield{
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: transparent;
+  cursor: pointer;      /* רמז שיש פעולה */
+}
+
+/* ===== AUTH MODAL OVERLAY ===== */
+.auth-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}
+.auth-modal{
+  position: fixed;
+  left: 50%;
+  top: 18vh;
+  transform: translateX(-50%);
+  width: min(420px, 92vw);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25);
+  padding: 20px;
+  z-index: 1001;
+}
+.auth-modal h3{ margin: 0 0 6px; font-size: 1.25rem; }
+.auth-modal p{ margin: 0 0 14px; color:#555; }
+.auth-actions{ display: flex; gap: 10px; justify-content: flex-end; }
+.btn{ background:#eee; border:0; border-radius:10px; padding:.6rem 1rem; font-weight:700; cursor:pointer; }
+.btn.primary{ background:#ff7f11; color:#fff; }
+
+/* מגן שקוף על אזור הבקרים (בלי טשטוש) */
+.controls{ position: relative; }
+.auth-shield{
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: transparent;
+  cursor: pointer;
+}

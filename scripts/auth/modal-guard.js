@@ -1,7 +1,7 @@
 
 import { setLoggedUserToTopBar } from '../general_functions/functions.js';
 
-  function isLoggedIn(){
+  export function isLoggedIn(){
     // משיכת המשתמש מה local storage 
     const user =  JSON.parse(localStorage.getItem('USER'));
     if (user) {
@@ -13,15 +13,14 @@ import { setLoggedUserToTopBar } from '../general_functions/functions.js';
 
 
   // ---- מודאל ----
-  function showModal(){
-    // משיכת המשתמש מה local storage 
-    const user =  JSON.parse(localStorage.getItem('USER'));
+  export function showModal(){  
     // במידה והמשתמש מחובר לא נקפיץ את הודעת דרישת התחברות
-    if(user) return;
+    if(isLoggedIn()) return;
     
     document.getElementById('auth-backdrop')?.removeAttribute('hidden');
     document.getElementById('auth-modal')?.removeAttribute('hidden');
   }
+
   function hideModal(){
     document.getElementById('auth-backdrop')?.setAttribute('hidden','');
     document.getElementById('auth-modal')?.setAttribute('hidden','');
@@ -90,15 +89,22 @@ import { setLoggedUserToTopBar } from '../general_functions/functions.js';
     }
   });
   
-  document.addEventListener('DOMContentLoaded', () => {
+
+
+  document.addEventListener('DOMContentLoaded', () => {    
     wireModal();
     interceptAuthClicks();
     setEditorGuard();   // אין מודאל אוטומטי בטעינה; רק המגן + כפתורים
     setLoggedUserToTopBar();
+    addClickEventToEdditForm();
   });
   
 
-
+  function addClickEventToEdditForm(){
+    
+    const edditForm = document.getElementById('edditor-form');
+    edditForm.addEventListener('click', (_) => showModal())
+  }
   // --- פונקציית יציאה (Logout) ---
 function doLogout(){
     // מוחקים רק את הטוקן; משאירים דגלים כמו wasRegistered / lastEmail

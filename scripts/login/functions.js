@@ -6,7 +6,7 @@ export function loginUser(event) {
 
   const users = JSON.parse(localStorage.getItem('users'));
   
-  const user = users.find(user => user.email === email && user.password === password) || null;
+  const user = users.find(user => user.email === email.toLowerCase() && user.password === password) || null;
   
   if (!user) {
     alert('Invalid email or password!');

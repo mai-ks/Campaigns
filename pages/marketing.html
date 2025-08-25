@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kampa - עורך דף שיווקי</title>
     <link rel="stylesheet" href="/styles/marketing.css" />
+    <link rel="stylesheet" href="/styles/authmodal.css">
   </head>
   <body>
+     <!-- AUTH MODAL (פופ־אפ התחברות) -->
+    <div id="auth-backdrop" class="auth-backdrop" hidden></div>
+    <div id="auth-modal" class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title" hidden>
+      <h3 id="auth-title">Please sign in</h3>
+      <p>You need to be signed in to edit this banner.</p>
+      <div class="auth-actions">
+        <button id="auth-login-btn" class="btn primary">Sign in</button>
+        <button id="auth-cancel-btn" class="btn">Cancel</button>
+      </div>
+    </div>
     <!-- פס עליון -->
     <div class="top-bar">
       <p class="top-bar-text" id="top-bar-p">KAMPA WITH US – One month trial Free</p>
@@ -57,7 +68,7 @@
     <!-- תוכן ראשי -->
     <main class="editor-preview">
       <!-- עורך -->
-      <section class="editor">
+      <section class="editor controls" id="edditor-form">
         <h2>Marketing Page Editor</h2>
         <label>Title:</label>
         <input type="text" id="titleInput" placeholder="Enter a title here" />
@@ -140,5 +151,6 @@
     </footer>
 
     <script type="module" src="/scripts/marketing/index.js"></script>
+    <script type="module" src="/scripts/auth/modal-guard.js"></script>    
   </body>
 </html>

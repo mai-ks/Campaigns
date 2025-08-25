@@ -165,10 +165,6 @@ function tryJSONParse(str){
   try { return JSON.parse(str); } catch { return null; }
 }
 
-function isLoggedIn(){
-  const auth = tryJSONParse(localStorage.getItem(STORAGE_KEYS.auth));
-  return !!auth?.accessToken; // או בדיקת תוקף JWT אם יש
-}
 
 async function revokeServerSession(){
   // אם יש לך API בצד שרת לביטול Refresh Token — קראי אליו.

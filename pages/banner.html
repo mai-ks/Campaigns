@@ -9,6 +9,24 @@
   </head>
   
   <body>
+    <div id="emailModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Send Marketing Page by Email</h3>
+        <form id="emailForm">
+          <label for="recipientEmail">Recipient Email:</label>
+          <input type="email" id="recipientEmail" required placeholder="Enter recipient email">
+          
+          <label for="emailSubject">Subject:</label>
+          <input type="text" id="emailSubject" value="Check out my Marketing Page!" placeholder="Email subject">
+          
+          <label for="emailMessage">Message:</label>
+          <textarea id="emailMessage" placeholder="Add a personal message (optional)"></textarea>
+          
+          <button type="submit" id="sendEmailBtn">Send Email</button>
+        </form>
+      </div>
+    </div>
     <!-- פס עליון -->
     <div class="top-bar">
       <p class="top-bar-text" id="top-bar-p" >KAMPA WITH US – One month trial Free</p>
@@ -109,7 +127,7 @@
             </div>
 
             <!-- שדות ההגדרות בצד ימין -->
-            <div class="controls">
+            <div class="controls" id="edditor-form">
               <div class="control-group">
                 <label for="bannerType">Banner size</label>
                 <select id="bannerType">
