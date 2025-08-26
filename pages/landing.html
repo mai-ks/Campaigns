@@ -4,11 +4,25 @@
     <meta charset="UTF-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Editor</title>
+    <title>Landing Editor</title>
     <link rel="stylesheet" href="/styles/landing.css" />
+    <link rel="stylesheet" href="/styles/authmodal.css">
+
   </head>
   
   <body>
+     <!-- AUTH MODAL (פופ־אפ התחברות) -->
+    <div id="auth-backdrop" class="auth-backdrop" hidden></div>
+    <div id="auth-modal" class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title" hidden>
+      <h3 id="auth-title">Please sign in</h3>
+      <p>You need to be signed in to edit this Landing page.</p>
+      <div class="auth-actions">
+        <button id="auth-login-btn" class="btn primary">Sign in</button>
+        <button id="auth-cancel-btn" class="btn">Cancel</button>
+      </div>
+    </div>
+
+    
     <!-- פס עליון -->
     <div class="top-bar">
       <p class="top-bar-text" id="top-bar-p" >KAMPA WITH US – One month trial Free</p>
@@ -151,8 +165,8 @@
     </div>
   </div>
 </footer>
-
-
-  <script type="module" src="/scripts/landing/index.js"></script>
+  
+    <script type="module" src="/scripts/landing/index.js"></script>
+    <script type="module" src="/scripts/auth/modal-guard.js"></script>
 </body>
 </html>
