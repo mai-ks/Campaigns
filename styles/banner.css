@@ -141,6 +141,7 @@ body {
   list-style: none;
   justify-content: center;  /* ← מיישר אופקית במרכז */
   gap: 10px;
+  
 }
 
 /* כל כרטיס */
@@ -155,6 +156,7 @@ body {
   transition: transform .3s, box-shadow .3s;
   z-index: 0;             /* כדי שהשכנים יהיו מאחור */
   cursor: pointer;
+ 
 }
 
 /* הכרטיס הראשון מתחיל ללא חפיפה */
@@ -222,12 +224,14 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 2.5rem;
+  text-align: left;
 }
 .editor-card h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: var(--orange);
   font-size: 1.75rem;
+  text-align: left;
 }
 
 /* פריסה של Preview + Controls */
@@ -235,6 +239,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  text-align: left;
 }
 
 /* Preview panel */
@@ -276,6 +281,7 @@ body {
   margin-bottom: .5rem;
   font-weight: bold;
   color: var(--blue);
+  text-align: left;
 }
 .control-group input,
 .control-group select {
@@ -284,6 +290,36 @@ body {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+  text-align: left;
+}
+
+
+/* יישור מדויק של קצה שמאל לכל השדות, בלי לשנות פריסה */
+.control-group input,
+.control-group select {
+  box-sizing: border-box;   /* שלא "יברח" בגלל padding/border */
+  display: block;
+  width: 100%;
+  margin: 0;                /* מבטל מרווחי דפדפן */
+  padding: .5rem .75rem;    /* אותו padding כמו אצלך */
+}
+
+/* ספציפית לשדות הבעייתיים: Text + Font Size */
+.control-group input[type="text"],
+.control-group input[type="number"] {
+  margin-left: 0;           /* מבטיח שאין היסט שמאלה */
+  padding-inline-start: .75rem; /* יישור טקסט פנימי, גם במ מובייל */
+  text-indent: 0;
+}
+
+/* (לא חובה) נטרול ספינרים שלא מזיזים, אבל שומרים עקביות */
+.control-group input[type="number"]::-webkit-outer-spin-button,
+.control-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.control-group input[type="number"] {
+  -moz-appearance: textfield;
 }
 
  /* footer*/

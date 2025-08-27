@@ -1,5 +1,6 @@
-import { setLoggedUserToTopBar } from '../general_functions/functions.js';
 import { generateMarketingPageHTML, sendMarketingPageByEmail, openEmailModal, closeEmailModal } from './functions.js';
+import { autoLogIn, setLoggedUserToTopBar } from '../general_functions/functions.js';
+
 // שליפת האלמנטים מה-HTML
 
 const titleInput = document.getElementById('titleInput');
@@ -175,3 +176,24 @@ if (emailForm) {
     emailForm.reset();
   });
 }
+addAutoLogInEvent();
+
+function addAutoLogInEvent() {
+  const autoLoginBtn = document.getElementById('account-link');
+  if (!autoLoginBtn) return;
+
+  autoLoginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    autoLogIn();
+  })
+}
+
+bindContentEvents({
+  title: titleInput,
+  paragraph: paragraphInput,
+  ctaText: ctaTextInput,
+  ctaLink: ctaLinkInput,
+  imageUrl: imageUrlInput,
+  imageFile: imageFileInput,    // הוסיפי את השורה הזו!
+  previewArea: previewArea      // הוסיפי את השורה הזו!
+}, previewEls);
