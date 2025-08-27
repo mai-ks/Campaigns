@@ -337,8 +337,8 @@
       
   .image-block img {
     display: block;
-    width: 500px; /* רחב יותר */
-    height: 260px; 
+    width: 550px; /* רחב יותר */
+    height: 280px; 
     
     
     border-radius: 14px;
@@ -528,6 +528,7 @@
 .feature-card > p {
   position: relative;
   z-index: 2;
+  text-align: left;
 }
 
 /* כשהעכבר מעל הכרטיס – מראים את התמונה וממתנים את ההגדלה */
@@ -567,9 +568,10 @@
 
 .feature-card p {
   margin: 1rem 0 0;
-  font-size: 1rem;
+  font-size: 20swPX;
   line-height: 1.5;
   flex-grow: 1;
+
 }
 
 /* אפקט hover כדי להרגיש פעילות */
