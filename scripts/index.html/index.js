@@ -260,3 +260,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   addAutoLogInEvent();
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const els = document.querySelectorAll('[data-aos="fade-up"]');
+  if (!els.length) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // סטאגר עדין יותר: 60ms ברירת מחדל אם אין data-aos-delay
+  els.forEach((el, i) => {
+    const dAttr = el.getAttribute('data-aos-delay');
+    const d = dAttr != null ? parseInt(dAttr, 10) : i * 60;
+    el.style.setProperty('--aos-delay', prefersReduced ? '0ms' : `${d}ms`);
+  });
+
+  if (prefersReduced) {
+    els.forEach(el => el.classList.add('aos-animate'));
+    return;
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-animate');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -12% 0px' }); // מתחיל מעט מוקדם
+
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('aos-animate'));
+  }
+});

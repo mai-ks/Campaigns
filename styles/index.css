@@ -880,3 +880,29 @@ body.menu-open .nav-on-hero .hamburger {
 
 
 
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(4px) scale(0.995); /* תזוזה זעירה + סקייל עדין */
+    transition:
+      opacity .45s ease-out,
+      transform .45s cubic-bezier(.22,.55,.25,1);
+    will-change: opacity, transform;
+    transition-delay: var(--aos-delay, 0ms);
+  }
+  [data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
